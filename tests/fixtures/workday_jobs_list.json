@@ -1,0 +1,24 @@
+{
+  "total": 2,
+  "userAuthenticated": false,
+  "jobPostings": [
+    {
+      "title": "Principal Architect, AI Infrastructure",
+      "externalPath": "/job/Santa-Clara/Principal-Architect--AI-Infrastructure_JR190001",
+      "locationsText": "Santa Clara, CA",
+      "postedOn": "Posted Today",
+      "bulletFields": [
+        "JR190001"
+      ]
+    },
+    {
+      "title": "Senior Deep Learning Software Engineer",
+      "externalPath": "/job/Remote/Senior-Deep-Learning-Software-Engineer_JR190002",
+      "locationsText": "Remote, US",
+      "postedOn": "Posted Yesterday",
+      "bulletFields": [
+        "JR190002"
+      ]
+    }
+  ]
+}

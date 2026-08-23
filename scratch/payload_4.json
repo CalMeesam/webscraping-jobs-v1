@@ -1,0 +1,3691 @@
+{
+  "canvasGetWidgetContent": {
+    "status": "success",
+    "errorCode": null,
+    "errorMsg": null,
+    "data": {
+      "contentData": {
+        "derfa4": {
+          "contentMap": {
+            "emailAddressContent": "Email Address",
+            "noteText": "NOTE: Use refine search filters above to get better job alerts",
+            "createJobAlertAreaLabelText": "Create Job Alert",
+            "modalHeadingLevelTwoText": 2,
+            "managealertsLoggedinUserText": {
+              "text": "Manage Alerts",
+              "role": "button",
+              "ariaLabel": "",
+              "title": "",
+              "type": "link"
+            },
+            "managealertsExternalText": {
+              "type": "link",
+              "text": "Manage Alerts",
+              "role": "button",
+              "ariaLabel": "Manage Alerts",
+              "title": ""
+            },
+            "requiredText": "Required",
+            "enterMailPlaceholderText": "Your email address",
+            "singleSmsOptInText": "Accept singleSmsOptIn terms",
+            "sendText": "Send",
+            "frequencymonthly": "Monthly",
+            "manageAlertText": "Manage Alerts",
+            "piiconsentInfoDescription": "-By clicking next, I understand that my personal data will be processed in accordance with the Company Data Privacy Policy.",
+            "dataConsentText": "I have read and agree to the <a class='pii-consent-link' href='javascript:void(0)'> Terms and Conditions  </a>",
+            "piiconsentInfoHeading": "By checking this box, I consent to receive transactional and marketing text messages regarding employment opportunities.",
+            "getMailsAlertFrequencyText": "You will get emails:",
+            "emailLabelText": "Email:",
+            "createJobAlertButtonText": {
+              "type": "button",
+              "text": "Create Job Alert",
+              "role": "button",
+              "ariaLabel": "Create Job Alert",
+              "title": ""
+            },
+            "piiInfoText": "Accept piiInfo terms",
+            "resendFailedText": "You have raised maximum number of resend requests",
+            "emailConsentText": "I have read and agree to the <a class='pii-consent-link' href='javascript:void(0)'> Terms and Conditions  </a>",
+            "createJobAlertAlreadyActivatedText": "This job alert is already activated. To create another job alert, please select other job criteria.",
+            "manageAlertsEmailSentText": "We have sent a mail to your email address. Please verify your email address to",
+            "createJobAlertButton": "Create Job Alert",
+            "manageAlertsemailSentText": "NOTE: Email will be sent to",
+            "frequencyweekly": "Weekly",
+            "manageAlertsClickHereText": {
+              "type": "link",
+              "text": "Click here",
+              "role": "button",
+              "ariaLabel": "",
+              "title": ""
+            },
+            "emailedLinkToAccessProfileText": "We have emailed you link to access your profile.",
+            "createJobAlertErrorText": "You have no job criteria selected. Please select at least one search filter to create a job alert.",
+            "manageJobAlertsText": "Manage job alerts",
+            "ageConsentText": "I have read and agree to the <a class='pii-consent-link' href='javascript:void(0)'> Terms and Conditions  </a>",
+            "smsOptInText": "Accept smsOptin terms",
+            "privacyConsentText": "Accept privacyConsent terms",
+            "checkEmailText": "Please check your email",
+            "optInText": "Accept optin terms",
+            "activateJobALertText": "activate job alert.",
+            "selectFreqText": "you'll get emails, select frequency",
+            "emailNotGetText": "Didn't get an email?",
+            "piiConsentError": "Please accept all the required consents",
+            "whatsappOptInText": "Accept whatsappOptIn terms",
+            "closeThePopupBtn": {
+              "text": "",
+              "role": "button",
+              "ariaLabel": "close dialog",
+              "title": "",
+              "type": "button"
+            },
+            "editJobAlertSettings": {
+              "text": "Edit Setting",
+              "role": "button",
+              "ariaLabel": "Edit Setting",
+              "title": "",
+              "type": "button"
+            },
+            "frequencybiweekly": "Bi-Weekly",
+            "receiveVerificationEmailText": "You will receive a verification email that will direct you to your 'Manage alerts' page.",
+            "createJobAlertDuplicateErrorText": "This job alert already exists. To create another job alert, please select other job criteria.",
+            "emailEmptyText": "E-mail should not be empty",
+            "enterEmailAddressText": "Enter email address",
+            "dataConsentWdgt": {
+              "type": "widget",
+              "consentLink": {
+                "type": "link",
+                "text": "Review and agree the terms for processing personal information",
+                "title": "Terms Of Use",
+                "target": "",
+                "href": "javascript:void(0);"
+              },
+              "closeBtnLable": "close dialog",
+              "requiredText": "required",
+              "consentsLinkText": "Review and agree to the terms of processing personal information",
+              "consentHeading": "Consent",
+              "consentDescription": "In order to personalize your experience and provide job recommendations, we need to collect some personal data. Please read the statements below to learn more about how we use your personal data. Our data privacy notice is linked below, and you may revoke your consent at any time.",
+              "doneText": "Done",
+              "submitText": "Create job alert",
+              "optInText": "Accept optin terms",
+              "smsOptInText": "Accept smsOptin terms",
+              "singleSmsOptInText": "Accept singleSmsOptIn terms",
+              "piiInfoText": "Accept piiInfo terms",
+              "whatsappOptInText": "Accept whatsappOptIn terms",
+              "privacyConsentText": "Accept privacyConsent terms"
+            },
+            "alertConsentText": "I agree to receive regular email job alerts based on my preferences. I can unsubscribe at any time by clicking 'UNSUBSCRIBE' in the respective emails<br/><br/> <a class='' target='_blank' href='#'>Privacy Statement for candidate profiles and applications  </a>",
+            "alertConsentTextAria": "I agree to receive regular email job alerts based on my preferences. I can unsubscribe at any time by clicking 'UNSUBSCRIBE' in the respective emails",
+            "manageAlertsVerificationEmailText": "to receive a verification email that will redirect you to 'Manage alerts' page.",
+            "createJobAlertHeadingText": "Create Job Alert",
+            "closeDialog": "close dialog",
+            "emailOnWayText": "Your email is on its way...",
+            "enterEmailLabelText": "email address",
+            "frequencydaily": "Daily",
+            "enterValidEMailAddressText": "Please enter Valid E-mail address",
+            "sendAgainText": "send again",
+            "errorMessageText": "Something went wrong. Please try again",
+            "jobAlertCreatedSuccessfullyText": "Job alert created successfully",
+            "activationLinkText": "An activation link has been sent to {{email}}. The link in the email will expire in 4 hours.",
+            "getEmailsText": "You'll get emails:"
+          },
+          "bindables": {
+            "showInCollapsedView": false,
+            "jobalertsMandatoryconsent": false,
+            "emailEditForAnonomousUser": false,
+            "isEmailReqd": false,
+            "isErrorMsgReqd": false,
+            "_breakpointSettings": {
+              "breakpointsVsSettings": {
+                "320": {
+                  "widgetReOrderSettings": [
+                    {
+                      "settingType": "parent_and_after",
+                      "parentElementSelector": ".g-col-8.g-col-md-12",
+                      "afterElementSelector": "[data-widget-type^=\"phw-search-results\"],[data-func-widget-id=\"qRNnpA\"]"
+                    }
+                  ]
+                },
+                "768": {
+                  "widgetReOrderSettings": [
+                    {
+                      "settingType": "parent_and_after",
+                      "parentElementSelector": ".g-col-8.g-col-md-12",
+                      "afterElementSelector": "[data-widget-type^=\"phw-search-results\"],[data-func-widget-id=\"qRNnpA\"]"
+                    }
+                  ]
+                },
+                "1024": {
+                  "widgetReOrderSettings": [
+                    {
+                      "settingType": "parent_and_after",
+                      "parentElementSelector": ".g-col-8.g-col-md-12",
+                      "afterElementSelector": "[data-widget-type^=\"phw-search-results\"],[data-func-widget-id=\"qRNnpA\"]"
+                    }
+                  ]
+                },
+                "1920": {
+                  "widgetReOrderSettings": [
+                    {
+                      "settingType": "parent_and_after",
+                      "parentElementSelector": ".g-col-4.g-col-md-12",
+                      "afterElementSelector": "[data-widget-type^=\"phw-facets\"],[data-func-widget-id=\"zrqkaz\"]"
+                    }
+                  ]
+                }
+              }
+            },
+            "hideIfNoEmail": false,
+            "_shouldRemoveRedundantWidgets": true
+          }
+        },
+        "jh627s": {
+          "contentMap": {
+            "socialLoginCloseText": "Close",
+            "termsAriaLabel": "I have read and accept the privacy policy and terms of use",
+            "fyfStepContactInfoFirstNameConsecutiveSpacesErrorText": "First name cannot contain consecutive spaces",
+            "locationSubHeading": "Location",
+            "locationsAssertiveNoSuggesionsText": "No results are available",
+            "fyfStepContactInfoPhoneText2": "Phone",
+            "fyfStepContactInfoPhoneText1": "Phone",
+            "resumeExperienceSubHeading": "Verify and update your details.",
+            "namePureNumbersErrorText": "First name cannot contain numbers",
+            "termsError": "Please accept privacy policy and terms of use.",
+            "contactDetailsAreaNamePlaceholder": "Enter Your Name",
+            "fyfStepContactInfoNameMinLengthErrorText": "Name must be at least {{minLength}} character long",
+            "resumeInfoLocationHeadingAriaLabel": "What is your preferred location?",
+            "addSkillButtinAriaLabel": "Add {{skillName}}",
+            "deleteResumeHeading": "Are you sure you want to delete your resume?",
+            "locationBlockedOkText": "OK",
+            "piiInfoText": "Accept piiInfo terms",
+            "resumeStepsSubmitText": "Submit",
+            "MoreReleventJobsCheckboxText": "Sign me up for company updates",
+            "importResumeButtonText": "Use My Resume",
+            "nameLeadingTrailingSpacesErrorText": "First name cannot start or end with spaces",
+            "aiConsentError": "Please accept the AI consent.",
+            "importResumeWdgtTryAgain": {
+              "type": "widget",
+              "uploadButton": {
+                "type": "button",
+                "text": "Try again",
+                "ariaLabel": "Try again",
+                "role": "",
+                "title": ""
+              }
+            },
+            "lastNameText": "Last Name",
+            "fyfStepSendTxt": "Submit",
+            "skillsAriaLabel": "Skills",
+            "fyfLocationPlaceHolderText": "Your preferred work location",
+            "resumeLocationSingular": "location",
+            "resumeText": "Resume",
+            "fyfStepNoCategoriesText": "No Categories.",
+            "fyfStepSkillsSuggestionsText": "Suggested skills based on your interests and job title:",
+            "resumeLocation": "Location (Step {{activeStepIndex}}/{{resumeConformationSteps}})",
+            "fyfMoreReleventJobsCheckboxAriaLabel": "Sign me up for company updates",
+            "resumeLocationSuggestionsHeading": "Your preferred locations",
+            "uploadResumeDescription": "",
+            "fyfStepContactInfoFirstNameInvalidCharactersErrorText": "First name cannot contain special characters",
+            "fyfLogoutLinkTitleText": "Log out",
+            "resumeUploadSuccessHeading2": "Sign in and keep your data for future visits",
+            "locationBlockedHeadingText": "Location access is turned off",
+            "fyfStepSkillsHeading": "Tell us what you\u2019re really good at.",
+            "resumeUploadingText": "resume uploading",
+            "findYourFitIcon": {
+              "type": "image",
+              "orientation": "square",
+              "src": "https://assets.phenompeople.com/CareerConnectResources/migration/GLOBAL/images/1653556997080_v-1636458601019-expire_job.png",
+              "description": "1653556997080_v-1636458601019-expire_job",
+              "title": "v-1636458601019-expire_job",
+              "size": "small",
+              "actualsize": 1825,
+              "width": 72,
+              "height": 72
+            },
+            "resumeSkipThisSection": "Skip this section",
+            "resumeLocationNoResultsText": "No results found",
+            "resumeRemovedText": "Removed",
+            "fyfStepSubCategoryHeading": "What are you interested in?",
+            "fyfStepContactInfoNameMaxLengthErrorText": "Name cannot exceed {{maxLength}} characters",
+            "countryCodeSelector": {
+              "type": "widget",
+              "countryCodeSelectorAriaLabel": "Select country code",
+              "codeText": "Code",
+              "noCountriesFound": "No countries found",
+              "countryText": "country",
+              "countryTextPlural": "countries",
+              "availableText": "available",
+              "searchCountriesText": "Search countries",
+              "countryCodesAriaLabel": "Country codes",
+              "searchCountriesPlaceholder": "Search countries...",
+              "countryCodeOptionsAriaLabel": "Country code options",
+              "noCallingCodeText": " (No calling code)"
+            },
+            "resumeSkillSetSearchLabel": " Search skill set here (You can enter multiple values)",
+            "resumeShowingText": "Showing",
+            "fyfStepContactInfoPreferredNameInvalidCharactersErrorText": "Preferred name cannot contain special characters",
+            "resumeNewResumeDropDownText": "Use new resume",
+            "resumeUploadedSubHeading": "Please check contact information fields, to make sure your data is complete and accurate.",
+            "signUpText": "Sign Up",
+            "fyfNewContactInfoOrTxt": "or",
+            "fyfStepContactInfoNameRequiredErrorText": "Name is required",
+            "suggestedLocationsAssertiveText": "Showing {{listLength}} suggested locations",
+            "resumeResetDropDownText": "Remove",
+            "fyfStepPreviousText": "Back",
+            "contactDetailsAreaName": "Name ",
+            "cdTermsPolicyBlock": "<span class='phw-asterisk-color' aria-hidden='true'>*</span> I have read and agree to the <a class='termsLink' target='_blank' href='javascript:void(0);'>terms</a>",
+            "fyfStepContactInfoNamePureNumbersErrorText": "Name cannot contain numbers",
+            "countryCodeErrorText": "Country code is required",
+            "emailText": "Email",
+            "smsEmailText": "I agree to receive emails and/or SMS messages (US and Canada only) about job openings, company news, and other career-related information to the email address and/or mobile phone number I have listed above... I can unsubscribe at any time by clicking 'UNSUBSCRIBE in emails or texting 'STOP' in response to SMS.",
+            "suggestedSkillsAssertiveText": "Showing {{listLength}} suggested skills",
+            "resumeParsedText": "Your resume was successfully uploaded and parsed.",
+            "piiconsentInfoHeading": "By checking this box, I consent to receive transactional and marketing text messages regarding employment opportunities.",
+            "namePureSymbolsErrorText": "First name cannot contain only symbols",
+            "resumeExperienceLegendText": "Experience",
+            "submitbuttonkey": "Confirm",
+            "fyfStepSkillsSearchBoxAriaLabel": "Search for skills",
+            "resumeFileUnsupportedText": "Upload a file up with format : {{allowedFormats}}",
+            "resumeInfoContactDetailsAriaLabel": "contact details",
+            "saveMyPersonalInfoText": "Save my resume and contact me for jobs that I may be suitable for (optional)",
+            "fyfStepContactInfoLastNameRequiredErrorText": "Last name is required",
+            "fyfStepRecentTitleClearSearchText": "clear the search",
+            "resumeExperienceYearsText": "years",
+            "resumeEditDropDownText": "Edit",
+            "multiSelectPreferredLocationLabelText": "Your preferred work location",
+            "aiConsentText": "I agree that by providing my resume, my online experience will be tailored using Artificial Intelligence (AI) technologies to present job opportunities matching my profile. In addition, AI technologies will also be used in creating and analyzing my candidate profile so that recruiters may contact me for suitable job opportunities. My data may be shared globally as part of a talent pool. I understand that joining this talent pool is voluntary and is not required for job applications.",
+            "resumeCancelPopupContinueBtn": "Continue Site Personalisation",
+            "contactDetailsAreaPreferredName": "Preferred Name",
+            "resumeUploadContactDetailsErrorText1": "Sorry ! Something went wrong, please try again in a few minutes",
+            "fyfStepContactInfPreferredNameInputPlaceHolder": "Enter your preferred name here",
+            "fyfStepRecentTitleNoExpRadioText": "Just starting my career",
+            "nextStepText": "next step",
+            "fyfStepPreferredLocationHeading": "What is your preferred location?",
+            "fyfStepPreferredLocationInputAriaLabel": "Search for Job location",
+            "fyfStepContactInfoPreferredNameConsecutiveSpacesErrorText": "Preferred name cannot contain consecutive spaces",
+            "fyfStepContactInfNameInputPlaceHolder": "Enter your name here",
+            "selectedSkillText": "Selected skill :",
+            "fyfStepCandidateContactInfoSubHeading1": "Done! Your personalized job recommendations are below.",
+            "fyfStepCandidateContactInfoSubHeading2": "Currently we don\u2019t have any jobs that fit your profile.",
+            "resumeSkillSetPlural": "skills",
+            "resumeSkillSetSearchPlaceholder": "Search to Add Skills",
+            "removeFileIconText": "reset icon",
+            "resumeExperience": "Experience (Step {{activeStepIndex}}/{{resumeConformationSteps}})",
+            "fyfStepContactInfoNameLeadingTrailingSpacesErrorText": "Name cannot start or end with spaces",
+            "resumeEditFYfDropDownText": "Edit profile",
+            "contactInfoInputPlaceholderText": "Enter your {{field}} here",
+            "errorHeading": "Something went wrong.",
+            "stepTwoLabel": "What is your most recent job title?",
+            "fyfStepContactInfoPreferredNameMinLengthErrorText": "Preferred name must be at least {{minLength}} character long",
+            "fyfStepContactInfoLastNameLeadingTrailingSpacesErrorText": "Last name cannot start or end with spaces",
+            "resumeUploadTryAgainAriaLabelText": "Try again",
+            "postLoginNoProfileJobsHeading2": "Currently we don't have any jobs that fit your interests.",
+            "ContactDetailsPhoneInputPlaceHolder1": "Enter your phone number",
+            "chooseOrText": "or",
+            "postLoginNoProfileJobsHeading3": "Currently we dont have enough information to provide personalized job recommendations. ",
+            "contactDetailsAreaCancelBtnText": "Cancel",
+            "fyfStepContactInfoPreferredNamePureNumbersErrorText": "Preferred name cannot contain numbers",
+            "resumeUploadUnsupportedErrorHeading": "Oops invalid format...",
+            "fyfStepContactInfoLastNameMaxLengthErrorText": "Last name cannot exceed {{maxLength}} characters",
+            "resumeInfoSocialLoginPopupCloseAriaLabel": "close dialog",
+            "matchScoreSeeHowToMatch": "See how you match",
+            "preLoginDescriptionText": "Get tailored job recommendations based on your interests.",
+            "editProfileSocialLogoutText": "Connected",
+            "emptyFieldErrorText": "{{field}} should not be empty",
+            "skillsAssertiveNoSuggesionsText": "No results are available",
+            "fyfStepSkillsClearSearchAriaLabel": "clear the search",
+            "postLoginSignUpText": " to save your personalized experience",
+            "phoneText": "Phone number",
+            "profileUpdateAriaLabel": "Edit profile",
+            "fyfStepPreferredLocationClearSearchText": "clear the search",
+            "resumeLocationSubHeading": "Verify and update your details",
+            "consentsLinkText": "Review and agree to the terms of processing personal information",
+            "fyfStepContactInfoSecurityTxt": "We take your privacy seriously.",
+            "resumeResetDropDownAriaLabel": "Remove your resume",
+            "resumeSkillSetSingular": "skill",
+            "resumeEditDropDownBtnAriaLabel": "Edit your resume",
+            "fyfStepContactInfoFirstNameMinLengthErrorText": "First name must be at least {{minLength}} character long",
+            "stepFourLabel": "What is your preferred location?",
+            "resumeInfoLocationSuggestionsAriaLabel": "preferred location suggestions",
+            "flowChoosingHeadingAriaText": "Choose your path",
+            "removeSelectionIcon": "icon-cancel-1",
+            "editPersonalizeAriaLabel": "edit personalization",
+            "gotItText": "Got it",
+            "fyfStepWorkExperienceHeading": "How experienced are you?",
+            "fyfRecentTitleSubHeadingText": "Your most recent job title",
+            "resumeInfoSkillHeadingAriaLabel": "Tell us what you\u2019re really good at",
+            "resumeJobTitleSingular": "Job title",
+            "submitText": "Submit",
+            "invalidFieldErrorText": "Please enter valid {{field}}",
+            "fyfStepSkillsDeleteSelectedText1": "remove {{suggestedSkill}} skill'",
+            "unsavedPopupCancelBtnTxt": "",
+            "resumeInfoFileUploadSuccessPopupAriaLabel": "close dialog",
+            "resumeInfoResetPopupAriaLabel": "close dialog",
+            "resumeJobTitleSuggestionsHeading": "Your job titles",
+            "suggestedSkillsSingularAssertiveText": "Showing {{listLength}} suggested skills",
+            "fyfMoreReleventJobsCheckboxText": "Sign me up for company updates",
+            "resumeResetDropDownCancelText": "Cancel",
+            "importResumeButtonAriaLabelText": "Use My Resume",
+            "resumeContactInfoPhoneErrorMsg": "Enter correct phone number",
+            "dataConsentWdgt": {
+              "type": "widget",
+              "consentLink": {
+                "type": "link",
+                "text": "Review and agree the terms for processing personal information",
+                "title": "Terms Of Use",
+                "target": "",
+                "href": "javascript:void(0);"
+              },
+              "requiredText": "required",
+              "consentsLinkText": "Review and agree to the terms of processing personal information",
+              "consentHeading": "Consent",
+              "consentDescription": "In order to personalize your experience and provide job recommendations, we need to collect some personal data. Please read the statements below to learn more about how we use your personal data. Our data privacy notice is linked below, and you may revoke your consent at any time.",
+              "doneText": "Done",
+              "submitText": "Submit",
+              "optInText": "accept optin terms",
+              "smsOptInText": "Accept smsOptin terms",
+              "singleSmsOptInText": "Accept singleSmsOptIn terms",
+              "piiInfoText": "Accept piiInfo terms",
+              "whatsappOptInText": "accept whatsappOptIn terms",
+              "privacyConsentText": "accept privacyConsent terms"
+            },
+            "fyfStepProgressBarText": "Step {{stepStatus}} of {{stepsCount}}",
+            "findACityLabelText": "Find a City",
+            "fyfSkillsPlaceHolderText": "Your skills",
+            "submitProfileInfoText": "submit the profile information",
+            "contactDetailsAreaHeadingText": "Confirm Personal Details",
+            "resumeLocationSuggestionAriaLabel": "Job Location suggestions",
+            "closePopupButtonAriaLabelText": "close dialog",
+            "resumeCancelPopupSubHeading": "In 60 seconds we will find you the right job",
+            "singleSmsOptInText": "Accept singleSmsOptIn terms",
+            "locationsAriaLabel": "Locations",
+            "happyFileIconText": "success icon",
+            "resumeUploadTryAgainText": "Try again",
+            "fyfStepContactInfoPreferredNameMaxLengthErrorText": "Preferred name cannot exceed {{maxLength}} characters",
+            "suggestedRecentTitleAssertiveText": "Showing {{listLength}} suggested titles",
+            "resumeJobTitleSuggestionAriaLabel": "Recent job title suggestions",
+            "resumeUploadSuccessDesc": "We never post anything without your permission",
+            "fyfRecentTitlePlaceHolderText": "Your most recent job title",
+            "fyfStepRecentTitleHeading": "What is your most recent job title?",
+            "resumeUploadedText": "resume uploaded",
+            "resumeNameAsText": "{{resumeName}}",
+            "ResumeInfoStepSkillsDeleteSelectedText": "remove {{suggestedSkill}} skill'",
+            "contactDetailsAreaPhoneInputErrorText": "Please enter correct phone number",
+            "uploadNewResumeAriaLabel": "Upload new",
+            "multiSelectSkillsLabelText": "Your Skills",
+            "fyfStepContactInfoFirstNamePureNumbersErrorText": "First name cannot contain numbers",
+            "profileUpdationEditText": "Edit personalization",
+            "fyfStepContactInfoLastNamePureSymbolsErrorText": "Last name cannot contain only symbols",
+            "consentDescription": "In order to personalize your experience and provide job recommendations, we need to collect some personal data. Please read the statements below to learn more about how we use your personal data. Our data privacy notice is linked below, and you may revoke your consent at any time.",
+            "importResumeWdgtDropDown": {
+              "type": "widget",
+              "uploadButtonIcon": "icon icon-upload",
+              "uploadButton": {
+                "type": "button",
+                "text": "Upload new",
+                "ariaLabel": "",
+                "role": "",
+                "title": ""
+              }
+            },
+            "contactDetailsEmailInputErrorText": "Email should not be empty",
+            "resumeLocationSearchPlaceholder": "Search to Add Locations",
+            "resumeSkillSetSuggestedHeading": "Select suggested skills",
+            "resumeLocationSearchLabel": "Search locations here (You can enter multiple values)",
+            "fyfStepNDoneText": "Done",
+            "recentTitlesAssertiveNoSuggesionsText": "No results are available",
+            "fyf1CdTermsPolicyBlock": "<span class='phw-asterisk-color' aria-hidden='true'>*</span> I have read and accept the <a class='privacyPolicyLink' target='_blank' href='javascript:void(0);'> privacy policy</a> and <a class='termsLink' target='_blank' href='javascript:void(0);'>terms of use</a>",
+            "fyfStepContactInfoLastNameInvalidCharactersErrorText": "Last name cannot contain special characters",
+            "nameMaxLengthErrorText": "First name cannot exceed 50 characters",
+            "contactDetailsAreaEmail": "Email",
+            "sadFileIconText": "Failure icon",
+            "preLoginActionButtonText": "Get Started",
+            "resumeSkillSetSuggestionAriaLabel": "Skill Set suggestions",
+            "resumeUploadErrorDescription": "Something went wrong.",
+            "contactDetailsAreaPreferredNamePlaceholder": "Enter Your Preferred Name",
+            "fyfStepContactInfoPreferredNameLeadingTrailingSpacesErrorText": "Preferred name cannot start or end with spaces",
+            "multiSelectTitleLabelText": "Title",
+            "noMatchScoreText": "Match score for this job is unavailable at this moment",
+            "socialConnectWdgt": {
+              "type": "widget",
+              "privacyPolicy": {
+                "type": "link",
+                "text": "Privacy Policy",
+                "title": "Privacy Policy",
+                "target": "_blank",
+                "linkType": "weburl",
+                "href": "javascript:void(0);"
+              },
+              "facebook": {
+                "type": "button",
+                "text": "Sign in with Facebook",
+                "ariaLabel": "Sign in with Facebook"
+              },
+              "termsLink": {
+                "type": "link",
+                "text": "Terms Of Use",
+                "title": "Terms Of Use",
+                "target": "_blank",
+                "linkType": "weburl",
+                "href": "javascript:void(0);"
+              },
+              "google": {
+                "type": "button",
+                "text": "Sign in with Google",
+                "ariaLabel": "Sign in with Google"
+              },
+              "privacyPolicyCheckboxText": "I have read and agree to the ",
+              "linkedIn": {
+                "type": "button",
+                "text": "Sign in with LinkedIn",
+                "ariaLabel": "Sign in with LinkedIn"
+              },
+              "privacyPolicyCheckboxSeparatorText": " and ",
+              "privacyPolicyCheckboxErrorText": "You must read and agree to the terms above."
+            },
+            "invalidEmailErrorText": "Please enter valid email address",
+            "contactDetailsPhone": "Phone",
+            "seletedLocationsText": "Selected locations:",
+            "fyfBannerImage": {
+              "type": "image",
+              "src": "https://pp-cdn.phenompeople.com/CareerConnectResources/migration/GLOBAL/images/1653217174174_jd-banner-1549291468959.jpg",
+              "alt": ""
+            },
+            "resumeSkillSet": "Skill Set (Step {{activeStepIndex}}/{{resumeConformationSteps}})",
+            "saveMyCheckboxButtonText": "Save my resume and contact me for jobs that I may be suitable for <span class='checkbox-optional-text'>(optional)</span>",
+            "profileUpdateResetLinkText": "Reset Personalization",
+            "nameRequiredErrorText": "First name is required",
+            "deleteResumePopupDeleteAriaLabel": "Remove",
+            "fyfStepContactInfoPhonePlaceHolder1": "(000) 000-0000",
+            "fyfStepRecentTitleNoResultsText": "No results found",
+            "profileIconText": "profile icon",
+            "widgetsubHeading": "We take your privacy seriously. We never post anything to your social accounts.",
+            "postLoginNoProfileJobsHeading": "Currently we don't have any jobs that fit your interests.",
+            "fyfStepsHeadingAriaLabelTxt": "Answer Questions",
+            "fyfStepContactInfoLastNameConsecutiveSpacesErrorText": "Last name cannot contain consecutive spaces",
+            "resumeCancelPopupCancelBtn": "Cancel Site Personalization",
+            "editProfileSocialLogoutLinkText": "Log out",
+            "resumeUploadUnsupportedErrorDescription": "Please upload one of the following file formats: pdf, docx, txt",
+            "resumeCancelPopupHeading": "Are you sure you want to cancel?",
+            "fyfStepContactInfoLastNamePureNumbersErrorText": "Last name cannot contain numbers",
+            "resumeJobTitlePlural": "Job titles",
+            "startTheJobAriaLabel": "start the job personalization",
+            "widgetMainHeading2": "Sign in to save your information for future visits",
+            "fyfStepContactInfoPhoneErrorMsg": "Enter correct phone number",
+            "fyfNewContactInfoProfileRecomText": "Done! Your personalized job recommendations are below.",
+            "JobTitleMessage": "Your job title",
+            "fyfStepContactInfoSrOnlyTextNameInput": "Full name <span class='required' aria-hidden='true'>*</span>",
+            "fyfNewContactInfoSocialLoginText": "Sign in to save your information for future visits",
+            "currentLocationLabelText": "My Current Location",
+            "emptyPhoneNumberErrorText": "Phone number should not be empty",
+            "resumeInfoSkillsSuggestionsAriaLabel": "skills suggestions",
+            "unsavedPopupHeading": "You have unsaved changes",
+            "fyfStepCategoryHeading": "What are you interested in?",
+            "resumeJobTitleSearchPlaceholder": "Search to Add Titles",
+            "resumeSkillSetNoResults": "No results found",
+            "firstNameText": "First Name",
+            "unsavedPopupConfirmBtnTxt": "Save",
+            "cancelText": "Cancel",
+            "contactDetailsEmail": "Email",
+            "resumeJobTitleNoResults": "No results found",
+            "resumeUploadErrorUploadAgain": "Please try to upload your resume again",
+            "postLoginProfileHeading": "Your personalized site and job recommendations are ready.",
+            "fyfStepNextText": "Next",
+            "flowChoosingHeadingSubHeadingText": "Either use your resume or tell us a little about yourself",
+            "orText": "or",
+            "resumeNewResumeDropDownAriaLabel": "Upload new file",
+            "selectedSkillsText": "Selected skills :",
+            "contactDetailsEmailInputPlaceHolder": "your@mail.com",
+            "ChooseSectionCloseAriaLabel": "previous",
+            "preLoginHeadingVisitorText": "Welcome back!",
+            "contactDetailsEmailInputErrorCorrectFormat": "Enter a valid email address",
+            "flowChoosingHeadingText": "Choose your path!",
+            "fyfStepContactInfoSrOnlyTextEmailInput": "Email <span class='required' aria-hidden='true'> *</span>",
+            "preLoginHeadingText": "Get tailored job recommendations based on your interests.",
+            "moreInfoText": "For more information on how we process personal data for candidates, please see our <u><a href='#' target='_blank'>Privacy Statement for candidate profiles and applications</a></u>",
+            "suggestedRecentTitleSingularAssertiveText": "Showing {{listLength}} suggested title",
+            "fyfSkipText": "Skip",
+            "unsavedPopupSubHeading": "Save your information before leaving",
+            "pleaseAcceptTermsText": "Please accept terms of use and policy.",
+            "profileUpdateResetLinkText2": "Remove",
+            "fyfStepContactInfoSrOnlyTextPreferredNameInput": "Preferred name <span class='required' aria-hidden='true'>*</span>",
+            "resumeUploadContactDetailsHeading2": "We noticed below information is missing from it. <br> Please complete the following:",
+            "fyfStepContactInfoMainHeadng": "If we find the right job for you, how can we get in touch?",
+            "fyfStepContactInfoPreferredNameText": "Preferred name <span class='required' aria-hidden='true'>*</span>",
+            "contactDetailsAreaEmailInputErrorCorrentFormat": "Enter a valid email address ",
+            "loadingText": "Loading...",
+            "contactDetailsAreaSubmitBtnText": "Submit",
+            "allyUnsavedPopupSubHeading": "In order to process your resume and provide job recommendations, you must approve our data protection policy.",
+            "uploadResumeProfileFirstName": "Hi {{userFirstName}},",
+            "resumeRemoveHeadingText": "Remove you resume?",
+            "anyLocationLabelText": "Any Location",
+            "preLoginActionButtonAriaLabel1": "Get started for profile recommendations",
+            "importResumeWdgt": {
+              "type": "widget",
+              "uploadButtonIcon": "icon icon-upload",
+              "uploadButton": {
+                "type": "button",
+                "text": "Use My Resume",
+                "ariaLabel": "Use My Resume",
+                "role": "",
+                "title": ""
+              }
+            },
+            "multiSelectionSronlyText": "(This field has a multi select option)",
+            "fyfLastStepSendText": "Submit",
+            "invalidPhoneNumberErrorText": "Please enter valid phone number",
+            "fyfStepContactInfoEmailErrorNotEmpty": "Email should not be empty",
+            "smsOptInText": "Accept smsOptin terms",
+            "fyfStepContactInfoLastNameMinLengthErrorText": "Last name must be at least {{minLength}} character long",
+            "fyfStepContactInfoPreferredNamePureSymbolsErrorText": "Preferred name cannot contain only symbols",
+            "fyfStepContactInfoEmailPlaceHolder": "name@domain.com",
+            "candidateLoginWdgtPopup": {
+              "type": "widget",
+              "oneTimeLoginPopUpHeading": "Log in to your profile with a one-time link",
+              "oneTimeLoginPopupSubHeading": "Enter your email address, and we\u2019ll send you a link to log in.",
+              "oneTimeLoginEmailLabel": "Email",
+              "oneTimeLoginEmailFormPlaceHolder": "Email",
+              "oneTimeLoginButton": {
+                "type": "button",
+                "text": "Send",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "oneTimeLoginSuccessHeading": "We have emailed a one-time link to {{emailId}}",
+              "oneTimeLoginSuccessSubHeading": "Click on the link to sign in instantly to your candidate account.",
+              "oneTimeLoginSuccessText": "If you don\u2019t see the email in your inbox, please check your spam folder.",
+              "oneTimeLoginFailedHeading": "Sorry! We could not send a one-time link to {{emailId}}",
+              "oneTimeLoginFailedText": "Please click on the \u201cResend Email\u201d button try again.",
+              "oneTimeLoginResendEmailBtn": {
+                "type": "button",
+                "text": "Resend email",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "emailResendSuccessText": "Email has been resent successfully!",
+              "forgotPasswordPopUpSubHeading": "Enter your email and we\u2019ll send you link to reset your password",
+              "signInIcon": "icon icon-user-4",
+              "resetPasswordInvalidText": "Your reset password link is invalid. Please try again.",
+              "validEmailIcon": "icon icon-check-mark-thick-1",
+              "setNewPwdText": "Set new password",
+              "validPasswordIcon": "icon icon-check-mark",
+              "createAccountEmailFormAriaLabel": "Enter email",
+              "signOutButton": {
+                "type": "button",
+                "text": "Sign out",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "createAccErrorStatement4": "one lowercase, ",
+              "createAccErrorStatement5": "one uppercase",
+              "resentEmailButtonText": "Resend",
+              "forgotPasswordPopUpHeading": "Forgot your password?",
+              "resetPasswordButton": {
+                "type": "button",
+                "text": "Send password reset link",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "privacyPolicy": {
+                "type": "button",
+                "text": "Privacy Policy",
+                "title": "",
+                "role": "button",
+                "ariaLabel": "",
+                "href": "javascript:void(0);"
+              },
+              "signInPopUpHeading": "Sign in to save your personalized profile",
+              "signUpPasswordFormPlaceHolder": "Password",
+              "forgotPasswordLink": {
+                "type": "link",
+                "text": "Forgot your password?",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "privacyPolicyCheckboxSeparatorText": " and ",
+              "createAccErrorStatement1": "Password must have at least ",
+              "createAccErrorStatement2": "8 characters, ",
+              "showPasswordIcon": "icon icon-eye-1",
+              "signInPopUpSubHeading": "sub heading",
+              "createAccErrorStatement3": "one number, ",
+              "signInButtonLabel": "Already have an account?",
+              "emailInUseError": "This email address is already in use. Please try again or",
+              "createAccountFormAriaLabel": "Enter password",
+              "signInPasswordFormPlaceHolder": "Your Password",
+              "loggedInBtnAriaLabel": "Your profile {{saluteText}}",
+              "accCreated2Error": "Please continue with",
+              "signInPasswordFormLabel": "Password",
+              "errorMessageEmptyPassword": "Please enter your password",
+              "signInEmailFormPlaceHolder": "name@email.com",
+              "privacyPolicyCheckboxText": "I have read and agree to the",
+              "createAccountEmailFormPlaceHolder": "name@email.com",
+              "newPwdText": "New Password",
+              "returnSigninText": {
+                "type": "button",
+                "text": "Return to Sign in",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "privacyPolicyCheckboxErrorText": "You must read and agree to the terms above.",
+              "createAccountButton": {
+                "type": "button",
+                "text": "Sign up",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "createAccountFormLabel": "Password",
+              "fyfFlowSignInHeading": "Sign in to save your personalized profile",
+              "signOutLink": " https://canvas-meditor.phenompro.com/us/en/logout",
+              "errorMessageEmptyEmail": "Please enter your email address.",
+              "noAccountError": "There is no account with this email. Please try again or",
+              "savedJobsSignUpHeading": "Sign up dont lose your saved jobs",
+              "signInEmailFormLabel": "Email",
+              "personalAccountLinkText": "View profile",
+              "errorIcon": "icon icon-error-1",
+              "hidePasswordIcon": "icon icon-eye-1-crossed",
+              "resetPasswordPopUpHeading": "Reset password link sent",
+              "applyFlowSignInHeading": "Sign in to save your application and apply faster next time",
+              "createAccountPopUpHeading": "Sign up to save your personalized profile",
+              "signInAgreementTextPartOne": "By Signing in, you agree to the company\u2019s",
+              "technicalIssueText": "Sorry, were having some technical issues. Please try again.",
+              "closePopUpButtonIcon": "icon icon-cancel",
+              "myProfileLink": "https://canvas-meditor.phenompro.com/us/en/myprofile",
+              "staySignedInCheckboxText": "Stay signed in",
+              "privacyDataConsentAriaLabel": "I have read and agree to the Privacy Policy.",
+              "fyfFlowSignUpHeading": "Sign up to save your personalized profile",
+              "errorSrOnly": "error:",
+              "createAccountButtonLabel": "Don\u2019t have an account?",
+              "passwordVisibleSrOnly": "Password is visible",
+              "termsOfUseText": {
+                "type": "button",
+                "text": "Terms Of Use",
+                "title": "",
+                "role": "button",
+                "ariaLabel": "",
+                "href": "javascript:void(0);"
+              },
+              "showPasswordText": "Show password",
+              "signInAgreementTextPartTwo": "and",
+              "createNewPwdText": "Please create a new password",
+              "hidePasswordBtnAriaLabel": "password is invisible",
+              "resetPasswordPopUpSubHeading2": "We have sent an email to <strong>{{emailId}}</strong> with password reset instructions. ",
+              "resetPasswordPopUpSubHeading1": "We have sent an email to <strong> {{emailId}} </strong> with password reset instructions. ",
+              "signInLinkText": "Sign in",
+              "staySignedInCheckboxAriaLabel": "Stay signed in",
+              "closePopupButtonAriaLabel": "Close dialog",
+              "errorIncorrectPassword": "Your password is incorrect. Please try again",
+              "seperatorText": "or use your social account",
+              "cvUploadedText": "Cv uploaded",
+              "hidePasswordText": "Hide password",
+              "loggedInBtnWOfNameAriaLabel": "Your profile",
+              "resetLinkExpired": "Password reset Link has been expired",
+              "signInButton": {
+                "type": "button",
+                "text": "Sign in",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "createAccountFormPlaceHolder": "Your Password",
+              "salutationText": "Hi",
+              "createAccountLinkText": "Sign up",
+              "signInAccountLinkText": "Sign in",
+              "createAccountEmailFormLabel": "Email",
+              "passwordInVisibleSrOnly": "Password is invisible",
+              "resentEmailButtonLabel": "Did not receive the mail?",
+              "applyFlowSignUpHeading": "Sign up to save your application and apply faster next time",
+              "passwordErrorRequirementText": "Password did not meet the requirements for ",
+              "showPasswordBtnAriaLabel": "password is visible",
+              "signInEmailFormAriaLabel": "Enter email",
+              "errorMessageInvalidEmail": "Please enter a valid email address.",
+              "signInPasswordFormAriaLabel": "Enter password",
+              "savedJobsSignInHeading": "Sign in do not lose your saved jobs",
+              "accCreated1Error": "You created an account with this email using",
+              "loggedInText": "Logged In Successfully",
+              "registeredText": "Registered Successfully",
+              "profileText": "(My profile)",
+              "phwSocialconnectDefaultDefaultV1": {
+                "type": "widget",
+                "privacyPolicy": {
+                  "type": "link",
+                  "text": "Privacy Policy",
+                  "title": "Privacy Policy",
+                  "target": "_blank",
+                  "linkType": "weburl",
+                  "href": "javascript:void(0);"
+                },
+                "facebook": {
+                  "type": "button",
+                  "text": "Sign in with Facebook",
+                  "ariaLabel": "Sign in with Facebook"
+                },
+                "termsLink": {
+                  "type": "link",
+                  "text": "Terms Of Use",
+                  "title": "Terms Of Use",
+                  "target": "_blank",
+                  "linkType": "weburl",
+                  "href": "javascript:void(0);"
+                },
+                "google": {
+                  "type": "button",
+                  "text": "Sign in with Google",
+                  "ariaLabel": "Sign in with Google"
+                },
+                "privacyPolicyCheckboxText": "I have read and agree to the ",
+                "linkedIn": {
+                  "type": "button",
+                  "text": "Sign in with LinkedIn",
+                  "ariaLabel": "Sign in with LinkedIn"
+                },
+                "privacyPolicyCheckboxSeparatorText": " and ",
+                "privacyPolicyCheckboxErrorText": "You must read and agree to the terms above."
+              },
+              "piiConsentError": "Please accept all the required consents",
+              "requiredText": "required",
+              "optInText": "Accept optin terms",
+              "smsOptInText": "Accept smsOptin terms",
+              "singleSmsOptInText": "Accept singleSmsOptIn terms",
+              "piiInfoText": "Accept piiInfo terms",
+              "whatsappOptInText": "Accept whatsappOptIn terms",
+              "privacyConsentText": "Accept privacyConsent terms",
+              "dataConsentWdgt": {
+                "type": "widget",
+                "consentLink": {
+                  "type": "link",
+                  "text": "Review and agree the terms for processing personal information",
+                  "title": "Terms Of Use",
+                  "target": "",
+                  "href": "javascript:void(0);"
+                },
+                "closeBtnLable": "close dialog",
+                "requiredText": "required",
+                "consentsLinkText": "Review and agree to the terms of processing personal information",
+                "consentHeading": "Consent",
+                "consentDescription": "In order to personalize your experience and provide job recommendations, we need to collect some personal data. Please read the statements below to learn more about how we use your personal data. Our data privacy notice is linked below, and you may revoke your consent at any time.",
+                "doneText": "Done",
+                "submitText": "Sign up",
+                "optInText": "Accept optin terms",
+                "smsOptInText": "Accept smsOptin terms",
+                "singleSmsOptInText": "Accept singleSmsOptIn terms",
+                "piiInfoText": "Accept piiInfo terms",
+                "whatsappOptInText": "Accept whatsappOptIn terms",
+                "privacyConsentText": "Accept privacyConsent terms"
+              }
+            },
+            "fyfNewContactInfoNoProfileRecomText": "Currently we don\u2019t have any jobs that fit your profile.",
+            "fyfStepContactInfoNamePureSymbolsErrorText": "Name cannot contain only symbols",
+            "piiConsentError": "Please accept all terms and conditions",
+            "contactDetailsAreaPopupCloseAriaLabel": "close dialog",
+            "resumeJobTitle": "Job Title (Step {{activeStepIndex}}/{{resumeConformationSteps}})",
+            "contactDetailsPopupCloseAriaLabel": "close dialog",
+            "previousStepText": "previous step",
+            "resumeStepsNextText": "Next",
+            "seletedSkillsText": "Selected skills:",
+            "countryCodeSelectorAriaLabel": "Enter your phone number here",
+            "doneText": "Done",
+            "contactDetailsAreaPhonePlaceHolder": "Enter your phone number",
+            "profileUpdationEditText2": "Edit profile",
+            "fyfStepResultsListLoadingText": "Loading...",
+            "contactDetailsPhoneInputErrorText": "Please enter correct phone number",
+            "resumeUploadSocialSuccessHeading": "Great!",
+            "resumeSkillSetSuggestionsHeading": "Your skills",
+            "piiconsentInfoDescription": "-By clicking next, I understand that my personal data will be processed in accordance with the Company Data Privacy Policy.",
+            "fyfResumeLoadingText": "uploading resume...",
+            "fyfStepSkillsNoResultsText": "No results found",
+            "uploadAgainText": "Please try to upload your resume again.",
+            "fyfStepContactInfoNameInvalidCharactersErrorText": "Name cannot contain special characters",
+            "consentHeading": "Consent",
+            "saveResumeAriaLabe": "Save my resume and contact me for jobs that I may be suitable for (optional)",
+            "fyfStepContactInfoFirstNameMaxLengthErrorText": "First name cannot exceed {{maxLength}} characters",
+            "seletedLocationText": "Selected location:",
+            "deleteResumePopupDeleteButtonText": "Reset",
+            "resumeUploadedMessage": "The career site has been personalized based on your resume \u201c{{resumeName}}\u201c",
+            "stepThreeLabel": "Tell us what you\u2019re really good at",
+            "nameConsecutiveSpacesErrorText": "First name cannot contain consecutive spaces",
+            "fyfStepContactInfoFirstNamePureSymbolsErrorText": "First name cannot contain only symbols",
+            "completeInformationButtonText": "Complete resume info",
+            "resumeStepsPrevText": "Previous",
+            "resumeUploadNewFileOptiontext": "Upload new",
+            "resumeSkillSetSubHeading": "Verify and update your details.",
+            "completeInformationButtonAriaLabel": "Complete resume info",
+            "fyfStepContactInfoSubHeading2": "Currently we don\u2019t have any jobs that fit your profile.",
+            "fyfStepContactInfoSubHeading1": "Done! Your personalized job recommendations are below.",
+            "uploadFailurePopupCloseAriaLabel1": "close dialog",
+            "fyfStepContactInfoPreferredNameRequiredErrorText": "Preferred name is required",
+            "selectedTitleText": "Selected title :",
+            "recentTitleAriaLabel": "Recent titles",
+            "contactDetailsAreaPhone": "Phone Number",
+            "candidateLoginWdgt": {
+              "type": "widget",
+              "oneTimeLoginPopUpHeading": "Log in to your profile with a one-time link",
+              "oneTimeLoginPopupSubHeading": "Enter your email address, and we\u2019ll send you a link to log in.",
+              "oneTimeLoginEmailLabel": "Email",
+              "oneTimeLoginEmailFormPlaceHolder": "Email",
+              "oneTimeLoginButton": {
+                "type": "button",
+                "text": "Send",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "oneTimeLoginSuccessHeading": "We have emailed a one-time link to {{emailId}}",
+              "oneTimeLoginSuccessSubHeading": "Click on the link to sign in instantly to your candidate account.",
+              "oneTimeLoginSuccessText": "If you don\u2019t see the email in your inbox, please check your spam folder.",
+              "oneTimeLoginFailedHeading": "Sorry! We could not send a one-time link to {{emailId}}",
+              "oneTimeLoginFailedText": "Please click on the \u201cResend Email\u201d button try again.",
+              "oneTimeLoginResendEmailBtn": {
+                "type": "button",
+                "text": "Resend email",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "emailResendSuccessText": "Email has been resent successfully!",
+              "consentLink": {
+                "type": "link",
+                "text": "Review and agree the terms for processing personal information",
+                "title": "Terms Of Use",
+                "target": "",
+                "href": "javascript:void(0);"
+              },
+              "signInEmailPlaceholder": "name@mail.com",
+              "signUpEmailPlaceholder": "name@mail.com",
+              "createAccountFormLabel": "Password",
+              "signUpPasswordFormPlaceHolder": "Password",
+              "signInPasswordPlaceholder": "Your Password",
+              "requiredText": "required",
+              "consentsLinkText": "Review and agree to the terms of processing personal information",
+              "consentHeading": "Consent",
+              "consentDescription": "In order to personalize your experience and provide job recommendations, we need to collect some personal data. Please read the statements below to learn more about how we use your personal data. Our data privacy notice is linked below, and you may revoke your consent at any time.",
+              "doneText": "Done",
+              "submitText": "Sign up",
+              "optInText": "Accept optin terms",
+              "smsOptInText": "Accept smsOptin terms",
+              "singleSmsOptInText": "Accept singleSmsOptIn terms",
+              "piiInfoText": "Accept piiInfo terms",
+              "whatsappOptInText": "Accept whatsappOptIn terms",
+              "privacyConsentText": "Accept privacyConsent terms",
+              "piiConsentError": "Please Accept all terms and conditions",
+              "forgotPasswordPopUpSubHeading": "Enter your email and we will send you link to reset your password",
+              "setNewPwdText": "Set new password",
+              "createAccountEmailFormAriaLabel": "Enter email",
+              "createAccErrorStatement4": "one lowercase, ",
+              "createAccErrorStatement5": "one uppercase",
+              "resentEmailButtonText": "Resend mail",
+              "forgotPasswordPopUpHeading": "Forgot your password?",
+              "resetPasswordButton": {
+                "type": "button",
+                "text": "Send password reset link",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "privacyPolicy": {
+                "type": "button",
+                "text": "Privacy Policy",
+                "title": "",
+                "role": "link",
+                "ariaLabel": "",
+                "href": "javascript:void(0);"
+              },
+              "signInPopUpHeading": "Sign in to save your personalized profile",
+              "forgotPasswordLink": {
+                "type": "link",
+                "text": "Forgot your password?",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "privacyPolicyCheckboxSeparatorText": "and",
+              "createAccErrorStatement1": "Password must have at least ",
+              "createAccErrorStatement2": "8 characters, ",
+              "createAccErrorStatement3": "one number, ",
+              "signInButtonLabel": "Already have an account?",
+              "emailInUseError": "This email address is already in use. Please try again or",
+              "signInPasswordFormLabel": "Password",
+              "errorMessageEmptyPassword": "Please enter your password",
+              "privacyPolicyCheckboxText": "I have read and agree to the",
+              "newPwdText": "New Password",
+              "returnSigninText": {
+                "type": "button",
+                "text": "Return to Sign in",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "privacyPolicyCheckboxErrorText": "You must read and agree to the terms above.",
+              "createAccountButton": {
+                "type": "button",
+                "text": "Sign up",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "errorMessageEmptyEmail": "Please enter your email address.",
+              "noAccountError": "There is no account with this email. Please try again or",
+              "signInEmailFormLabel": "Email",
+              "resetPasswordPopUpHeading": "Reset password link sent",
+              "createAccountPopUpHeading": "Sign up to save your personalized profile",
+              "technicalIssueText": "Sorry, were having some technical issues. Please try again.",
+              "staySignedInCheckboxText": "Stay signed in",
+              "errorSrOnly": "error:",
+              "createAccountButtonLabel": "Don't have an account?",
+              "passwordVisibleSrOnly": "Password is visible",
+              "termsOfUseText": {
+                "type": "button",
+                "text": "Terms Of Use",
+                "title": "",
+                "role": "link",
+                "ariaLabel": "",
+                "href": "javascript:void(0);"
+              },
+              "createNewPwdText": "Please create a new password",
+              "resetPasswordPopUpSubHeading1": "We have sent an email to ",
+              "resetPasswordPopUpSubHeading2": " with password reset instructions.",
+              "staySignedInCheckboxAriaLabel": "Stay signed in",
+              "errorIncorrectPassword": "Your password is incorrect. Please try again",
+              "seperatorText": "or use your social account",
+              "resetLinkExpired": "Password reset Link has been expired",
+              "signInButton": {
+                "type": "button",
+                "text": "Sign in",
+                "title": "",
+                "role": "button",
+                "ariaLabel": ""
+              },
+              "createAccountFormPlaceHolder": "Your Password",
+              "passwordInVisibleSrOnly": "Password is invisible",
+              "resentEmailButtonLabel": "Did not receive the mail?",
+              "passwordErrorRequirementText": "Password did not meet the requirements for ",
+              "errorMessageInvalidEmail": "Please enter a valid email address.",
+              "phwSocialconnectDefaultDefaultV1": {
+                "type": "widget",
+                "privacyPolicy": {
+                  "type": "link",
+                  "text": "Privacy Policy",
+                  "title": "Privacy Policy",
+                  "target": "_blank",
+                  "linkType": "weburl",
+                  "href": "javascript:void(0);"
+                },
+                "facebook": {
+                  "type": "button",
+                  "text": "Sign in with Facebook",
+                  "ariaLabel": "Sign in with Facebook"
+                },
+                "termsLink": {
+                  "type": "link",
+                  "text": "Terms Of Use",
+                  "title": "Terms Of Use",
+                  "target": "_blank",
+                  "linkType": "weburl",
+                  "href": "javascript:void(0);"
+                },
+                "google": {
+                  "type": "button",
+                  "text": "Sign in with Google",
+                  "ariaLabel": "Sign in with Google"
+                },
+                "privacyPolicyCheckboxText": "I have read and agree to the ",
+                "linkedIn": {
+                  "type": "button",
+                  "text": "Sign in with LinkedIn",
+                  "ariaLabel": "Sign in with LinkedIn"
+                },
+                "privacyPolicyCheckboxSeparatorText": " and ",
+                "privacyPolicyCheckboxErrorText": "You must read and agree to the terms above."
+              },
+              "dataConsentWdgt": {
+                "type": "widget",
+                "consentLink": {
+                  "type": "link",
+                  "text": "Review and agree the terms for processing personal information",
+                  "title": "Terms Of Use",
+                  "target": "",
+                  "href": "javascript:void(0);"
+                },
+                "requiredText": "required",
+                "consentsLinkText": "Review and agree to the terms of processing personal information",
+                "consentHeading": "Consent",
+                "consentDescription": "In order to personalize your experience and provide job recommendations, we need to collect some personal data. Please read the statements below to learn more about how we use your personal data. Our data privacy notice is linked below, and you may revoke your consent at any time.",
+                "doneText": "Done",
+                "submitText": "Sign up",
+                "optInText": "Accept optin terms",
+                "smsOptInText": "Accept smsOptin terms",
+                "singleSmsOptInText": "Accept singleSmsOptIn terms",
+                "piiInfoText": "Accept piiInfo terms",
+                "whatsappOptInText": "Accept whatsappOptIn terms",
+                "privacyConsentText": "Accept privacyConsent terms"
+              }
+            },
+            "fyfStepContactInfoEmailText": "Email <span class='required' aria-hidden='true'> *</span>",
+            "phoneNumberShouldNotBeEmpty": "Phone number should not be empty",
+            "profileUpdateResetAriaLabel": "reset personalization",
+            "fyfNewContactInfoHeadingText": "If we find the right job for you, how can we get in touch?",
+            "yourPreferredLocationMessage": "Your preferred location",
+            "locationBlockedDescriptionText": "Go to your browser settings and give permission to access your current location.",
+            "selectedTitlesText": "Selected titles :",
+            "deleteAgainText": "Please try to delete your resume again",
+            "fyfStepsHeadingTxt": "Answer Questions",
+            "requiredText": "required",
+            "resumeUploadErrorHeading": "Oops...",
+            "fyfStepRecentTitleSearchBoxAriaLabel": "Search for Job title",
+            "resumeInfoPreviousStepAriaLabel": "previous step",
+            "tryAgainText": "Try again",
+            "resumeUploadDeletDescription": " By resetting personalization <br>you will lose your personalized job recommendations",
+            "fyfStepWorkExperienceYearText1": "Years",
+            "fyfStepWorkExperienceYearText2": "Years",
+            "resumeLocationPlural": "locations",
+            "noStepsFoundText": "No Steps found",
+            "oopsText": "Oops...",
+            "savePersonalizedExperience": " to save your personalized experience ",
+            "fyfPopupCloseAriaLabel": "close dialog",
+            "fyfStepWorkExperienceLegendText": "Experience",
+            "removeSelectedLocationArialabel": "Remove {{selectedLocation}}",
+            "fyfPleaseAcceptPrivacy": "Please accept privacy policy and terms of use.",
+            "contactDetailsAreaEmailPlaceholder": "your@mail.com",
+            "yourSkillsMessage": "Your skills",
+            "contactDetailsAreaEmailInputErrorText": "Email should not be empty",
+            "suggestedLocationsSingularAssertiveText": "Showing {{listLength}} suggested locations",
+            "socialSigninStepText": "social sign in",
+            "fyfStepPreferredLocationNoResults": "No results found",
+            "fyfStepContactInfoFirstNameLeadingTrailingSpacesErrorText": "First name cannot start or end with spaces",
+            "privacyConsentText": "accept privacyConsent terms",
+            "uploadFileSizeError": "Upload file size should not exceed {{fileSize}} mb",
+            "optInText": "accept optin terms",
+            "resumeUploadSocialSuccessDes1": "Your file is successfully uploaded",
+            "resumeJobTitleSearchLabel": "Search Job title here (You can enter multiple values)",
+            "fyfStepErrorMessageTxt": "Sorry ! Something went wrong, please try again in a few minutes",
+            "resumeInfoAddSkillAriaLabel": "Add {{skill}}",
+            "resumeUploadContactDetailsHeading": "But we noticed below information is missing from it.<br> Please complete the following:",
+            "resumeFileSizeExceedsText": "Upload a file up to {{fileSize}} mb",
+            "resumeJobTitleSubHeading": "Verify and update your details.",
+            "fyfStepContactInfoFirstNameRequiredErrorText": "First name is required",
+            "fyfStepNoSubCategoriesText": "No Sub Categories.",
+            "resumeUploadSocialSuccessDes3": "Enjoy your personalized jobs",
+            "userConsentPopupHeading": "Resume Upload",
+            "whatsappOptInText": "accept whatsappOptIn terms",
+            "multiSelectLabelHiddenText": "(This field has a multi select option)",
+            "removeResumeBtnText": "Delete",
+            "resumeInfoRemoveCancelBtn": "cancel",
+            "nameText": "Hi {{name}},",
+            "removeSelectedTitleArialabel": "Remove {{selectedTitle}}",
+            "resumeRemoveText": "Remove",
+            "fyfStepContactInfoNameConsecutiveSpacesErrorText": "Name cannot contain consecutive spaces",
+            "acceptTermsAriaLabelText": "I have read and agree to the terms",
+            "fyfStepContactInfoEmailErrorCorrectFormat2": "Enter a valid email address",
+            "seletedSkillText": "Selected skill:",
+            "fyfStepContactInfoNameText": "Full name <span class='required' aria-hidden='true'>*</span>",
+            "resumeAddText": "Add",
+            "nameInvalidCharactersErrorText": "First name cannot contain special characters",
+            "multipleValuesLabel": "You can enter multiple values"
+          },
+          "bindables": {
+            "skipGetStarted": false,
+            "aiConsent": {
+              "type": "aiConsent",
+              "optional": false,
+              "displayName": "aiConsent"
+            },
+            "mergeConsent": false,
+            "aiConsentFlag": false
+          }
+        },
+        "hf-mock-footer": {
+          "contentMap": {},
+          "bindables": {}
+        },
+        "qaccrfr": {
+          "contentMap": {},
+          "bindables": {}
+        },
+        "qaccrfr$$gsdsEfrbb": {
+          "contentMap": {
+            "headerSearchCloseAriaLabelText": "Close Search",
+            "suggestedKeywordText": "Suggested keyword",
+            "mobileBackBtn": {
+              "type": "link",
+              "text": "Back",
+              "ariaLabel": "Back",
+              "role": "",
+              "title": ""
+            },
+            "locationText": "Location",
+            "jobCategoriesText": "Job Categories",
+            "noResultsText": "No results found",
+            "locationCount": "{{totalLocationCount}}",
+            "locationsSuggestionsCount": "{{count}} locations available, move to list to select location.",
+            "formAriaLabel": "Global search",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "locationSuggestionsText": "Location suggestions",
+            "textClearedText": "Text cleared.",
+            "searchSuggestionsTxt": "Search suggestions",
+            "jobTitleText": "Job title",
+            "suggestedKeywordsText": "Suggested keywords",
+            "keywordSuggestionWidget": {
+              "type": "widget",
+              "widgetHeadingText": "Quick job search suggestions",
+              "remainingKeywordCount": "Remaining Category count {{suggestionKeywordCount}}",
+              "seeMoreMobile": "See Search Suggestions",
+              "seeMoreDesktop": "See More"
+            },
+            "searchFocusMilitaryJobs": "press any key for military job suggestions",
+            "clearTxtBtn": {
+              "type": "link",
+              "text": "Clear text",
+              "ariaLabel": "Clear text"
+            },
+            "globalsearchField": {
+              "type": "input",
+              "label": "Search job title or location",
+              "placeholder": "Search job title or category",
+              "doubleSearchPlaceholder": "Search job title or category",
+              "doubleSearchAriaLabel": "Search job title or category",
+              "ariaLabel": "Search job title or category",
+              "edited": true
+            },
+            "clearLocBtn": {
+              "type": "link",
+              "text": "Clear text",
+              "ariaLabel": "Clear text",
+              "role": "",
+              "title": ""
+            },
+            "categoryCount": "{{totalCategoryCount}}",
+            "locationSuggestionsAvailableText": "Suggested locations available. Move to expanded list to select locations.",
+            "headerButtonAriaLabelText": "Open Search",
+            "recentSearchText": "Recent Search",
+            "militaryCodeText": "Military code",
+            "militarysearchField": {
+              "type": "input",
+              "label": "Search military jobs",
+              "placeholder": "Search military jobs",
+              "doubleSearchPlaceholder": "Search job title",
+              "ariaLabel": "Search military jobs"
+            },
+            "jobHeadingText": "Jobs",
+            "globalsearchJobsCountSingler": "Job",
+            "jobLocationText": "job",
+            "heading": "Lorem Ipsum",
+            "suggestionsAvailableText": "Suggested Job categories available. navigate to the list to select categories.",
+            "jobLocationsText": "jobs",
+            "categoryText": "Category",
+            "noLocationsText": "No Locations found",
+            "recentSearchesText": "Recent Searches",
+            "globalsearchJobsCountPlural": "Jobs",
+            "cateJobs": "jobs",
+            "noSuggestionsText": "No suggestions available",
+            "openGlobalSearchBtn": {
+              "type": "button",
+              "role": "button",
+              "text": "",
+              "ariaLabel": "Search",
+              "title": "",
+              "mobileEdited": true,
+              "edited": true
+            },
+            "jobsDependsOnFilterPlural": "Search among {{jobsCount}} jobs in {{filterType}}",
+            "iconGlobalSearchHeaderTextSronly": "Press Enter to perform the search. Touch users can double-tap the appropriate key on the on-screen keyboard.",
+            "closeGlobalSearchBtn": {
+              "type": "button",
+              "role": "button",
+              "text": "Close global search",
+              "ariaLabel": "Close global search",
+              "title": ""
+            },
+            "locationSearchField": {
+              "type": "input",
+              "label": "Location",
+              "placeholder": "Search Location",
+              "ariaLabel": "Search Location"
+            },
+            "suggestionsCount": "{{count}} suggestions available, navigate to the list to select suggestion.",
+            "jobsDependsOnFilter": "Find {{jobsCount}} job in {{filterType}}",
+            "globalsearchButton": {
+              "type": "button",
+              "role": "button",
+              "text": "",
+              "ariaLabel": "Search",
+              "title": "",
+              "mobileEdited": true,
+              "edited": true
+            },
+            "militaryJobsAvailableText": "{{count}} Military job suggestions available, navigate to the list to select suggestion."
+          },
+          "bindables": {
+            "showBtnText": true,
+            "mobileSearch": false,
+            "jobInfoFields": [
+              {
+                "key": "location",
+                "srKey": "locationText",
+                "icon": "phw-cns-icon-location-fill"
+              },
+              {
+                "key": "category",
+                "srKey": "categoryText",
+                "icon": "phw-cns-icon-briefcase-fill"
+              }
+            ],
+            "locationType": "location",
+            "showKeywordIcon": false,
+            "militarySearch": false,
+            "keywordSuggestionShowIcon": true,
+            "locationSize": 2,
+            "mobileSearchWithHeaderIcon": false,
+            "showBtnIcon": true,
+            "isLocationValue": true,
+            "jobSize": 3,
+            "searchUrl": "search-results",
+            "changeKeywordIcon": "search",
+            "showCategoryIcon": true,
+            "isOnlyMilitarySearch": false,
+            "usePhenomStorage": false,
+            "showLocationIcon": true,
+            "partnerUrl": false,
+            "showJobsSectionCategoryAndLocationIcon": true,
+            "isLandingPage": 0,
+            "changeLocationIcon": "location",
+            "isMOSCodeMandatory": false,
+            "dataMode": "loc-less",
+            "locationClickRedirect": false,
+            "preFillSearchedKey": true,
+            "categoryColumnCount": 1,
+            "categorySize": 2,
+            "rk": "",
+            "iconGlobalSearchHeaderView": false,
+            "locationSearch": false,
+            "enableKeywordSuggestion": false,
+            "keywordSuggestionNoOfKeywords": 5
+          },
+          "filteredContent": []
+        },
+        "hf-header-with-search-icon$$svglobde": {
+          "contentMap": {
+            "headerSearchCloseAriaLabelText": "Close Search",
+            "suggestedKeywordText": "Suggested keyword",
+            "mobileBackBtn": {
+              "type": "link",
+              "text": "Back",
+              "ariaLabel": "Back",
+              "role": "",
+              "title": ""
+            },
+            "locationText": "Location",
+            "jobCategoriesText": "Job Categories",
+            "noResultsText": "No results found",
+            "locationCount": "{{totalLocationCount}}",
+            "locationsSuggestionsCount": "{{count}} locations available, move to list to select location.",
+            "formAriaLabel": "Global search",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "locationSuggestionsText": "Location suggestions",
+            "textClearedText": "Text cleared.",
+            "searchSuggestionsTxt": "Search suggestions",
+            "jobTitleText": "Job title",
+            "suggestedKeywordsText": "Suggested keywords",
+            "keywordSuggestionWidget": {
+              "type": "widget",
+              "widgetHeadingText": "Quick job search suggestions",
+              "remainingKeywordCount": "Remaining Category count {{suggestionKeywordCount}}",
+              "seeMoreMobile": "See Search Suggestions",
+              "seeMoreDesktop": "See More"
+            },
+            "searchFocusMilitaryJobs": "press any key for military job suggestions",
+            "clearTxtBtn": {
+              "type": "link",
+              "text": "Clear text",
+              "ariaLabel": "Clear text"
+            },
+            "globalsearchField": {
+              "type": "input",
+              "label": "Search job title or location",
+              "placeholder": "Search job title or location",
+              "doubleSearchPlaceholder": "Search job title",
+              "doubleSearchAriaLabel": "Search job title",
+              "ariaLabel": "Search job title or location"
+            },
+            "clearLocBtn": {
+              "type": "link",
+              "text": "Clear text",
+              "ariaLabel": "Clear text",
+              "role": "",
+              "title": ""
+            },
+            "categoryCount": "{{totalCategoryCount}}",
+            "locationSuggestionsAvailableText": "Suggested locations available. Move to expanded list to select locations.",
+            "headerButtonAriaLabelText": "Open Search",
+            "recentSearchText": "Recent Search",
+            "militaryCodeText": "Military code",
+            "militarysearchField": {
+              "type": "input",
+              "label": "Search military jobs",
+              "placeholder": "Search military jobs",
+              "doubleSearchPlaceholder": "Search job title",
+              "ariaLabel": "Search military jobs"
+            },
+            "jobHeadingText": "Jobs",
+            "globalsearchJobsCountSingler": "Job",
+            "jobLocationText": "job",
+            "heading": "Lorem Ipsum",
+            "suggestionsAvailableText": "Suggested Job categories available. navigate to the list to select categories.",
+            "jobLocationsText": "jobs",
+            "categoryText": "Category",
+            "noLocationsText": "No Locations found",
+            "recentSearchesText": "Recent Searches",
+            "globalsearchJobsCountPlural": "Jobs",
+            "cateJobs": "jobs",
+            "noSuggestionsText": "No suggestions available",
+            "openGlobalSearchBtn": {
+              "type": "button",
+              "role": "button",
+              "text": "Search",
+              "ariaLabel": "Search",
+              "title": ""
+            },
+            "jobsDependsOnFilterPlural": "Search among {{jobsCount}} jobs in {{filterType}}",
+            "iconGlobalSearchHeaderTextSronly": "Press Enter to perform the search. Touch users can double-tap the appropriate key on the on-screen keyboard.",
+            "closeGlobalSearchBtn": {
+              "type": "button",
+              "role": "button",
+              "text": "Close global search",
+              "ariaLabel": "Close global search",
+              "title": ""
+            },
+            "locationSearchField": {
+              "type": "input",
+              "label": "Location",
+              "placeholder": "Search Location",
+              "ariaLabel": "Search Location"
+            },
+            "suggestionsCount": "{{count}} suggestions available, navigate to the list to select suggestion.",
+            "jobsDependsOnFilter": "Find {{jobsCount}} job in {{filterType}}",
+            "globalsearchButton": {
+              "type": "button",
+              "role": "button",
+              "text": "Search",
+              "ariaLabel": "Search",
+              "title": ""
+            },
+            "militaryJobsAvailableText": "{{count}} Military job suggestions available, navigate to the list to select suggestion."
+          },
+          "bindables": {
+            "showBtnText": true,
+            "mobileSearch": false,
+            "jobInfoFields": [
+              {
+                "key": "location",
+                "srKey": "locationText",
+                "icon": "phw-cns-icon-location-fill"
+              },
+              {
+                "key": "category",
+                "srKey": "categoryText",
+                "icon": "phw-cns-icon-briefcase-fill"
+              }
+            ],
+            "locationType": "location",
+            "showKeywordIcon": false,
+            "militarySearch": false,
+            "keywordSuggestionShowIcon": true,
+            "locationSize": 2,
+            "mobileSearchWithHeaderIcon": false,
+            "showBtnIcon": true,
+            "isLocationValue": true,
+            "jobSize": 3,
+            "searchUrl": "search-results",
+            "changeKeywordIcon": "search",
+            "showCategoryIcon": true,
+            "isOnlyMilitarySearch": false,
+            "usePhenomStorage": false,
+            "showLocationIcon": true,
+            "partnerUrl": false,
+            "showJobsSectionCategoryAndLocationIcon": true,
+            "isLandingPage": 0,
+            "changeLocationIcon": "location",
+            "isMOSCodeMandatory": false,
+            "dataMode": "loc-less",
+            "locationClickRedirect": false,
+            "preFillSearchedKey": true,
+            "categoryColumnCount": 1,
+            "categorySize": 2,
+            "rk": "",
+            "iconGlobalSearchHeaderView": false,
+            "locationSearch": false,
+            "enableKeywordSuggestion": false,
+            "keywordSuggestionNoOfKeywords": 5
+          }
+        },
+        "i89sh3": {
+          "contentMap": {
+            "emailAddressContent": "Email Address",
+            "noteText": "NOTE: Use refine search filters above to get better job alerts",
+            "createJobAlertAreaLabelText": "Create Job Alert",
+            "modalHeadingLevelTwoText": 2,
+            "managealertsLoggedinUserText": {
+              "text": "Manage Alerts",
+              "role": "button",
+              "ariaLabel": "",
+              "title": "",
+              "type": "link"
+            },
+            "managealertsExternalText": {
+              "type": "link",
+              "text": "Manage Alerts",
+              "role": "button",
+              "ariaLabel": "Manage Alerts",
+              "title": ""
+            },
+            "requiredText": "Required",
+            "enterMailPlaceholderText": "Your email address",
+            "singleSmsOptInText": "Accept singleSmsOptIn terms",
+            "sendText": "Send",
+            "frequencymonthly": "Monthly",
+            "manageAlertText": "Manage Alerts",
+            "piiconsentInfoDescription": "-By clicking next, I understand that my personal data will be processed in accordance with the Company Data Privacy Policy.",
+            "dataConsentText": "I have read and agree to the <a class='pii-consent-link' href='javascript:void(0)'> Terms and Conditions  </a>",
+            "piiconsentInfoHeading": "By checking this box, I consent to receive transactional and marketing text messages regarding employment opportunities.",
+            "getMailsAlertFrequencyText": "You will get emails:",
+            "emailLabelText": "Email:",
+            "createJobAlertButtonText": {
+              "type": "button",
+              "text": "Create Job Alert",
+              "role": "button",
+              "ariaLabel": "Create Job Alert",
+              "title": ""
+            },
+            "piiInfoText": "Accept piiInfo terms",
+            "resendFailedText": "You have raised maximum number of resend requests",
+            "emailConsentText": "I have read and agree to the <a class='pii-consent-link' href='javascript:void(0)'> Terms and Conditions  </a>",
+            "createJobAlertAlreadyActivatedText": "This job alert is already activated. To create another job alert, please select other job criteria.",
+            "manageAlertsEmailSentText": "We have sent a mail to your email address. Please verify your email address to",
+            "createJobAlertButton": "Create Job Alert",
+            "manageAlertsemailSentText": "NOTE: Email will be sent to",
+            "frequencyweekly": "Weekly",
+            "manageAlertsClickHereText": {
+              "type": "link",
+              "text": "Click here",
+              "role": "button",
+              "ariaLabel": "",
+              "title": ""
+            },
+            "emailedLinkToAccessProfileText": "We have emailed you link to access your profile.",
+            "createJobAlertErrorText": "You have no job criteria selected. Please select at least one search filter to create a job alert.",
+            "manageJobAlertsText": "Manage job alerts",
+            "ageConsentText": "I have read and agree to the <a class='pii-consent-link' href='javascript:void(0)'> Terms and Conditions  </a>",
+            "smsOptInText": "Accept smsOptin terms",
+            "privacyConsentText": "Accept privacyConsent terms",
+            "checkEmailText": "Please check your email",
+            "optInText": "Accept optin terms",
+            "activateJobALertText": "activate job alert.",
+            "selectFreqText": "you'll get emails, select frequency",
+            "emailNotGetText": "Didn't get an email?",
+            "piiConsentError": "Please accept all the required consents",
+            "whatsappOptInText": "Accept whatsappOptIn terms",
+            "closeThePopupBtn": {
+              "text": "",
+              "role": "button",
+              "ariaLabel": "close dialog",
+              "title": "",
+              "type": "button"
+            },
+            "editJobAlertSettings": {
+              "text": "Edit Setting",
+              "role": "button",
+              "ariaLabel": "Edit Setting",
+              "title": "",
+              "type": "button"
+            },
+            "frequencybiweekly": "Bi-Weekly",
+            "receiveVerificationEmailText": "You will receive a verification email that will direct you to your 'Manage alerts' page.",
+            "createJobAlertDuplicateErrorText": "This job alert already exists. To create another job alert, please select other job criteria.",
+            "emailEmptyText": "E-mail should not be empty",
+            "enterEmailAddressText": "Enter email address",
+            "dataConsentWdgt": {
+              "type": "widget",
+              "consentLink": {
+                "type": "link",
+                "text": "Review and agree the terms for processing personal information",
+                "title": "Terms Of Use",
+                "target": "",
+                "href": "javascript:void(0);"
+              },
+              "closeBtnLable": "close dialog",
+              "requiredText": "required",
+              "consentsLinkText": "Review and agree to the terms of processing personal information",
+              "consentHeading": "Consent",
+              "consentDescription": "In order to personalize your experience and provide job recommendations, we need to collect some personal data. Please read the statements below to learn more about how we use your personal data. Our data privacy notice is linked below, and you may revoke your consent at any time.",
+              "doneText": "Done",
+              "submitText": "Create job alert",
+              "optInText": "Accept optin terms",
+              "smsOptInText": "Accept smsOptin terms",
+              "singleSmsOptInText": "Accept singleSmsOptIn terms",
+              "piiInfoText": "Accept piiInfo terms",
+              "whatsappOptInText": "Accept whatsappOptIn terms",
+              "privacyConsentText": "Accept privacyConsent terms"
+            },
+            "alertConsentText": "I agree to receive regular email job alerts based on my preferences. I can unsubscribe at any time by clicking 'UNSUBSCRIBE' in the respective emails<br/><br/> <a class='' target='_blank' href='#'>Privacy Statement for candidate profiles and applications  </a>",
+            "alertConsentTextAria": "I agree to receive regular email job alerts based on my preferences. I can unsubscribe at any time by clicking 'UNSUBSCRIBE' in the respective emails",
+            "manageAlertsVerificationEmailText": "to receive a verification email that will redirect you to 'Manage alerts' page.",
+            "createJobAlertHeadingText": "Create Job Alert",
+            "closeDialog": "close dialog",
+            "emailOnWayText": "Your email is on its way...",
+            "enterEmailLabelText": "email address",
+            "frequencydaily": "Daily",
+            "enterValidEMailAddressText": "Please enter Valid E-mail address",
+            "sendAgainText": "send again",
+            "errorMessageText": "Something went wrong. Please try again",
+            "jobAlertCreatedSuccessfullyText": "Job alert created successfully",
+            "activationLinkText": "An activation link has been sent to {{email}}. The link in the email will expire in 4 hours.",
+            "getEmailsText": "You'll get emails:"
+          },
+          "bindables": {
+            "showInCollapsedView": false,
+            "jobalertsMandatoryconsent": false,
+            "emailEditForAnonomousUser": false,
+            "isEmailReqd": false,
+            "isErrorMsgReqd": false,
+            "_breakpointSettings": {
+              "breakpointsVsSettings": {
+                "320": {
+                  "widgetReOrderSettings": [
+                    {
+                      "settingType": "parent_and_after",
+                      "parentElementSelector": ".g-col-8.g-col-md-12",
+                      "afterElementSelector": "[data-widget-type^=\"phw-search-results\"],[data-func-widget-id=\"qRNnpA\"]"
+                    }
+                  ]
+                },
+                "768": {
+                  "widgetReOrderSettings": [
+                    {
+                      "settingType": "parent_and_after",
+                      "parentElementSelector": ".g-col-8.g-col-md-12",
+                      "afterElementSelector": "[data-widget-type^=\"phw-search-results\"],[data-func-widget-id=\"qRNnpA\"]"
+                    }
+                  ]
+                },
+                "1024": {
+                  "widgetReOrderSettings": [
+                    {
+                      "settingType": "parent_and_after",
+                      "parentElementSelector": ".g-col-8.g-col-md-12",
+                      "afterElementSelector": "[data-widget-type^=\"phw-search-results\"],[data-func-widget-id=\"qRNnpA\"]"
+                    }
+                  ]
+                },
+                "1920": {
+                  "widgetReOrderSettings": [
+                    {
+                      "settingType": "parent_and_after",
+                      "parentElementSelector": ".g-col-4.g-col-md-12",
+                      "afterElementSelector": "[data-widget-type^=\"phw-facets\"],[data-func-widget-id=\"zrqkaz\"]"
+                    }
+                  ]
+                }
+              }
+            },
+            "hideIfNoEmail": false,
+            "_shouldRemoveRedundantWidgets": true
+          }
+        },
+        "hf-header-with-search-icon": {
+          "contentMap": {},
+          "bindables": {}
+        },
+        "hf-header-with-search-icon$$z4HDz3vS": {
+          "contentMap": {
+            "tertiaryMenuAriaLabel": "tertiary",
+            "candidateLoginWdgt": {
+              "type": "widget",
+              "loginLinkText": {
+                "type": "button",
+                "text": "Login",
+                "title": "",
+                "role": "button",
+                "ariaLabel": "",
+                "edited": true
+              },
+              "oneTimeLoginPopUpHeading": "Log in to your profile with a one-time link",
+              "oneTimeLoginPopupSubHeading": "Enter your email address, and we\u2019ll send you a link to log in.",
+              "oneTimeLoginEmailLabel": "Email",
+              "oneTimeLoginEmailFormPlaceHolder": "Email",
+              "oneTimeLoginButton": {
+                "type": "button",
+                "text": "Send",
+                "title": "",
+                "role": "button",
+                "ariaLabel": "",
+                "edited": true
+              },
+              "oneTimeLoginSuccessHeading": "We have emailed a one-time link to {{emailId}}",
+              "oneTimeLoginSuccessSubHeading": "Click on the link to sign in instantly to your candidate account.",
+              "oneTimeLoginSuccessText": "If you don\u2019t see the email in your inbox, please check your spam folder.",
+              "oneTimeLoginFailedHeading": "Sorry! We could not send a one-time link to {{emailId}}",
+              "oneTimeLoginFailedText": "Please click on the \u201cResend Email\u201d button to try again.",
+              "oneTimeLoginResendEmailBtn": {
+                "type": "button",
+                "text": "Resend email",
+                "title": "",
+                "role": "button",
+                "ariaLabel": "",
+                "edited": true
+              },
+              "emailResendSuccessText": "Email has been resent successfully!",
+              "resendSuccessText": "email has sent again",
+              "resendFailedText": "email has not sent, please try again",
+              "consentLink": {
+                "text": "Review and agree the terms for processing personal information",
+                "href": "https://www.cisco.com/c/en/us/about/legal/terms-conditions.html",
+                "type": "link",
+                "title": "Terms Of Use",
+                "edited": true,
+                "target": ""
+              },
+              "signInPasswordFormPlaceHolder": "Your Password",
+              "createAccountFormLabel": "Password",
+              "signUpPasswordFormPlaceHolder": "Password",
+              "createAccountLinkText": "Sign up",
+              "signInAccountLinkText": "Sign in",
+              "signInEmailFormPlaceHolder": "name@email.com",
+              "createAccountEmailFormPlaceHolder": "name@email.com",
+              "requiredText": "required",
+              "consentsLinkText": "Review and agree to the terms of processing personal information",
+              "consentHeading": "Consent",
+              "consentDescription": "In order to personalize your experience and provide job recommendations, we need to collect some personal data. Please read the statements below to learn more about how we use your personal data. Our data privacy notice is linked below, and you may revoke your consent at any time.",
+              "doneText": "Done",
+              "submitText": "Sign up",
+              "optInText": "Accept optin terms",
+              "smsOptInText": "Accept smsOptin terms",
+              "singleSmsOptInText": "Accept singleSmsOptIn terms",
+              "piiInfoText": "Accept piiInfo terms",
+              "whatsappOptInText": "Accept whatsappOptIn terms",
+              "privacyConsentText": "Accept privacyConsent terms",
+              "piiConsentError": "Please Accept all terms and conditions",
+              "forgotPasswordPopUpSubHeading": "Enter your email and we will send you link to reset your password",
+              "setNewPwdText": "Set new password",
+              "createAccountEmailFormAriaLabel": "Enter email",
+              "signOutButton": {
+                "type": "button",
+                "text": "Sign out",
+                "title": "",
+                "role": "button",
+                "ariaLabel": "",
+                "edited": true
+              },
+              "createAccErrorStatement4": "one lowercase, ",
+              "createAccErrorStatement5": "one uppercase",
+              "resentEmailButtonText": "Resend mail",
+              "forgotPasswordPopUpHeading": "Forgot your password?",
+              "resetPasswordButton": {
+                "type": "button",
+                "text": "Send password reset link",
+                "title": "",
+                "role": "button",
+                "ariaLabel": "",
+                "edited": true
+              },
+              "privacyPolicy": {
+                "type": "button",
+                "text": "Privacy Policy",
+                "title": "",
+                "role": "link",
+                "ariaLabel": "",
+                "href": "https://www.cisco.com/c/en/us/about/legal/privacy-full.html",
+                "edited": true
+              },
+              "signInPopUpHeading": "Sign in to save your personalized profile",
+              "forgotPasswordLink": {
+                "text": "Forgot your password?",
+                "role": "button",
+                "type": "link",
+                "title": "",
+                "edited": true,
+                "ariaLabel": ""
+              },
+              "privacyPolicyCheckboxSeparatorText": "and",
+              "createAccErrorStatement1": "Password must have at least ",
+              "createAccErrorStatement2": "8 characters, ",
+              "createAccErrorStatement3": "one number, ",
+              "signInButtonLabel": "Already have an account?",
+              "emailInUseError": "This email address is already in use. Please try again or",
+              "signInPasswordFormLabel": "Password",
+              "errorMessageEmptyPassword": "Please enter your password",
+              "privacyPolicyCheckboxText": "I have read and accept the",
+              "newPwdText": "New Password",
+              "returnSigninText": {
+                "type": "button",
+                "text": "Return to Sign in",
+                "title": "",
+                "role": "button",
+                "ariaLabel": "",
+                "edited": true
+              },
+              "privacyPolicyCheckboxErrorText": "You must read and agree to the terms above.",
+              "createAccountButton": {
+                "type": "button",
+                "text": "Sign up",
+                "title": "",
+                "role": "button",
+                "ariaLabel": "",
+                "edited": true
+              },
+              "errorMessageEmptyEmail": "Please enter your email address.",
+              "noAccountError": "There is no account with this email. Please try again or",
+              "signInEmailFormLabel": "Email",
+              "personalAccountLinkText": "View profile",
+              "resetPasswordPopUpHeading": "Reset password link sent",
+              "createAccountPopUpHeading": "Sign up to save your personalized profile",
+              "technicalIssueText": "Sorry, were having some technical issues. Please try again.",
+              "staySignedInCheckboxText": "Stay signed in",
+              "errorSrOnly": "error:",
+              "createAccountButtonLabel": "Don't have an account?",
+              "passwordVisibleSrOnly": "Password is visible",
+              "termsOfUseText": {
+                "type": "button",
+                "text": "Terms Of Use",
+                "title": "",
+                "role": "link",
+                "ariaLabel": "",
+                "href": "https://www.cisco.com/c/en/us/about/legal/terms-conditions.html",
+                "edited": true
+              },
+              "createNewPwdText": "Please create a new password",
+              "resetPasswordPopUpSubHeading1": "We have sent an email to ",
+              "resetPasswordPopUpSubHeading2": " with password reset instructions.",
+              "staySignedInCheckboxAriaLabel": "Stay signed in",
+              "errorIncorrectPassword": "Your password is incorrect. Please try again",
+              "seperatorText": "or use your social account",
+              "resetLinkExpired": "Password reset Link has been expired",
+              "signInButton": {
+                "type": "button",
+                "text": "Sign in",
+                "title": "",
+                "role": "button",
+                "ariaLabel": "",
+                "edited": true
+              },
+              "createAccountFormPlaceHolder": "Your Password",
+              "passwordInVisibleSrOnly": "Password is invisible",
+              "resentEmailButtonLabel": "Did not receive the mail?",
+              "passwordErrorRequirementText": "Password did not meet the requirements for ",
+              "errorMessageInvalidEmail": "Please enter a valid email address.",
+              "phwSocialconnectDefaultDefaultV1": {
+                "type": "widget",
+                "privacyPolicy": {
+                  "edited": true,
+                  "linkType": "weburl",
+                  "text": "Privacy Policy",
+                  "href": "https://www.cisco.com/c/en/us/about/legal/privacy-full.html",
+                  "type": "link",
+                  "title": "Privacy Policy",
+                  "target": "_blank"
+                },
+                "facebook": {
+                  "type": "button",
+                  "text": "Sign in with Facebook",
+                  "ariaLabel": "Sign in with Facebook",
+                  "edited": true
+                },
+                "termsLink": {
+                  "edited": true,
+                  "linkType": "weburl",
+                  "text": "Terms Of Use",
+                  "href": "https://www.cisco.com/c/en/us/about/legal/terms-conditions.html",
+                  "type": "link",
+                  "title": "Terms Of Use",
+                  "target": "_blank"
+                },
+                "google": {
+                  "type": "button",
+                  "text": "Sign in with Google",
+                  "ariaLabel": "Sign in with Google",
+                  "edited": true
+                },
+                "privacyPolicyCheckboxText": "I have read and accept the",
+                "linkedIn": {
+                  "type": "button",
+                  "text": "Sign in with LinkedIn",
+                  "ariaLabel": "Sign in with LinkedIn",
+                  "edited": true
+                },
+                "privacyPolicyCheckboxSeparatorText": " and ",
+                "privacyPolicyCheckboxErrorText": "You must read and agree to the terms above."
+              },
+              "dataConsentWdgt": {
+                "type": "widget",
+                "consentLink": {
+                  "text": "Review and agree the terms for processing personal information",
+                  "href": "https://www.cisco.com/c/en/us/about/legal/terms-conditions.html",
+                  "type": "link",
+                  "title": "Terms Of Use",
+                  "edited": true,
+                  "target": ""
+                },
+                "sendOneTimeLoginLinkText": {
+                  "type": "button",
+                  "text": "Log in",
+                  "title": "",
+                  "role": "button",
+                  "ariaLabel": "",
+                  "edited": true
+                },
+                "requiredText": "required",
+                "consentsLinkText": "Review and agree to the terms of processing personal information",
+                "consentHeading": "Consent",
+                "consentDescription": "In order to personalize your experience and provide job recommendations, we need to collect some personal data. Please read the statements below to learn more about how we use your personal data. Our data privacy notice is linked below, and you may revoke your consent at any time.",
+                "doneText": "Done",
+                "submitText": "Sign up",
+                "optInText": "Accept optin terms",
+                "smsOptInText": "Accept smsOptin terms",
+                "singleSmsOptInText": "Accept singleSmsOptIn terms",
+                "piiInfoText": "Accept piiInfo terms",
+                "whatsappOptInText": "Accept whatsappOptIn terms",
+                "privacyConsentText": "Accept privacyConsent terms"
+              }
+            },
+            "languageSelectorWdgt": {
+              "type": "widget",
+              "languageSelectedText": "Language selected",
+              "selectedText": "Selected",
+              "clearText": "Clear text",
+              "suggestionsAvailable": "Suggestions are available",
+              "language": {
+                "type": "input",
+                "label": "Enter location or Language",
+                "placeholder": "Enter location or Language",
+                "title": "",
+                "ariaLabel": "",
+                "edited": true
+              },
+              "noResultsFoundText": "No results found",
+              "suggestionIsAvailable": "suggestion is available",
+              "textCleared": "Text cleared",
+              "languageListBox": "Language Suggestions",
+              "startFromHome": "Start from home",
+              "switchBack": "Switch back",
+              "pageNotAvailableInSelectedLocale": "Page Not Available in Selected Locale",
+              "pageNotAvailableInSelectedLocaleDescription": "The page you're viewing is not available in this language. Please choose an alternative action below.",
+              "languageSelectorPopupTitle": "Select Your Location & Language"
+            },
+            "navAriaLabel": "",
+            "primaryMenuAriaLabel": "primary",
+            "jobCardCountWdgt": {
+              "type": "widget",
+              "jobCartLink": {
+                "type": "input",
+                "text": "Saved jobs",
+                "text1": "Saved job",
+                "role": "button",
+                "title": "",
+                "ariaLabel": "saved job",
+                "ariaLabel2": "saved jobs",
+                "edited": true
+              }
+            },
+            "title": "Cisco_careers_site",
+            "menuBlock": [
+              {
+                "_cid": "vuLApzY9-g75RRvGG",
+                "link": {
+                  "linkType": "innerpage",
+                  "href": "https://careers.cisco.com/global/en/home",
+                  "text": "Careers Home",
+                  "title": "",
+                  "pageId": "page12",
+                  "ariaLabel": "Careers Home",
+                  "innerPageLocale": "en_global",
+                  "innerPagePersona": "external",
+                  "target": "_self"
+                },
+                "position": 1,
+                "title": "Careers Home"
+              },
+              {
+                "_cid": "V9sDW5sO-rnDafewD",
+                "folderItems": [
+                  {
+                    "_cid": "QaOFHPS0-g75RRvGG",
+                    "link": {
+                      "linkType": "innerpage",
+                      "href": "https://careers.cisco.com/global/en/why-work-here",
+                      "text": "Why Work Here",
+                      "title": "",
+                      "pageId": "page455-prod",
+                      "ariaLabel": "Why Work Here",
+                      "innerPageLocale": "en_global",
+                      "innerPagePersona": "external",
+                      "target": "_self"
+                    },
+                    "position": 1,
+                    "title": "Why Work Here"
+                  },
+                  {
+                    "_cid": "NwbPYKrK-g75RRvGG",
+                    "link": {
+                      "linkType": "innerpage",
+                      "href": "https://careers.cisco.com/global/en/ai-and-innovation",
+                      "text": "AI & Innovation",
+                      "title": "",
+                      "pageId": "page459-prod",
+                      "ariaLabel": "AI & Innovation",
+                      "innerPageLocale": "en_global",
+                      "innerPagePersona": "external",
+                      "target": "_self"
+                    },
+                    "position": 2,
+                    "title": "AI & Innovation"
+                  },
+                  {
+                    "_cid": "bOWMBacE-g75RRvGG",
+                    "link": {
+                      "linkType": "innerpage",
+                      "href": "https://careers.cisco.com/global/en/career-growth-and-learning",
+                      "text": "Career Growth & Learning",
+                      "title": "",
+                      "pageId": "page458-prod",
+                      "ariaLabel": "Career Growth & Learning",
+                      "innerPageLocale": "en_global",
+                      "innerPagePersona": "external",
+                      "target": "_self"
+                    },
+                    "position": 3,
+                    "title": "Career Growth & Learning"
+                  },
+                  {
+                    "_cid": "btwej458-g75RRvGG",
+                    "link": {
+                      "linkType": "innerpage",
+                      "href": "https://careers.cisco.com/global/en/benefits-and-perks",
+                      "text": "Benefits & Perks",
+                      "title": "",
+                      "pageId": "page460-prod",
+                      "ariaLabel": "Benefits & Perks",
+                      "innerPageLocale": "en_global",
+                      "innerPagePersona": "external",
+                      "target": "_self"
+                    },
+                    "position": 4,
+                    "title": "Benefits & Perks"
+                  }
+                ],
+                "folderName": "Why Work Here",
+                "position": 2
+              },
+              {
+                "_cid": "sVGMWnjd-rnDafewD",
+                "folderItems": [
+                  {
+                    "_cid": "86mkEmK7-g75RRvGG",
+                    "link": {
+                      "linkType": "innerpage",
+                      "href": "https://careers.cisco.com/global/en/who-we-hire",
+                      "text": "Who We Hire",
+                      "title": "",
+                      "pageId": "page456-prod",
+                      "ariaLabel": "Who We Hire",
+                      "innerPageLocale": "en_global",
+                      "innerPagePersona": "external",
+                      "target": "_self"
+                    },
+                    "position": 1,
+                    "title": "Who We Hire"
+                  },
+                  {
+                    "_cid": "3sNRlHfm-g75RRvGG",
+                    "link": {
+                      "linkType": "innerpage",
+                      "href": "https://careers.cisco.com/global/en/entry-level-careers",
+                      "text": "Entry-Level",
+                      "title": "",
+                      "pageId": "page467-prod",
+                      "ariaLabel": "Entry-Level",
+                      "innerPageLocale": "en_global",
+                      "innerPagePersona": "external",
+                      "target": "_self"
+                    },
+                    "position": 2,
+                    "title": "Entry-Level"
+                  },
+                  {
+                    "_cid": "LPDG9rxr-g75RRvGG",
+                    "link": {
+                      "linkType": "innerpage",
+                      "href": "https://careers.cisco.com/global/en/military-and-veterans",
+                      "text": "Military & Veterans",
+                      "title": "",
+                      "pageId": "page468-prod",
+                      "ariaLabel": "Military & Veterans",
+                      "innerPageLocale": "en_global",
+                      "innerPagePersona": "external",
+                      "target": "_self"
+                    },
+                    "position": 3,
+                    "title": "Military & Veterans"
+                  },
+                  {
+                    "_cid": "p3f5ymxx-g75RRvGG",
+                    "link": {
+                      "linkType": "innerpage",
+                      "href": "https://careers.cisco.com/global/en/teams",
+                      "text": "Our Teams",
+                      "title": "",
+                      "pageId": "page470-prod",
+                      "ariaLabel": "Our Teams",
+                      "innerPageLocale": "en_global",
+                      "innerPagePersona": "external",
+                      "target": "_self"
+                    },
+                    "position": 4,
+                    "title": "Our Teams"
+                  }
+                ],
+                "folderName": "Who We Hire",
+                "position": 3
+              },
+              {
+                "_cid": "xhrw1NW3-g75RRvGG",
+                "link": {
+                  "linkType": "innerpage",
+                  "href": "https://careers.cisco.com/global/en/where-we-work",
+                  "text": "Where We Work",
+                  "title": "",
+                  "pageId": "page465-prod",
+                  "ariaLabel": "Where We Work",
+                  "innerPageLocale": "en_global",
+                  "innerPagePersona": "external",
+                  "target": "_self"
+                },
+                "position": 4,
+                "title": "Where We Work"
+              },
+              {
+                "_cid": "IWziaaOX-rnDafewD",
+                "folderItems": [
+                  {
+                    "_cid": "7czA1xpG-g75RRvGG",
+                    "link": {
+                      "linkType": "innerpage",
+                      "href": "https://careers.cisco.com/global/en/how-we-hire",
+                      "text": "How We Hire",
+                      "title": "",
+                      "pageId": "page454-prod",
+                      "ariaLabel": "How We Hire",
+                      "innerPageLocale": "en_global",
+                      "innerPagePersona": "external",
+                      "target": "_self"
+                    },
+                    "position": 1,
+                    "title": "How We Hire"
+                  },
+                  {
+                    "_cid": "AMMCIgi5-g75RRvGG",
+                    "link": {
+                      "linkType": "innerpage",
+                      "href": "https://careers.cisco.com/global/en/events",
+                      "text": "Events",
+                      "title": "",
+                      "pageId": "page16",
+                      "ariaLabel": "events",
+                      "innerPageLocale": "en_global",
+                      "innerPagePersona": "external",
+                      "target": "_self"
+                    },
+                    "position": 2,
+                    "title": "Events"
+                  }
+                ],
+                "folderName": "How We Hire",
+                "position": 5
+              }
+            ],
+            "secondaryMenuAriaLabel": "secondary"
+          },
+          "bindables": {
+            "sortOption": "",
+            "showExternalIcon": false,
+            "enableSamePageRedirection": false,
+            "showCandidateLoginMobile": true,
+            "notEmptyCart": "phw-cns-icon-heart-fill",
+            "noOfLocalesToGetSearch": 3,
+            "emptyCart": "phw-cns-icon-heart",
+            "maxAllowedMenuItems": 8,
+            "showLanguageSelectorMobile": true,
+            "expandMenuOnHover": false,
+            "showJobCartCountMobile": false,
+            "languageSelectorPopUp": false,
+            "showIcon": false
+          }
+        },
+        "hf-header-with-search-icon$$Aq1abxJ": {
+          "contentMap": {
+            "selectedText": "Selected",
+            "clearText": "Clear text",
+            "suggestionsAvailable": "Suggestions are available",
+            "language": {
+              "type": "input",
+              "label": "Enter location or Language",
+              "placeholder": "Enter location or Language",
+              "title": "",
+              "ariaLabel": ""
+            },
+            "pageNotAvailableInSelectedLocale": "Page Not Available in Selected Locale",
+            "languageSelectedText": "Language selected",
+            "suggestionIsAvailable": "suggestion is available",
+            "closeDialog": "Close Dialog",
+            "startFromHome": "Start from home",
+            "pageNotAvailableInSelectedLocaleDescription": "The page you're viewing is not available in this language. Please choose an alternative action below.",
+            "languageSelectorPopupTitle": "Select Your Location & Language",
+            "closePopupButtonAriaLabel": "Close dialog",
+            "noResultsFoundText": "No results found",
+            "textCleared": "Text cleared",
+            "languageListBox": "Language Suggestions",
+            "switchBack": "Switch back"
+          },
+          "bindables": {
+            "sortOption": "alphabet",
+            "countryFlag": false,
+            "noOfLocalesToGetSearch": 2,
+            "showInMobileHeader": false,
+            "languageSelectorPopUp": false,
+            "enableSamePageRedirection": true
+          }
+        },
+        "vgt25s": {
+          "contentMap": {
+            "jobsInInterestedCategorywidgetHeading": "Jobs in Your Favorite Category",
+            "noRecomText": "No recommendations found",
+            "peopleAlsoViewedJobswidgetHeading": "People Also Viewed",
+            "leastAppliedJobswidgetShortHeading": "Be the first",
+            "recomBasedOnApplieswidgetHeading": "Also Apply to These Jobs",
+            "type": "widget",
+            "similarJobswidgetShortHeading": "Similar jobs",
+            "similarJobswidgetHeading": "Similar Jobs",
+            "widgetHeading": "Job Recommendations for You ",
+            "completeYourApplicationwidgetHeading": "Complete your application",
+            "targetedJobswidgetShortHeading": "Targeted jobs",
+            "recentlyViewedJobswidgetShortHeading": "Recently viewed",
+            "recentlyAddedJobswidgetShortHeading": "Recently added",
+            "profileRecomJobswidgetHeading": "Recommended based on your profile",
+            "recomBasedOnJobCartwidgetShortHeading": "Based on your cart",
+            "peopleAlsoAppliedJobswidgetHeading": "Popular Jobs",
+            "peopleAlsoAppliedJobswidgetShortHeading": "Popular jobs",
+            "browsingHistoryJobswidgetShortHeading": "Browsing based",
+            "recomBasedOnApplieswidgetShortHeading": "Also apply to these jobs",
+            "loadingText": "Recommendations loading",
+            "profileRecomJobswidgetShortHeading": "Profile matches",
+            "peopleAlsoViewedJobswidgetShortHeading": "People also viewed",
+            "heading": "Nearby job opportunities",
+            "jobWidget": {
+              "type": "widget",
+              "education": "Education Required",
+              "appliedDate": "Applied Date",
+              "compensationRange": "Compensation Range",
+              "positionsAvailable": "Positions Available",
+              "relocationAssistance": "Relocation Assistance",
+              "Min_Salary_External": "Min Salary External",
+              "Max Salary for external view": "Max Salary for external",
+              "businessUnit": "Business Unit",
+              "Work_Environment": "Work Environment",
+              "isRemote": "Is Remote",
+              "jobDateFormat": "MMMM Do YYYY",
+              "multipleLocation": "This job is available in {{locationCount}} locations",
+              "multiValueField": "This job is available in {{count}} {{field}}",
+              "experience": "Experience",
+              "skills": "Skills",
+              "descriptionTeaser": "Description Teaser",
+              "seeMoreText": {
+                "type": "buttton",
+                "text": "View More",
+                "title": "",
+                "ariaLabel": "view More",
+                "role": ""
+              },
+              "drivingTimeInMinutesText": "{{minutes}} min",
+              "whenDrivingTimeNotFound": "Unavailable",
+              "seeEvenMoreAriaLabel": "See even more",
+              "atsLastModifieddate": "Last modified Date",
+              "jobSavedAriaLabel": "Saved {{title}} {{jobId}}",
+              "seeNextAriaLabel": "See next",
+              "requirement_sentence": "Requirements",
+              "smartHighlightsAriaLabel": "More Info about {{title}}",
+              "jobId": "Job ID",
+              "multicategoryText": "Job associated with {{multicategoryValue}} categories",
+              "featuredJobText": "Featured job",
+              "multipleCategory": "This job is associated with {{categoryCount}} categories",
+              "smart_tags_entryLevel": "Entry Level",
+              "applyNowText": {
+                "type": "button",
+                "text": "Apply Now",
+                "title": "",
+                "ariaLabel": "Apply Now",
+                "role": ""
+              },
+              "seeNextText": {
+                "type": "button",
+                "text": "See Next",
+                "title": "",
+                "ariaLabel": "see next",
+                "role": "role"
+              },
+              "seeLessText": {
+                "type": "button",
+                "text": "View Less",
+                "title": "",
+                "ariaLabel": "View Less",
+                "role": ""
+              },
+              "fitScore_good_fit": "Good Fit",
+              "smart_tags_openedToday": "Opened Today",
+              "smart_tags_partTime": "Part Time",
+              "title": "Title",
+              "postedDate": "Posted Date",
+              "expiryDate": "Expiry Date",
+              "typeJobField": "Job Type",
+              "city": "City",
+              "remote": "Remote",
+              "jobSeqNo": "Job Sequence No",
+              "department": "Department",
+              "payRate": "Pay rate",
+              "cityStateCountry": "City State Country",
+              "reqId": "reqId",
+              "jobCompany": "Job Company",
+              "jobIdConnectingText": "Job ID is",
+              "closeDate": "Close Date",
+              "travelRequiremnt": "Travel",
+              "sponsorship": "Sponsor",
+              "rate": "Rate of Pay",
+              "company_name": "Company Name",
+              "OnCallRequired": "On Call Required",
+              "wdDatePosted": "Wd Date Posted",
+              "wdEndDate": "Wd End Date",
+              "salaryRangeMinimum": "Salary Range Minimum",
+              "salaryRangeMaximum": "Salary Range Maximum",
+              "removeAriaLableText": "Remove {{title}} from job cart",
+              "smartHighlightsCloseAriaLabel": "Show less",
+              "seeMoreAriaLabel": "View more jobs",
+              "seeMultipleCatBtn": "Associated with {{categoryCount}} categories",
+              "additionalSkills": "Additional Skills",
+              "addToCartSavedText": "Saved",
+              "titleAriaLabel": "{{title}}  {{jobId}}",
+              "drivingTimeInHoursText": "{{hours}} hr",
+              "saveJobAriaLabel": "Save {{title}} {{jobId}} to job cart",
+              "multilocationText": "Job available in {{multilocationValue}} locations",
+              "drivingTime": "Driving time",
+              "removeJobText": "Remove",
+              "seeEvenMoreText": "See Even More",
+              "createdDate": "Created Date",
+              "addToCartSaveText": "Save {{title}} {{jobId}}",
+              "location": "Location",
+              "seeLessAriaLabel": "View less recommended jobs",
+              "category": "Category",
+              "subCategory": "Sub Category",
+              "Multi Location": "Locations",
+              "Multi Category": "Categories",
+              "multi_location": "Available in {{count}} locations",
+              "multi_category": "Associated with {{count}} categories",
+              "multi_category_aria_label": "Associated with {{count}} categories",
+              "multi_location_aria_label": "Available in {{count}} locations",
+              "multi_location_list": "Multi Location",
+              "multi_category_list": "Multi Category",
+              "smart_tags_allJobType": "All Job type",
+              "smart_tags_xApplicants": "{{applyCount}} Applicants",
+              "smart_tags_xViews": "{{viewCount}} Views",
+              "smart_tags_openedRecently": "Opened Recently",
+              "smart_tags_beAmongTheFirstToApply": "Be among the first to apply",
+              "smart_tags_nearByJob": "NearBy Job",
+              "smart_tags_popularJob": "Popular Job",
+              "smart_tags_fullTime": "Full Time",
+              "smart_tags_internship": "Internship",
+              "fitScore_possible_fit": "Possible Fit",
+              "fitScore_best_fit": "Best Fit",
+              "showDetails": "Show details",
+              "hideDetails": "Hide details",
+              "showDetailsAriaLabel": "Show details {{title}}",
+              "hideDetailsAriaLabel": "Hide details {{title}}",
+              "jobLevel": "Job Level",
+              "jobType": "Job Type",
+              "unit": "Unit",
+              "jobStatus": "Job Status",
+              "employmentType": "Employment Type",
+              "employingEntity": "Employing Entity"
+            },
+            "nearByJobswidgetHeading": "Nearby Jobs",
+            "latestJobswidgetShortHeading": "New opportunities",
+            "recomBasedOnJobCartwidgetHeading": "Jobs Based on Your Job Cart",
+            "latestJobswidgetHeading": "New opportunities",
+            "jobsMightNotThoughtOfwidgetHeading": "Jobs you might not have thought of",
+            "targetedJobswidgetHeading": "Targeted Jobs",
+            "cartEmptyText": "Your cart is empty! Why don't you add some jobs?",
+            "recentlyAddedJobswidgetHeading": "Recently Added Jobs",
+            "leastAppliedJobswidgetHeading": "Be the First to Apply",
+            "jobsLink": {
+              "type": "link",
+              "text": "Find jobs",
+              "href": "{{linkDomain}}search-results"
+            },
+            "closeDialog": "close dialog",
+            "jobsInInterestedCategorywidgetShortHeading": "Jobs in your favorite category",
+            "browsingHistoryJobswidgetHeading": "Browsing based recommendations",
+            "jobsMightNotThoughtOfwidgetShortHeading": "Unique opportunities",
+            "recentlyViewedJobswidgetHeading": "Recently viewed jobs",
+            "completeYourApplicationwidgetShortHeading": "Complete your application"
+          },
+          "bindables": {
+            "recentlyViewedJobs": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "recentlyAddedJobs": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "jobsInInterestedCategory": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "displayName": "Slider Options",
+            "nearByJobs": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "leastAppliedJobs": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "peopleAlsoViewedJobs": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "recomBasedOnJobCart": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "recomBasedProfile": {
+              "isLiV2Enabled": false,
+              "profileOnly": "1",
+              "recommendationType": "profile",
+              "addMultiLingualRecom": false,
+              "showTitle": true
+            },
+            "similarJobs": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "nearBy": {
+              "radius": 300,
+              "getLocation": true
+            },
+            "recomBasedOnApplies": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "targetedJobs": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "sliderOptions": {
+              "arrows": true,
+              "arrowPath": "M18.2325 24L21.81 20.4225H13.8217V18.7558H21.81L18.2325 15.1783L19.4108 14L25 19.5892L19.4108 25.1783L18.2325 24Z",
+              "gap": "24px",
+              "classes": {
+                "arrow": "splide__arrow apw__splide__arrow",
+                "prev": "splide__arrow--prev apw__splide__arrow--prev",
+                "next": "splide__arrow--next apw__splide__arrow--next",
+                "pagination": "splide__pagination apw_splide__pagination",
+                "page": "splide__pagination__page apw__splide__pagination__page"
+              },
+              "mediaQuery": "min",
+              "breakpoints": {
+                "320": {
+                  "perPage": 1,
+                  "perMove": 1
+                },
+                "768": {
+                  "perPage": 2,
+                  "perMove": 2
+                },
+                "1200": {
+                  "perPage": 4,
+                  "perMove": 4,
+                  "gap": "16px",
+                  "numbers": true
+                },
+                "1920": {
+                  "perPage": 4,
+                  "perMove": 4,
+                  "gap": "24px"
+                }
+              }
+            },
+            "completeYourApplication": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "recentlyViewed": {
+              "showExpiredJobs": false
+            },
+            "profileRecomJobs": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "latestJobs": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "browsingHistoryJobs": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "recomJobsBrowsingHistory": {
+              "showProfileJobs": true,
+              "maxJobs": 18
+            },
+            "jobsMightNotThoughtOf": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            },
+            "peopleAlsoAppliedJobs": {
+              "enabled": true,
+              "minCountSlider": 5,
+              "isCategoryImageEnabled": false
+            }
+          }
+        },
+        "hf-mock-footer$$hy772n": {
+          "contentMap": {
+            "title": "Footer Menu",
+            "menuBlock": [
+              {
+                "_cid": "rSxyc3kM-rnDafewD",
+                "folderItems": [
+                  {
+                    "_cid": "sMh5VGkM-g75RRvGG",
+                    "link": {
+                      "linkType": "oneTrust",
+                      "href": "{oneTrust}",
+                      "text": "Change Settings",
+                      "title": "",
+                      "pageId": "",
+                      "ariaLabel": "Cookie Consent Preferences",
+                      "innerPageLocale": "",
+                      "innerPagePersona": "",
+                      "target": "_self"
+                    },
+                    "position": 1,
+                    "title": "Change Settings"
+                  }
+                ],
+                "folderName": "Cookies Preferences",
+                "position": 1
+              },
+              {
+                "_cid": "AiDLM8fZ-rnDafewD",
+                "folderItems": [
+                  {
+                    "_cid": "eyJEzOvt-g75RRvGG",
+                    "link": {
+                      "linkType": "weburl",
+                      "href": "https://www.cisco.com/c/en/us/about/accessibility.html",
+                      "text": "Cisco Accessibility Details",
+                      "title": "",
+                      "pageId": "page444-prod",
+                      "ariaLabel": "Cisco Accessibility Details",
+                      "innerPageLocale": "en_global",
+                      "innerPagePersona": "external",
+                      "target": "_blank"
+                    },
+                    "position": 1,
+                    "title": "Cisco Accessibility Details"
+                  },
+                  {
+                    "_cid": "Ny7fMsFO-g75RRvGG",
+                    "link": {
+                      "linkType": "innerpage",
+                      "href": "https://careers.cisco.com/global/en/accommodation-statement",
+                      "text": "Accommodations for Applicants with Disabilities ",
+                      "title": "",
+                      "pageId": "page518-prod",
+                      "ariaLabel": "Accommodation Statement",
+                      "innerPageLocale": "en_global",
+                      "innerPagePersona": "external",
+                      "target": "_blank"
+                    },
+                    "position": 2,
+                    "title": "Accommodations for Applicants with Disabilities "
+                  }
+                ],
+                "folderName": "Accessibility",
+                "position": 2
+              },
+              {
+                "_cid": "Q4kMHoht-g75RRvGG",
+                "link": {
+                  "linkType": "weburl",
+                  "href": "https://www.cisco.com/c/dam/en_us/about/ac40/univ/E_Verify_Participation.pdf",
+                  "text": "E-Verify Participation Poster",
+                  "title": "",
+                  "pageId": "page444-prod",
+                  "ariaLabel": "E-Verify Participation Poster",
+                  "innerPageLocale": "en_global",
+                  "innerPagePersona": "external",
+                  "target": "_blank"
+                },
+                "position": 3,
+                "title": "E-Verify Participation Poster"
+              },
+              {
+                "_cid": "CBOSTgyI-g75RRvGG",
+                "link": {
+                  "linkType": "weburl",
+                  "href": "https://www.cisco.com/c/dam/en_us/about/ac40/univ/E_Verify_Right_to_Work.pdf",
+                  "text": "Right to Work Poster",
+                  "title": "",
+                  "pageId": "page444-prod",
+                  "ariaLabel": "Right to Work Poster",
+                  "innerPageLocale": "en_global",
+                  "innerPagePersona": "external",
+                  "target": "_blank"
+                },
+                "position": 4,
+                "title": "Right to Work Poster"
+              }
+            ],
+            "navigationAriaLabel": "",
+            "navAriaLabel": ""
+          },
+          "bindables": {
+            "showIcon": false,
+            "showExternalIcon": false
+          }
+        },
+        "hf-header-with-search-icon$$4HDz3vS": {
+          "contentMap": {
+            "signInIcon": "icon icon-user-4",
+            "setNewPwdText": "Set new password",
+            "validPasswordIcon": "icon icon-check-mark",
+            "createAccountEmailFormAriaLabel": "Enter email",
+            "signOutButton": {
+              "type": "button",
+              "text": "Sign out",
+              "title": "",
+              "role": "button",
+              "ariaLabel": "",
+              "edited": true
+            },
+            "createAccErrorStatement4": "one lowercase, ",
+            "createAccErrorStatement5": "one uppercase",
+            "piiconsentInfoDescription": "-By clicking next, I understand that my personal data will be processed in accordance with the Company Data Privacy Policy.",
+            "signInPopUpHeading": "Sign in to save your personalized profile",
+            "privacyPolicyCheckboxSeparatorText": " and ",
+            "createAccErrorStatement1": "Password must have at least ",
+            "createAccErrorStatement2": "8 characters, ",
+            "showPasswordIcon": "icon icon-eye-1",
+            "signInPopUpSubHeading": "sub heading",
+            "createAccErrorStatement3": "one number, ",
+            "signInButtonLabel": "Already have an account?",
+            "piiInfoText": "Accept piiInfo terms",
+            "emailInUseError": "This email address is already in use. Please try again or",
+            "signUpPasswordFormPlaceHolder": "Password",
+            "signInPasswordFormLabel": "Password",
+            "privacyPolicyCheckboxText": "I have read and agree to the",
+            "returnSigninText": {
+              "type": "button",
+              "text": "Return to Sign in",
+              "title": "",
+              "role": "button",
+              "ariaLabel": "",
+              "edited": true
+            },
+            "loginLinkText": {
+              "type": "button",
+              "text": "Login",
+              "title": "",
+              "role": "button",
+              "ariaLabel": "",
+              "edited": true
+            },
+            "createAccountFormLabel": "Password",
+            "personalAccountLinkText": "View profile",
+            "errorIcon": "icon icon-error-1",
+            "hidePasswordIcon": "icon icon-eye-1-crossed",
+            "phwSocialconnectDefaultDefaultV1": {
+              "type": "widget",
+              "privacyPolicy": {
+                "edited": true,
+                "linkType": "weburl",
+                "text": "Privacy Policy",
+                "href": "https://www.cisco.com/c/en/us/about/legal/privacy-full.html",
+                "type": "link",
+                "title": "Privacy Policy",
+                "target": "_blank"
+              },
+              "facebook": {
+                "type": "button",
+                "text": "Sign in with Facebook",
+                "ariaLabel": "Sign in with Facebook",
+                "edited": true
+              },
+              "termsLink": {
+                "edited": true,
+                "linkType": "weburl",
+                "text": "Terms Of Use",
+                "href": "https://www.cisco.com/c/en/us/about/legal/terms-conditions.html",
+                "type": "link",
+                "title": "Terms Of Use",
+                "target": "_blank"
+              },
+              "google": {
+                "type": "button",
+                "text": "Sign in with Google",
+                "ariaLabel": "Sign in with Google",
+                "edited": true
+              },
+              "privacyPolicyCheckboxText": "I have read and agree to the ",
+              "linkedIn": {
+                "type": "button",
+                "text": "Sign in with LinkedIn",
+                "ariaLabel": "Sign in with LinkedIn",
+                "edited": true
+              },
+              "privacyPolicyCheckboxSeparatorText": " and ",
+              "privacyPolicyCheckboxErrorText": "You must read and agree to the terms above."
+            },
+            "technicalIssueText": "Sorry, were having some technical issues. Please try again.",
+            "closePopUpButtonIcon": "icon icon-cancel",
+            "privacyDataConsentAriaLabel": "I have read and agree to the Privacy Policy.",
+            "fyfFlowSignUpHeading": "Sign up to save your personalized profile",
+            "errorSrOnly": "error:",
+            "createAccountButtonLabel": "Don\u2019t have an account?",
+            "passwordVisibleSrOnly": "Password is visible",
+            "oneTimeLoginPopupSubHeading": "Enter your email address, and we\u2019ll send you a link to log in.",
+            "termsOfUseText": {
+              "type": "button",
+              "text": "Terms Of Use",
+              "title": "",
+              "role": "button",
+              "ariaLabel": "",
+              "href": "https://www.cisco.com/c/en/us/about/legal/terms-conditions.html",
+              "edited": true
+            },
+            "resendSuccessText": "email has sent again",
+            "showPasswordText": "Show password",
+            "hidePasswordBtnAriaLabel": "password is invisible",
+            "resetPasswordPopUpSubHeading2": "We have sent an email to <strong>{{emailId}}</strong> with password reset instructions. ",
+            "oneTimeLoginFailedText": "Please click on the \u201cResend Email\u201d button to try again.",
+            "resetPasswordPopUpSubHeading1": "We have sent an email to <strong> {{emailId}} </strong> with password reset instructions. ",
+            "signInLinkText": "Sign in",
+            "closePopupButtonAriaLabel": "Close dialog",
+            "errorIncorrectPassword": "Your password is incorrect. Please try again",
+            "privacyPolicy": {
+              "type": "button",
+              "text": "Privacy Policy",
+              "title": "",
+              "role": "button",
+              "ariaLabel": "",
+              "href": "https://www.cisco.com/c/en/us/about/legal/privacy-full.html",
+              "edited": true
+            },
+            "loggedInBtnWOfNameAriaLabel": "Your profile",
+            "signInButton": {
+              "type": "button",
+              "text": "Sign in",
+              "title": "",
+              "role": "button",
+              "ariaLabel": "",
+              "edited": true
+            },
+            "createAccountFormPlaceHolder": "Your Password",
+            "salutationText": "Hi",
+            "dataConsentWdgt": {
+              "type": "widget",
+              "consentLink": {
+                "text": "Review and agree the terms for processing personal information",
+                "href": "https://www.cisco.com/c/en/us/about/legal/terms-conditions.html",
+                "type": "link",
+                "title": "Terms Of Use",
+                "edited": true,
+                "target": ""
+              },
+              "closeBtnLable": "close dialog",
+              "requiredText": "required",
+              "consentsLinkText": "Review and agree to the terms of processing personal information",
+              "consentHeading": "Consent",
+              "consentDescription": "In order to personalize your experience and provide job recommendations, we need to collect some personal data. Please read the statements below to learn more about how we use your personal data. Our data privacy notice is linked below, and you may revoke your consent at any time.",
+              "doneText": "Done",
+              "submitText": "Sign up",
+              "sendOneTimeLoginLinkText": {
+                "type": "button",
+                "text": "Send",
+                "role": "button",
+                "ariaLabel": "send",
+                "edited": true
+              },
+              "optInText": "Accept optin terms",
+              "smsOptInText": "Accept smsOptin terms",
+              "singleSmsOptInText": "Accept singleSmsOptIn terms",
+              "piiInfoText": "Accept piiInfo terms",
+              "whatsappOptInText": "Accept whatsappOptIn terms",
+              "privacyConsentText": "Accept privacyConsent terms"
+            },
+            "createAccountLinkText": "Sign up",
+            "createAccountEmailFormLabel": "Email",
+            "emailResendSuccessText": "Email has been resent successfully!",
+            "resentEmailButtonLabel": "Did not receive the mail?",
+            "applyFlowSignUpHeading": "Sign up to save your application and apply faster next time",
+            "passwordErrorRequirementText": "Password did not meet the requirements for ",
+            "signInEmailFormAriaLabel": "Enter email",
+            "errorMessageInvalidEmail": "Please enter a valid email address.",
+            "signInPasswordFormAriaLabel": "Enter password",
+            "forgotPasswordPopUpSubHeading": "Enter your email and we\u2019ll send you link to reset your password",
+            "resetPasswordInvalidText": "Your reset password link is invalid. Please try again.",
+            "oneTimeLoginEmailLabel": "Email",
+            "validEmailIcon": "icon icon-check-mark-thick-1",
+            "requiredText": "required",
+            "singleSmsOptInText": "Accept singleSmsOptIn terms",
+            "resentEmailButtonText": "Resend",
+            "forgotPasswordPopUpHeading": "Forgot your password?",
+            "piiconsentInfoHeading": "By checking this box, I consent to receive transactional and marketing text messages regarding employment opportunities.",
+            "oneTimeLoginSuccessHeading": "We have emailed a one-time link to {{emailId}}",
+            "resendFailedText": "email has not sent, please try again",
+            "createAccountFormAriaLabel": "Enter password",
+            "resetPasswordButton": {
+              "type": "button",
+              "text": "Send password reset link",
+              "title": "",
+              "role": "button",
+              "ariaLabel": "",
+              "edited": true
+            },
+            "signInPasswordFormPlaceHolder": "Your Password",
+            "loggedInBtnAriaLabel": "Your profile {{saluteText}}",
+            "accCreated2Error": "Please continue with",
+            "errorMessageEmptyPassword": "Please enter your password",
+            "loggedInText": "Logged In Successfully",
+            "signInEmailFormPlaceHolder": "name@email.com",
+            "createAccountEmailFormPlaceHolder": "name@email.com",
+            "newPwdText": "New Password",
+            "privacyPolicyCheckboxErrorText": "You must read and agree to the terms above.",
+            "oneTimeLoginFailedHeading": "Sorry! We could not send a one-time link to {{emailId}}",
+            "oneTimeLoginResendEmailBtn": {
+              "type": "button",
+              "text": "Resend email",
+              "title": "",
+              "role": "button",
+              "ariaLabel": "Resend email",
+              "edited": true
+            },
+            "fyfFlowSignInHeading": "Sign in to save your personalized profile",
+            "errorMessageEmptyEmail": "Please enter your email address.",
+            "noAccountError": "There is no account with this email. Please try again or",
+            "savedJobsSignUpHeading": "Sign up dont lose your saved jobs",
+            "signInEmailFormLabel": "Email",
+            "resetPasswordPopUpHeading": "Reset password link sent",
+            "oneTimeLoginPopUpHeading": "Log in to your profile with a one-time link",
+            "applyFlowSignInHeading": "Sign in to save your application and apply faster next time",
+            "createAccountPopUpHeading": "Sign up to save your personalized profile",
+            "signInAgreementTextPartOne": "By Signing in, you agree to the company\u2019s",
+            "staySignedInCheckboxText": "Stay signed in",
+            "smsOptInText": "Accept smsOptin terms",
+            "privacyConsentText": "Accept privacyConsent terms",
+            "oneTimeLoginSuccessSubHeading": "Click on the link to sign in instantly to your candidate account.",
+            "signInAccountLinkText": "Sign in",
+            "optInText": "Accept optin terms",
+            "createAccountButton": {
+              "type": "button",
+              "text": "Sign up",
+              "title": "",
+              "role": "button",
+              "ariaLabel": "",
+              "edited": true
+            },
+            "signInAgreementTextPartTwo": "and",
+            "createNewPwdText": "Please create a new password",
+            "registeredText": "Registered Successfully",
+            "forgotPasswordLink": {
+              "text": "Forgot your password?",
+              "role": "button",
+              "type": "link",
+              "title": "",
+              "edited": true,
+              "ariaLabel": ""
+            },
+            "staySignedInCheckboxAriaLabel": "Stay signed in",
+            "seperatorText": "or use your social account",
+            "piiConsentError": "Please accept all the required consents",
+            "oneTimeLoginButton": {
+              "type": "button",
+              "text": "Send",
+              "title": "",
+              "role": "button",
+              "ariaLabel": "",
+              "edited": true
+            },
+            "cvUploadedText": "Cv uploaded",
+            "profileText": "(My profile)",
+            "whatsappOptInText": "Accept whatsappOptIn terms",
+            "oneTimeLoginSuccessText": "If you don\u2019t see the email in your inbox, please check your spam folder.",
+            "hidePasswordText": "Hide password",
+            "resetLinkExpired": "Password reset Link has been expired",
+            "passwordInVisibleSrOnly": "Password is invisible",
+            "showPasswordBtnAriaLabel": "password is visible",
+            "oneTimeLoginEmailFormPlaceHolder": "Email",
+            "savedJobsSignInHeading": "Sign in do not lose your saved jobs",
+            "accCreated1Error": "You created an account with this email using"
+          },
+          "bindables": {
+            "hideOnMobile": true,
+            "flowType": "signUp"
+          }
+        },
+        "ju782d": {
+          "contentMap": {
+            "pagination": "pagination",
+            "showingResults": "Showing {{totalJobs}} results for",
+            "prevPaginationAriaLabelText": "Previous",
+            "innerSearchPlaceholderText": "Search within results",
+            "innerSearchButtonText": "Go",
+            "resultsPostfixjobTextAriaLable": "result found",
+            "textClearedText": "Text cleared",
+            "prevPaginationText": "Prev",
+            "resumeBasedText": "Resume-Based",
+            "resultsInfoText2": "here are all the available jobs",
+            "JobsSortByUpdateText": "jobs sorted by",
+            "resultsInfoText1": "There are no results for",
+            "mostPopularText": "Popular",
+            "mostRecentText": "Most Recent",
+            "showingResultstext": "Showing ",
+            "searchInstead": "Search instead for ",
+            "availableJobs": "Available jobs",
+            "resultsSymbol": "-",
+            "resultsPostfixjobsTextWithSearch": "Jobs",
+            "resultsPostfixjobTextWithSearch": "Job",
+            "clearAllFacets": "Clear all",
+            "jobWidget": {
+              "type": "widget",
+              "education": "Education Required",
+              "appliedDate": "Applied Date",
+              "compensationRange": "Compensation Range",
+              "positionsAvailable": "Positions Available",
+              "relocationAssistance": "Relocation Assistance",
+              "Min_Salary_External": "Min Salary External",
+              "Max Salary for external view": "Max Salary for external",
+              "businessUnit": "Business Unit",
+              "Work_Environment": "Work Environment",
+              "isRemote": "Is Remote",
+              "jobDateFormat": "MMMM Do YYYY",
+              "multipleLocation": "This job is available in {{locationCount}} locations",
+              "multiValueField": "This job is available in {{count}} {{field}}",
+              "experience": "Experience",
+              "skills": "Skills",
+              "descriptionTeaser": "Description Teaser",
+              "seeMoreText": {
+                "type": "buttton",
+                "text": "View More",
+                "title": "",
+                "ariaLabel": "view More",
+                "role": ""
+              },
+              "drivingTimeInMinutesText": "{{minutes}} min",
+              "whenDrivingTimeNotFound": "Unavailable",
+              "seeEvenMoreAriaLabel": "See even more",
+              "atsLastModifieddate": "Last modified Date",
+              "jobSavedAriaLabel": "Saved {{title}} {{jobId}}",
+              "seeNextAriaLabel": "See next",
+              "requirement_sentence": "Requirements",
+              "smartHighlightsAriaLabel": "More Info about {{title}}",
+              "jobId": "Job ID",
+              "multicategoryText": "Job associated with {{multicategoryValue}} categories",
+              "featuredJobText": "Featured job",
+              "multipleCategory": "This job is associated with {{categoryCount}} categories",
+              "smart_tags_entryLevel": "Entry Level",
+              "applyNowText": {
+                "type": "button",
+                "text": "Apply Now",
+                "title": "",
+                "ariaLabel": "Apply Now",
+                "role": ""
+              },
+              "seeNextText": {
+                "type": "button",
+                "text": "See Next",
+                "title": "",
+                "ariaLabel": "see next",
+                "role": "role"
+              },
+              "seeLessText": {
+                "type": "button",
+                "text": "View Less",
+                "title": "",
+                "ariaLabel": "View Less",
+                "role": ""
+              },
+              "fitScore_good_fit": "Good Fit",
+              "smart_tags_openedToday": "Opened Today",
+              "smart_tags_partTime": "Part Time",
+              "title": "Title",
+              "postedDate": "Posted Date",
+              "expiryDate": "Expiry Date",
+              "typeJobField": "Job Type",
+              "city": "City",
+              "cityCountry": "City, Country",
+              "businessSegment": "Business Segment",
+              "remote": "Remote",
+              "jobSeqNo": "Job Sequence No",
+              "department": "Department",
+              "payRate": "Pay rate",
+              "cityStateCountry": "City State Country",
+              "reqId": "reqId",
+              "jobCompany": "Job Company",
+              "jobIdConnectingText": "Job ID is",
+              "closeDate": "Close Date",
+              "travelRequiremnt": "Travel",
+              "sponsorship": "Sponsor",
+              "rate": "Rate of Pay",
+              "company_name": "Company Name",
+              "OnCallRequired": "On Call Required",
+              "wdDatePosted": "Wd Date Posted",
+              "wdEndDate": "Wd End Date",
+              "salaryRangeMinimum": "Salary Range Minimum",
+              "salaryRangeMaximum": "Salary Range Maximum",
+              "removeAriaLableText": "Remove {{title}} from job cart",
+              "smartHighlightsCloseAriaLabel": "Show less",
+              "seeMoreAriaLabel": "View more jobs",
+              "seeMultipleCatBtn": "Associated with {{categoryCount}} categories",
+              "additionalSkills": "Additional Skills",
+              "addToCartSavedText": "Saved",
+              "titleAriaLabel": "{{title}}  {{jobId}}",
+              "drivingTimeInHoursText": "{{hours}} hr",
+              "saveJobAriaLabel": "Save {{title}} {{jobId}} to job cart",
+              "multilocationText": "Job available in {{multilocationValue}} locations",
+              "drivingTime": "Driving time",
+              "removeJobText": "Remove",
+              "saveText": "Save",
+              "savedText": "Saved",
+              "seeEvenMoreText": "See Even More",
+              "createdDate": "Created Date",
+              "addToCartSaveText": "Save {{title}} {{jobId}}",
+              "location": "Location",
+              "seeLessAriaLabel": "View less recommended jobs",
+              "category": "Category",
+              "subCategory": "Sub Category",
+              "Multi Location": "Locations",
+              "Multi Category": "Categories",
+              "multi_location": "Available in {{count}} locations",
+              "multi_category": "Associated with {{count}} categories",
+              "multi_category_aria_label": "Associated with {{count}} categories",
+              "multi_location_aria_label": "Available in {{count}} locations",
+              "multi_location_list": "Multi Location",
+              "multi_category_list": "Multi Category",
+              "smart_tags_allJobType": "All Job type",
+              "smart_tags_xApplicants": "{{applyCount}} Applicants",
+              "smart_tags_xViews": "{{viewCount}} Views",
+              "smart_tags_openedRecently": "Opened Recently",
+              "smart_tags_beAmongTheFirstToApply": "Be among the first to apply",
+              "smart_tags_nearByJob": "NearBy Job",
+              "smart_tags_popularJob": "Popular Job",
+              "smart_tags_fullTime": "Full Time",
+              "smart_tags_internship": "Internship",
+              "fitScore_possible_fit": "Possible Fit",
+              "fitScore_best_fit": "Best Fit",
+              "showDetails": "Show details",
+              "hideDetails": "Hide details",
+              "showDetailsAriaLabel": "Show details {{title}}",
+              "hideDetailsAriaLabel": "Hide details {{title}}",
+              "jobLevel": "Job Level",
+              "jobType": "Job Type",
+              "unit": "Unit",
+              "jobStatus": "Job Status",
+              "employmentType": "Employment Type",
+              "employingEntity": "Employing Entity"
+            },
+            "filtersClearedText": "all filter cleared",
+            "innerSearchLabelText": "Search within results",
+            "resultsInfoText": "Showing  {{totalJobs}} results for",
+            "filterAriaLabelText": "click here to open Filters",
+            "filterText": "Filter",
+            "noJobsFoundSuggesionText": "Please search again.",
+            "innerSearchButtonArialabel": "search",
+            "mostRelevantText": "Most Relevant",
+            "sortBySelectText": "Sort by",
+            "resultsPostfixjobText": "result",
+            "resultsPostfixjobsText": "results",
+            "resultsPreposition": "of",
+            "resultsPostfixjobsTextAriaLable": "results found",
+            "resultsLocationInfoText1": "For the Criteria",
+            "nextPaginationText": "Next",
+            "closeDialog": "close dialog",
+            "filterJobsAriaLabelText": "Search within results",
+            "clearInnerSearchText": "clear text",
+            "noJobsFoundInfoText": "There are no jobs for your search criteria.",
+            "searchResultAreaLabel": "Search results",
+            "clearAllFiltersLink": "Clear all filters",
+            "nextPaginationAriaLabelText": "Next",
+            "noResultsFoundText": "No result found",
+            "closeAriaLabelText": "Remove {{closeAriaLabel}} filter"
+          },
+          "bindables": {
+            "paginationBlockSize": 5,
+            "showSortByLabel": false,
+            "innerSearchSearchicon": true,
+            "jobFieldsInline": false,
+            "removeDotAndPipe": false,
+            "isErrorMsgReqd": true,
+            "dotSeperator": true,
+            "innerSearch": false,
+            "mobilePaginationBlockSize": 5
+          }
+        },
+        "hf-header-with-search-icon$$Ahl5Fa2": {
+          "contentMap": {
+            "jobCartLink": {
+              "type": "input",
+              "text": "Saved jobs",
+              "text1": "Saved job",
+              "role": "button",
+              "title": "",
+              "ariaLabel": "saved job",
+              "ariaLabel2": "saved jobs"
+            }
+          },
+          "bindables": {
+            "emptyCart": "phw-cns-icon-heart",
+            "hideSaveJobText": false,
+            "notEmptyCart": "phw-cns-icon-heart-fill",
+            "showSaveJobTextSmallDevices": false
+          }
+        },
+        "hf-mock-footer$$gtwyhs": {
+          "contentMap": {
+            "title": "Footer Sub Menu",
+            "menuBlock": [
+              {
+                "_cid": "VLsYKiPr-g75RRvGG",
+                "link": {
+                  "linkType": "innerpage",
+                  "href": "https://careers.cisco.com/global/en/help-page",
+                  "text": "Help",
+                  "title": "",
+                  "pageId": "page504-prod",
+                  "ariaLabel": "Help",
+                  "innerPageLocale": "en_global",
+                  "innerPagePersona": "external",
+                  "target": "_self"
+                },
+                "position": 1,
+                "title": "Help"
+              },
+              {
+                "_cid": "USVkLfF4-g75RRvGG",
+                "link": {
+                  "linkType": "weburl",
+                  "href": "https://www.cisco.com/c/en/us/about/legal/terms-conditions.html",
+                  "text": "Terms & Conditions ",
+                  "title": "",
+                  "pageId": "",
+                  "ariaLabel": "Terms & Conditions ",
+                  "innerPageLocale": "",
+                  "innerPagePersona": "",
+                  "target": "_blank"
+                },
+                "position": 2,
+                "title": "Terms & Conditions "
+              },
+              {
+                "_cid": "YdMZlNDf-g75RRvGG",
+                "link": {
+                  "linkType": "weburl",
+                  "href": "https://www.cisco.com/site/us/en/about/legal/candidate-privacy.html",
+                  "text": "Candidate Privacy Statement",
+                  "title": "",
+                  "pageId": "",
+                  "ariaLabel": "Candidate Privacy Statement",
+                  "innerPageLocale": "",
+                  "innerPagePersona": "",
+                  "target": "_blank"
+                },
+                "position": 3,
+                "title": "Candidate Privacy Statement"
+              },
+              {
+                "_cid": "74DzMKJG-g75RRvGG",
+                "link": {
+                  "linkType": "weburl",
+                  "href": "https://www.cisco.com/c/en/us/about/legal/privacy-full.html",
+                  "text": "Privacy Statement",
+                  "title": "",
+                  "pageId": "",
+                  "ariaLabel": "Privacy Statement",
+                  "innerPageLocale": "",
+                  "innerPagePersona": "",
+                  "target": "_blank"
+                },
+                "position": 4,
+                "title": "Privacy Statement"
+              },
+              {
+                "_cid": "9L7NJUfU-g75RRvGG",
+                "link": {
+                  "linkType": "weburl",
+                  "href": "https://www.cisco.com/c/en/us/about/legal/privacy-full.html#cookies",
+                  "text": "Cookie Policy",
+                  "title": "",
+                  "pageId": "",
+                  "ariaLabel": "Cookie Policy",
+                  "innerPageLocale": "",
+                  "innerPagePersona": "",
+                  "target": "_blank"
+                },
+                "position": 5,
+                "title": "Cookie Policy"
+              },
+              {
+                "_cid": "2u22Rhbe-g75RRvGG",
+                "link": {
+                  "linkType": "weburl",
+                  "href": "https://www.cisco.com/c/en/us/about/legal/trademarks.html",
+                  "text": "Trademarks",
+                  "title": "",
+                  "pageId": "",
+                  "ariaLabel": "Trademarks",
+                  "innerPageLocale": "",
+                  "innerPagePersona": "",
+                  "target": "_blank"
+                },
+                "position": 6,
+                "title": "Trademarks"
+              },
+              {
+                "_cid": "n0PhtfBM-g75RRvGG",
+                "link": {
+                  "linkType": "innerpage",
+                  "href": "https://careers.cisco.com/global/en/sitemap",
+                  "text": "Sitemap",
+                  "title": "",
+                  "pageId": "page506-prod",
+                  "ariaLabel": "Career Site Sitemap",
+                  "innerPageLocale": "en_global",
+                  "innerPagePersona": "external",
+                  "target": "_self"
+                },
+                "position": 7,
+                "title": "Sitemap"
+              }
+            ],
+            "navAriaLabel": ""
+          },
+          "bindables": {
+            "showIcon": false,
+            "showExternalIcon": false
+          }
+        },
+        "pagetyt": {
+          "contentMap": {
+            "searchSuggestionText": "Search Suggestions:",
+            "mightHelpfulText": "You might also find these helpful",
+            "activeJobsHeading": "We couldn\u2019t find any open positions for \"{{searchKeywordVal}}\" ",
+            "searcSuggestionList": "<ul class=\"phw-ml-3 phw-ml-sm-3\"> <li class=\"phw-mb-1-5 phw-mb-xl-1\">Check your spelling</li> <li class=\"phw-mb-1-5 phw-mb-xl-1\">Try more general keywords</li> <li>Enter fewer words. e.g. \u201cProduct designer\u201d rather than \u201cUI UX Product designer\u201d</li> </ul>",
+            "noActiveJobs": "Sorry... no active job openings, please come back later."
+          },
+          "bindables": {}
+        },
+        "vgtywb": {
+          "contentMap": {
+            "emailAddressContent": "Email address",
+            "noteText": "We will email you as soon as new positions become available",
+            "createJobAlertAreaLabelText": "Get notified",
+            "modalHeadingLevelTwoText": 2,
+            "managealertsLoggedinUserText": {
+              "text": "Manage Alerts",
+              "role": "button",
+              "ariaLabel": "",
+              "title": "",
+              "type": "link"
+            },
+            "managealertsExternalText": {
+              "type": "link",
+              "text": "Manage Alerts",
+              "role": "button",
+              "ariaLabel": "Manage Alerts",
+              "title": ""
+            },
+            "requiredText": "Required",
+            "enterMailPlaceholderText": "enter your email address",
+            "singleSmsOptInText": "Accept singleSmsOptIn terms",
+            "frequencymonthly": "Monthly",
+            "sendText": "Send",
+            "manageAlertText": "Manage Alerts",
+            "modalHeadingOneText": "heading",
+            "piiconsentInfoDescription": "-By clicking next, I understand that my personal data will be processed in accordance with the Company Data Privacy Policy.",
+            "dataConsentText": "I have read and agree to the <a class='pii-consent-link' href='javascript:void(0)'> Terms and Conditions  </a>",
+            "piiconsentInfoHeading": "By checking this box, I consent to receive transactional and marketing text messages regarding employment opportunities.",
+            "getMailsAlertFrequencyText": "You\u2019ll get emails:",
+            "emailLabelText": "Email:",
+            "createJobAlertButtonText": {
+              "type": "button",
+              "text": "Get notified",
+              "role": "button",
+              "ariaLabel": "Create Job Alert",
+              "title": ""
+            },
+            "piiInfoText": "Accept piiInfo terms",
+            "resendFailedText": "You have raised maximum number of resend requests",
+            "emailConsentText": "I have read and agree to the <a class='pii-consent-link' href='javascript:void(0)'> Terms and Conditions  </a>",
+            "createJobAlertAlreadyActivatedText": "This job alert is already activated. To create another job alert, please select other job criteria.",
+            "manageAlertsEmailSentText": "We have sent a mail to your email address. Please verify your email address to",
+            "createJobAlertButton": "Create Job Alert",
+            "manageAlertsemailSentText": "NOTE: Email will be sent to",
+            "frequencyweekly": "Weekly",
+            "piiConsentErrorText": "Please accept all the required consents",
+            "manageAlertsClickHereText": {
+              "type": "link",
+              "text": "Click here",
+              "role": "button",
+              "ariaLabel": "",
+              "title": ""
+            },
+            "emailedLinkToAccessProfileText": "We have emailed you link to access your profile.",
+            "createJobAlertErrorText": "You have no job criteria selected. Please select at least one search filter to create a job alert.",
+            "manageJobAlertsText": "Manage job alerts",
+            "ageConsentText": "I have read and agree to the <a class='pii-consent-link' href='javascript:void(0)'> Terms and Conditions  </a>",
+            "smsOptInText": "Accept smsOptin terms",
+            "privacyConsentText": "Accept privacyConsent terms",
+            "checkEmailText": "Please check your email",
+            "optInText": "Accept optin terms",
+            "activateJobALertText": "activate job alert.",
+            "selectFreqText": "you'll get emails, select frequency",
+            "emailNotGetText": "Didn\u2019t get an email?",
+            "whatsappOptInText": "Accept whatsappOptIn terms",
+            "closeThePopupBtn": {
+              "text": "",
+              "role": "button",
+              "ariaLabel": "close dialog",
+              "title": "",
+              "type": "button"
+            },
+            "frequencybiweekly": "Bi-Weekly",
+            "receiveVerificationEmailText": "You will receive a verification email that will direct you to your 'Manage alerts' page.",
+            "createJobAlertDuplicateErrorText": "This job alert already exists. To create another job alert, please select other job criteria.",
+            "emailEmptyText": "E-mail should not be empty",
+            "enterEmailAddressText": "Enter email address",
+            "dataConsentWdgt": {
+              "type": "widget",
+              "consentLink": {
+                "type": "link",
+                "text": "Review and agree the terms for processing personal information",
+                "title": "Terms Of Use",
+                "target": "",
+                "href": "javascript:void(0);"
+              },
+              "closeBtnLable": "close dialog",
+              "requiredText": "required",
+              "consentsLinkText": "Review and agree to the terms of processing personal information",
+              "consentHeading": "Consent",
+              "consentDescription": "In order to personalize your experience and provide job recommendations, we need to collect some personal data. Please read the statements below to learn more about how we use your personal data. Our data privacy notice is linked below, and you may revoke your consent at any time.",
+              "doneText": "Done",
+              "submitText": "Get notified",
+              "optInText": "Accept optin terms",
+              "smsOptInText": "Accept smsOptin terms",
+              "singleSmsOptInText": "Accept singleSmsOptIn terms",
+              "piiInfoText": "Accept piiInfo terms",
+              "whatsappOptInText": "Accept whatsappOptIn terms",
+              "privacyConsentText": "Accept privacyConsent terms"
+            },
+            "manageAlertsVerificationEmailText": "to receive a verification email that will redirect you to 'Manage alerts' page.",
+            "createJobAlertHeadingText": "Be the first to see new positions that match \"{{searchKeywordVal}}\" ",
+            "closeDialog": "close dialog",
+            "emailOnWayText": "Your email is on its way...",
+            "frequencydaily": "Daily",
+            "enterEmailLabelText": "email address",
+            "enterValidEMailAddressText": "Please enter Valid E-mail address",
+            "sendAgainText": "send again",
+            "errorMessageText": "Something went wrong. Please try again",
+            "jobAlertCreatedSuccessfullyText": "Job alert created successfully",
+            "activationLinkText": "An activation link has been sent to {{email}}. The link in the email will expire in 4 hours.",
+            "getEmailsText": "You'll get emails"
+          },
+          "bindables": {
+            "_isContentStaticOnly": true,
+            "_contentModelType": "consent",
+            "_contentFilterType": "static"
+          }
+        },
+        "x1dmAw": {
+          "contentMap": {
+            "regionRole": "region",
+            "piiConsentTextBlock": "When using this site you will have the option to provide personal information. \n                    By using this site and providing your personal information you consent to your data being stored overseas. ",
+            "cookieAriaLabel": "cookie",
+            "allowCookiesText": "Allow",
+            "cookietextAreaText": "We use cookies to offer you a better browsing experience, analyze site traffic, and personalize content. Read about how we use cookies and how you can control them by visiting our <a href=\"{{baseUrl}}cookiesettings\" >Cookie Settings</a> page.",
+            "denyCookiesText": " Deny",
+            "piiConsentAcceptLink": "Accept",
+            "popupCookieSettingsButton": {
+              "type": "button",
+              "text": "Cookie Settings",
+              "role": "",
+              "title": "",
+              "ariaLabel": "Click here to change your Cookie Settings"
+            }
+          },
+          "bindables": {
+            "displayStyle": "banner",
+            "positions": "top"
+          }
+        },
+        "h5ggsr": {
+          "contentMap": {
+            "basedOnYourProfile": "Based on your profile",
+            "Refineyoursearchtitle": "Refine your search results by below filters",
+            "facetsResultEmptytext": "No data found.",
+            "suggestedFacetResultsAssertiveText": "Showing {{listLength}} options for \"{{searchValue}}\"",
+            "closeFilter": "Close Filter",
+            "refineSearch": "refine your search",
+            "facetsMobileFilterDonetext": "View jobs",
+            "recommendedText": "Recommended",
+            "skipToSearchResults": "Skip to Search results",
+            "facetsMobileFilterResetalltext": "Clear filters",
+            "facetsClearText": "text Cleared",
+            "suggestedFacetNoResultsAssertiveText": "No options found for \"{{searchValue}}\"",
+            "facetsJobsCountOpenSymbol": "(",
+            "locationSuggestionsCount": "{{totalLocations}} locations available, move to list to select location.",
+            "facetsLocationMilestext": "miles",
+            "facetsLocationDistancetext": "Distance:",
+            "noLocationsFound": "No locations found",
+            "filterResultsJobsCount": "({{totalJobs}})",
+            "basedOnYourProfileDescription": "See results based on your personal information preferences, experience and skills.",
+            "clearText": "text Cleared",
+            "clearTextTitle": "Clear text",
+            "facetsMobileCloseFiltertext": "Close Filter",
+            "facetsLocationHeadingtext": "Location",
+            "facetSearchSubHeading": "Select the filters to Refine the jobs",
+            "facetsJobsCountSingler": "job",
+            "facetsLocationMileText": "mile",
+            "facetsJobsCountCloseSymbol": ")",
+            "facetSearchHeading": "Filters",
+            "facetsLocationCleartext": "Clear text",
+            "locationSuggestionsAriaLabel": "Location suggestion",
+            "suggestedFacetResultsSingularAssertiveText": "Showing {{listLength}} option for \"{{searchValue}}\"",
+            "facetsJobsCountPlural": "jobs"
+          },
+          "bindables": {
+            "loadType": "eager",
+            "clickTojd": false,
+            "facetAggCount": 150,
+            "city": "",
+            "landingPageType": "",
+            "onlyCounts": 0,
+            "pageSize": 10,
+            "RefineSearchSubtext": false,
+            "isErrorMsgReqd": true,
+            "sort": "",
+            "landingPageKey": "",
+            "clearAll": false,
+            "mode": "",
+            "categoryNameInput": "",
+            "clearResults": "full",
+            "showFacetSearchIcon": true,
+            "showJobs": "",
+            "isCritical": false,
+            "bulkcart": false,
+            "showCounts": "",
+            "category": "",
+            "mostRecentSortField": ""
+          }
+        }
+      },
+      "designData": {
+        "hf-mock-footer": {
+          "cards": [
+            {
+              "532351e5-span-3": "phw-g-i-ZwY71Y",
+              "532351e5-use-1": {
+                "iconData": {
+                  "dataPs": "532351e5-use-1",
+                  "containerType": "card",
+                  "index": 0,
+                  "contentKey": "href",
+                  "value": "#cms-canvas-custom-icons-facebookdark",
+                  "globalWidget": true
+                }
+              },
+              "532351e5-svg-1": "phw-g-i-wHxhIW",
+              "532351e5-a-4": "phw-g-i-KTxyuS"
+            },
+            {
+              "532351e5-span-3": "phw-g-i-ZwY71Y",
+              "532351e5-use-1": {
+                "iconData": {
+                  "dataPs": "532351e5-use-1",
+                  "containerType": "card",
+                  "index": 0,
+                  "contentKey": "href",
+                  "value": "#cms-canvas-custom-icons-facebookdark",
+                  "globalWidget": true
+                }
+              },
+              "532351e5-svg-1": "phw-g-i-wHxhIW",
+              "532351e5-a-4": "phw-g-i-KTxyuS"
+            },
+            {
+              "532351e5-span-3": "phw-g-i-ZwY71Y",
+              "532351e5-use-1": {
+                "iconData": {
+                  "dataPs": "532351e5-use-1",
+                  "containerType": "card",
+                  "index": 0,
+                  "contentKey": "href",
+                  "value": "#cms-canvas-custom-icons-facebookdark",
+                  "globalWidget": true
+                }
+              },
+              "532351e5-svg-1": "phw-g-i-wHxhIW",
+              "532351e5-a-4": "phw-g-i-KTxyuS"
+            },
+            {
+              "532351e5-span-3": "phw-g-i-ZwY71Y",
+              "532351e5-use-1": {
+                "iconData": {
+                  "dataPs": "532351e5-use-1",
+                  "containerType": "card",
+                  "index": 0,
+                  "contentKey": "href",
+                  "value": "#cms-canvas-custom-icons-facebookdark",
+                  "globalWidget": true
+                }
+              },
+              "532351e5-svg-1": "phw-g-i-wHxhIW",
+              "532351e5-a-4": "phw-g-i-KTxyuS"
+            },
+            {
+              "532351e5-span-3": "phw-g-i-ZwY71Y",
+              "532351e5-use-1": {
+                "iconData": {
+                  "dataPs": "532351e5-use-1",
+                  "containerType": "card",
+                  "index": 0,
+                  "contentKey": "href",
+                  "value": "#cms-canvas-custom-icons-facebookdark",
+                  "globalWidget": true
+                }
+              },
+              "532351e5-svg-1": "phw-g-i-wHxhIW",
+              "532351e5-a-4": "phw-g-i-KTxyuS"
+            }
+          ],
+          "532351e5-div-1": "phw-g-i-zKxJ0R",
+          "532351e5-div-9": {
+            "elementVisibility": {
+              "desktop": false
+            }
+          },
+          "532351e5-a-3": {
+            "elementVisibility": {
+              "desktop": false
+            }
+          },
+          "532351e5-h2-3": {
+            "elementVisibility": {
+              "desktop": false
+            }
+          },
+          "532351e5-div-14": {
+            "elementVisibility": {
+              "desktop": true
+            }
+          },
+          "532351e5-div-26": {
+            "elementVisibility": {
+              "desktop": true
+            }
+          },
+          "532351e5-h2-2": {
+            "elementVisibility": {
+              "desktop": false
+            }
+          },
+          "532351e5-div-12": "phw-g-i-q0Y9DA",
+          "532351e5-div-25": "phw-g-i-J9lMDP",
+          "532351e5-div-2": {
+            "elementVisibility": {
+              "desktop": false
+            }
+          },
+          "532351e5-div-24": "phw-g-i-S2QqCX",
+          "532351e5-ul-1": "phw-g-i-lnwnDB"
+        },
+        "qaccrfr$$gsdsEfrbb": {
+          "015f7568-div-7": "default",
+          "015f7568-div-40": "phw-g-i-X62hCa",
+          "015f7568-button-2": "phw-g-i-iBUyXn",
+          "015f7568-div-41": "phw-g-i-FGBNzY",
+          "015f7568-div-1": "phw-g-i-qa6eOw",
+          "015f7568-input-1": "phw-g-i-gO2lbk",
+          "015f7568-svg-4": "phw-g-i-gB4mat",
+          "cards": [],
+          "b3c21170-div-5": "phw-g-i-1wdy1d"
+        },
+        "i89sh3": {
+          "5612dede-a-2": "phw-g-i-Aman8e",
+          "5612dede-button-1": "phw-g-btn-link",
+          "5612dede-h2-1": "phw-g-i-mxyC6r",
+          "5612dede-div-13": "phw-g-i-RK5Nhu"
+        },
+        "hf-header-with-search-icon$$svglobde": {
+          "015f7568-svg-14": "phw-g-i-q60Oel",
+          "015f7568-use-14": {
+            "iconData": {
+              "dataPs": "015f7568-use-14",
+              "containerType": "widget",
+              "index": 0,
+              "contentKey": "href",
+              "value": "#cms-canvas-custom-icons-small-search",
+              "globalWidget": true
+            }
+          },
+          "015f7568-button-3": "phw-g-btn-link"
+        },
+        "hf-header-with-search-icon": {
+          "e6588c8f-div-1": "phw-g-i-UjeRn3"
+        },
+        "hf-mock-footer$$hy772n": {
+          "aed16245-a-1": "phw-g-i-3hkMmp",
+          "aed16245-li-1": "phw-g-i-YlltFk",
+          "aed16245-h2-1": "phw-g-i-s0sCST",
+          "aed16245-a-2": "phw-g-i-WGaztx",
+          "aed16245-li-2": "phw-g-i-jWxn0G",
+          "aed16245-ul-2": "phw-g-i-Iz2ovn"
+        },
+        "hf-header-with-search-icon$$z4HDz3vS": {
+          "a80956b6-button-3": "phw-g-i-2ayPGs",
+          "a80956b6-a-1": "phw-g-i-0PM7Cl",
+          "a80956b6-a-2": "phw-g-i-j0vPeZ"
+        },
+        "hf-header-with-search-icon$$Aq1abxJ": {
+          "b5aad147-span-6": {
+            "elementVisibility": {
+              "desktop": true
+            }
+          }
+        },
+        "ju782d": {
+          "e48864c9-use-6": "phw-g-i-u4x7Ce",
+          "e48864c9-div-10": "phw-g-i-kbZKCG",
+          "e48864c9-a-3": "phw-g-btn-default",
+          "e48864c9-a-2": "phw-g-i-uUzNr9",
+          "cards": [],
+          "e48864c9-div-8": "phw-g-i-dUfPem",
+          "80a472f8-select-1": "phw-g-i-P3obN9",
+          "80a472f8-a-7": "phw-g-i-B0EbK1",
+          "80a472f8-div-10": "phw-g-i-Y0Uvsj",
+          "e48864c9-svg-6": "phw-g-i-sxWvx3",
+          "80a472f8-div-30": "phw-g-i-7IMjGR",
+          "80a472f8-div-1": "phw-g-i-DkkVTF",
+          "80a472f8-div-34": "phw-g-i-LswVDU",
+          "80a472f8-div-9": "phw-g-i-OC3vqv",
+          "80a472f8-div-8": "phw-g-i-ITJnJH",
+          "e48864c9-div-7": "phw-g-i-4xG5Ml",
+          "e48864c9-div-22": "phw-g-i-nApgpO",
+          "e48864c9-div-17": "phw-g-i-KAhzJg",
+          "e48864c9-div-19": "phw-g-i-Simlqf",
+          "e48864c9-span-40": "phw-g-i-DuBZ47",
+          "e48864c9-button-2": "phw-g-i-4mid49",
+          "80a472f8-div-7": "phw-g-i-zLQDye",
+          "80a472f8-div-6": "phw-g-i-MIfwPl",
+          "80a472f8-span-40": "phw-g-i-5rYPKl",
+          "80a472f8-ul-2": "phw-g-i-NveLdW",
+          "80a472f8-span-13": "phw-g-i-gAo4UT",
+          "80a472f8-span-16": "phw-g-i-w2HLQy",
+          "80a472f8-ul-1": "phw-g-i-zaIROa",
+          "80a472f8-a-4": "phw-g-i-dwLba1"
+        },
+        "hf-header-with-search-icon$$4HDz3vS": {
+          "61f36d81-svg-2": "phw-g-i-gqTKDY",
+          "61f36d81-use-2": {
+            "iconData": {
+              "dataPs": "61f36d81-use-2",
+              "containerType": "widget",
+              "index": 0,
+              "contentKey": "href",
+              "value": "#cms-canvas-custom-icons-person",
+              "globalWidget": true
+            }
+          }
+        },
+        "hf-header-with-search-icon$$Ahl5Fa2": {},
+        "hf-mock-footer$$gtwyhs": {
+          "45165f2b-a-1": "phw-g-i-4iUXQR",
+          "45165f2b-ul-1": "phw-g-i-keKOnY",
+          "45165f2b-li-1": "phw-g-i-VTDCYy"
+        },
+        "h5ggsr": {
+          "1abd1825-span-39": "phw-g-i-PYXepc",
+          "1abd1825-p-1": "phw-g-i-UTtPa6",
+          "1abd1825-span-17": "phw-g-i-4FvxFJ",
+          "1abd1825-input-1": "phw-g-i-ZGNueC"
+        }
+      }
+    },
+    "reqData": null
+  }
+}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic App Careers</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+      // Single Page Application script fetching job API
+      fetch('/api/v1/jobs/openings')
+        .then(response => response.json())
+        .then(data => renderJobs(data));
+    </script>
+</body>
+</html>

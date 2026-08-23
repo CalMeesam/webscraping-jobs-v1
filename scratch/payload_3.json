@@ -1,0 +1,273 @@
+{
+  "getChatbotConfigurations": {
+    "data": {
+      "refNum": "CISCISGLOBAL",
+      "locale": "en_global",
+      "experienceType": "cx",
+      "channel": "web",
+      "isChatbotTranslationsEnabled": false,
+      "siteVariant": "default",
+      "chatbotAvatar": "https://d1b9xwwlt0lrqx.cloudfront.net/dev/bot-icons/prod-ir-CISCISGLOBAL-en_global-cx-web-chatbotavatar-1762363619754.png",
+      "chatbotLoadDelay": 0,
+      "privacyPolicy": "By interacting with this chat, the information you provide, including your personal details and application data, may be used to assist you with job searches and applications, provide relevant job recommendations based on your profile, and answer any inquires you may have about the application process or Cisco. Your data will processed in accordance with our <a target=\"_blank\" aria-label=\"privacy statement Opens in new tab\" href=\"https://www.cisco.com/c/en/us/about/legal/privacy-full.html\">privacy statement</a>. Please note, your use of the chatbot is voluntary.",
+      "isUnansweredQuestionsEnabled": true,
+      "isBotPopUpCloseStateEnabled": true,
+      "chatbotQuickReplyTextColor": "#1869ff",
+      "isChatbotNotificationSoundEnabled": false,
+      "isChatbotEmbedScriptEnabled": false,
+      "isScreeningCarryForwardEnabled": false,
+      "quickApplySlots": [
+        "user_first_name",
+        "user_last_name",
+        "user_contact",
+        "is_form_based_apply"
+      ],
+      "isJobAlertsEnabled": true,
+      "isQuickApplyEnabled": true,
+      "isFaqSuggestionsEnabled": true,
+      "screeningQuestionsSource": "crm",
+      "preferredLanguageLocale": "en_us",
+      "isChannelEnabled": true,
+      "isAssesmentEnabled": false,
+      "isMultilingualEnabled": false,
+      "chatbotMessageDelay": 2,
+      "isNewTagEnabled": true,
+      "isJobSearchSuggestionsAllowedForFaqs": true,
+      "chatbotFlowVersion": "3.0",
+      "chatbotName": "Ask Careers Bot",
+      "isChatbotMessageAvatarEnabled": false,
+      "isBertEnabled": false,
+      "fallbackSimilarityThreshold": 1.7,
+      "isFaqOnlyChatbotEnabled": false,
+      "isPersonalizationOnDemandEnabled": true,
+      "chatbotDescription": "Conversational Bot",
+      "personalizationOnDemandSlots": [
+        "flow_type",
+        "user_job_title",
+        "user_preferred_locations"
+      ],
+      "chatbotAvatars": [
+        "https://cdn-bot.phenompeople.com/assets/icons/icon_1.svg",
+        "https://cdn-bot.phenompeople.com/assets/icons/icon_2.svg",
+        "https://cdn-bot.phenompeople.com/assets/icons/icon_3.svg",
+        "https://cdn-bot.phenompeople.com/assets/icons/icon_4.svg",
+        "https://cdn-bot.phenompeople.com/assets/icons/icon_5.svg"
+      ],
+      "chatbotPrimaryColor": "#1869ff",
+      "isFaqEnabled": true,
+      "isSmallTalkEnabled": true,
+      "jobSearchSlots": [
+        "category",
+        "city_state_country"
+      ],
+      "isPrivacyPolicyEnabled": true,
+      "faqSuggestionsThreshold": 0.5,
+      "chatbotSentenceSimilarityThreshold": 0.825,
+      "knowledgeBaseSentenceSimilarityThreshold": 0.7,
+      "faqImportSentenceSimilarityThreshold": 0.95,
+      "isScreeningEnabled": false,
+      "screeningQuestionsExpireAfter": 120,
+      "isPopularFaqsEnabled": true,
+      "isCovidMenuEnabled": false,
+      "jobAlertsSlots": [
+        "alert_category",
+        "alert_location",
+        "alert_frequency",
+        "user_email"
+      ],
+      "chatbotSilenceSound": "https://cdn-bot.phenompeople.com/txm-bot/prod/silence.mp3",
+      "isSimilarJobSuggestionsEnabled": true,
+      "positionOfGenericCard": 16,
+      "isPopularTopicsEnabled": false,
+      "isLocationFieldEnabled": true,
+      "isJobCategoryEnabled": true,
+      "isSalaryEnabled": true,
+      "excludeHistoryInFaqSuggestions": false,
+      "chatbotMessageTextColor": "#ffffff",
+      "isChatbotMessageSoundEnabled": false,
+      "isReplyingUnansweredQuestionsEnabled": false,
+      "isJobSearchEnabled": true,
+      "chatbotTranslations": "https://cdn-bot.phenompeople.com/i18n/MASTER.json",
+      "chatbotMessageSound": "https://cdn-bot.phenompeople.com/txm-bot/prod/Bot_messages.mp3",
+      "chatbotNotificationSound": "https://cdn-bot.phenompeople.com/txm-bot/prod/Bot_notification.mp3",
+      "isSmsOptInEnabled": true,
+      "isDateOfPostingEnabled": true,
+      "isFormOfEmploymentEnabled": true,
+      "chatbotInjectScript": "<link href='https://cdn-bot.phenompeople.com/chatbot-builds/prod-ir/phenom-chatbot-v0.6.265.css' rel='stylesheet'/><phenom-chatbot instanceId='PhenomChatbot'></phenom-chatbot><script type='text/javascript' defer src='https://cdn-bot.phenompeople.com/chatbot-builds/prod-ir/phenom-chatbot-v0.6.265.js'></script>",
+      "email": null,
+      "name": null,
+      "chatbotVersion": "2.0",
+      "ddo": {
+        "conversation": {
+          "name": "botapp"
+        },
+        "init": {
+          "name": "chatbotLoadTC"
+        },
+        "audioTranscript": {
+          "name": "chatbotAudioTranscript"
+        }
+      },
+      "isZoneBasedNotificationEnabled": false,
+      "isAiGeneratedFaqsEnabled": true,
+      "isGenerativeAINerEnabled": true,
+      "isGenerativeAIICEnabled": true,
+      "isNearByJobsEnabled": false,
+      "isChatbotAutoOpenEnabledForMobileAndJdPage": false,
+      "isChatbotAutoOpenEnabledForDesktopAndNonJdPage": false,
+      "isChatbotAutoOpenEnabledForDesktopAndJdPage": false,
+      "isChatbotAutoOpenEnabledForDesktopAndSearchResultsPage": false,
+      "isChatbotAutoOpenEnabledForMobileAndNonJdPage": false,
+      "isChatbotAutoOpenEnabledForMobileAndSearchResultsPage": false,
+      "qaVectorVersion": "muse",
+      "isGenerativeAIFAQInferenceEnabled": true,
+      "isGAITemplateGenerationEnabled": false,
+      "chatbotTheme": "prime",
+      "subscriptionTier": "talent-companion",
+      "externalComponents": {
+        "assessmentForm": {
+          "tagId": "hvhAssessmentDiv",
+          "scriptType": "text/javascript",
+          "componentScriptUrlVariablePaths": [
+            "phApp.ddo.siteConfig.data.hvxAssesmentsInfo.vendor",
+            "phApp.ddo.siteConfig.data.hvxAssesmentsInfo.app"
+          ],
+          "componentStyleUrlVariablePaths": [
+            "phApp.ddo.siteConfig.data.hvxAssesmentsInfo.style"
+          ]
+        },
+        "mapboxMap": {
+          "tagName": "ph-mapbox-map",
+          "componentScriptUrl": "https://cdn-bot.phenompeople.com/chatbot-wc-builds/prod-ir/mapbox-map/phenom-wc-mapbox-map-v0.1.4.js"
+        },
+        "hvhAssessment": {
+          "tagId": "hvhAssessmentDiv",
+          "componentScriptUrlVariablePaths": [
+            "phApp.ddo.siteConfig.data.hvxAssesmentsInfo.vendor",
+            "phApp.ddo.siteConfig.data.hvxAssesmentsInfo.app"
+          ],
+          "componentStyleUrlVariablePaths": [
+            "phApp.ddo.siteConfig.data.hvxAssesmentsInfo.style"
+          ]
+        },
+        "candidateSchedulingWidget": {
+          "componentInjectScript": "<script id='shVueWs' src='https://schedule.scheduling-ca-uat.phenompeople.com/scheduling-vue-widgets/stgir/scripts/scheduling-vue-loader/scheduling-vue-loader.iife.js'></script>",
+          "tagId": "chatbotCandidateSchedulingWidget",
+          "postScriptFunctionCalls": [
+            {
+              "functionName": "loadSchedulingWidget",
+              "attributesArg": {
+                "replaceIndex": 2
+              },
+              "arguments": [
+                "sh-candidate-chatbot-scheduling",
+                "#chatbotCandidateSchedulingWidget"
+              ]
+            }
+          ]
+        },
+        "applyForm": {
+          "tagClass": "ph-generic-apply",
+          "componentInjectScript": "<script src='https://cdn-stg-static.phenompeople.com/CareerConnectResources/COMMON/js/applyStudioBundles/cms/V1/loadRenderer.js'></script>"
+        }
+      },
+      "isHostedApplyEnabled": false,
+      "guided_search_slot_mapping": {
+        "is_remote": "ml_job_parser.is_remote"
+      },
+      "isViewApplicationsEnabled": false,
+      "isChatbotClearConversationEnabled": true,
+      "experienceDerivationFactor": 2,
+      "isPeopleAlsoAppliedJobsEnabled": true,
+      "isLatestJobsEnabled": true,
+      "isRecentlyAddedJobsEnabled": false,
+      "isCXScreeningEnabled": false,
+      "use12HourFormat": true,
+      "chatbotVoiceAssistSound": "https://cdn-bot.phenompeople.com/chatbot-builds/audio/voice-assist-1.mp3",
+      "userMessageSuggestionsThreshold": 0.775,
+      "jobDistanceUnit": "mi",
+      "isJobDistanceWithUnitEnabled": false,
+      "utmParams": "",
+      "isWorkflowConfigured": true,
+      "isDiscoverEventsEnabled": false,
+      "discoverEventsSlots": [
+        "event_purposes",
+        "event_is_remote",
+        "event_locations"
+      ],
+      "isJobSearchWorkflowConfigured": false,
+      "isQuickApplyWorkflowConfigured": true,
+      "isChatbotVoiceInputEnabled": true,
+      "isCosineSimilarityICEnabled": false,
+      "isPhenomNLUICEnabled": true,
+      "updateJobSearchCategoryInProfile": false,
+      "jobAlertsLocationPreferenceScope": "global",
+      "jobAlertsCategoryPreferenceScope": "open_only",
+      "isSen2vecEnabled": true,
+      "isPopularCategoriesEnabled": true,
+      "isRotatingPhrasesEnabled": true,
+      "agentGoogleSearchAllowedSites": [],
+      "communicationsOptinList": [
+        "email_opt_in",
+        "sms_opt_in"
+      ],
+      "aiConsentList": [
+        "aiDiscoveryConsent",
+        "fitScoreConsent"
+      ],
+      "isFormBasedApplyEnabled": false,
+      "isAgenticJobSearchEnabled": false,
+      "isPhoneNumberComponentEnabled": false,
+      "isMultiLanguageChatbotEnabled": false,
+      "ProfileConsentList": [],
+      "mandateoptinforAlerts": false,
+      "supportedLanguages": [
+        "cs_cs",
+        "tr_tr",
+        "hu_hu",
+        "da_da",
+        "fi_fi",
+        "no_no",
+        "ro_ro",
+        "id_id",
+        "sk_sk",
+        "de_de",
+        "es_es",
+        "sv_sv",
+        "it_it",
+        "pt_pt",
+        "pl_pl",
+        "nl_nl",
+        "fr_fr",
+        "ja_ja",
+        "ko_ko",
+        "th_th",
+        "sq_sq",
+        "hy_hy",
+        "bg_bg",
+        "zh-Hans",
+        "hr_hr",
+        "et_et",
+        "el_el",
+        "lv_lv",
+        "lt_lt",
+        "ms_ms",
+        "ru_ru",
+        "sr-Latn",
+        "uk_uk",
+        "vi_vi",
+        "en_us"
+      ],
+      "isChannelConfigured": true,
+      "customerName": "Cisco",
+      "regionName": "English (GLOBAL)",
+      "uploadedChatbotAvatar": "https://d1b9xwwlt0lrqx.cloudfront.net/dev/bot-icons/prod-ir-CISCISGLOBAL-en_global-cx-web-uploadedchatbotavatar-1762363619754.png",
+      "isAiCapabilitiesEnabled": true,
+      "isNluFlagsEnabled": true
+    },
+    "timestamp": "2026-08-22T20:11:18.124Z",
+    "path": "/v1/configurations.chatbot",
+    "statusCode": 200,
+    "status": "success"
+  }
+}

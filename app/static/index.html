@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Career Job Extraction Engine</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="brand">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-spider"></i>
+                </div>
+                <div>
+                    <h1>Adaptive Job Extractor</h1>
+                    <p class="subtitle">Multi-Platform ATS & API Extraction Engine</p>
+                </div>
+            </div>
+            <div class="header-badges">
+                <span class="status-badge live"><i class="fa-solid fa-circle"></i> Engine Ready</span>
+                <span class="version-badge">v2.4.0</span>
+            </div>
+        </header>
+
+        <!-- Main Content Layout -->
+        <main class="main-content">
+            <!-- Extraction Control Panel -->
+            <section class="control-panel card-glass">
+                <div class="panel-header">
+                    <h2><i class="fa-solid fa-bolt"></i> Extraction Controls</h2>
+                    <span class="hint-text">Enter any career site or ATS listing URL</span>
+                </div>
+
+                <form id="extractionForm" onsubmit="handleExtraction(event)">
+                    <!-- URL Input Row -->
+                    <div class="form-group url-group">
+                        <label for="urlInput">Target Career / ATS URL</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-link input-icon"></i>
+                            <input type="url" id="urlInput" placeholder="https://boards.greenhouse.io/figma or https://enterpriseplatform.dell.com/..." required>
+                            <button type="button" class="btn-clear" onclick="clearUrlInput()" title="Clear input"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Preset Quick Load Pill Buttons -->
+                    <div class="presets-container">
+                        <span class="presets-label">Quick Presets:</span>
+                        <div class="preset-pills">
+                            <button type="button" class="preset-pill" onclick="loadPreset('dell')">
+                                <i class="fa-brands fa-cloud"></i> Dell (Oracle HCM)
+                            </button>
+                            <button type="button" class="preset-pill" onclick="loadPreset('broadcom')">
+                                <i class="fa-solid fa-briefcase"></i> Broadcom (Workday)
+                            </button>
+                            <button type="button" class="preset-pill" onclick="loadPreset('figma')">
+                                <i class="fa-solid fa-seedling"></i> Figma (Greenhouse)
+                            </button>
+                            <button type="button" class="preset-pill" onclick="loadPreset('cisco')">
+                                <i class="fa-solid fa-network-wired"></i> Cisco (Phenom)
+                            </button>
+                            <button type="button" class="preset-pill" onclick="loadPreset('exl')">
+                                <i class="fa-solid fa-building"></i> EXL (Oracle Cloud)
+                            </button>
+                            <button type="button" class="preset-pill" onclick="loadPreset('hpe')">
+                                <i class="fa-solid fa-server"></i> HPE (Phenom)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Config Controls Row -->
+                    <div class="config-grid">
+                        <div class="form-group">
+                            <label for="maxJobsInput">Max Jobs Limit: <span id="maxJobsValue" class="accent-text">25</span></label>
+                            <input type="range" id="maxJobsInput" min="1" max="100" value="25" oninput="document.getElementById('maxJobsValue').innerText = this.value">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferredLocInput">Preferred Location (Optional)</label>
+                            <div class="input-with-icon">
+                                <i class="fa-solid fa-location-dot input-icon"></i>
+                                <input type="text" id="preferredLocInput" placeholder="e.g. India, Bangalore, Remote">
+                            </div>
+                        </div>
+
+                        <div class="form-group toggle-group">
+                            <label for="includeDetailsToggle">Rich Detail Enrichment</label>
+                            <label class="switch">
+                                <input type="checkbox" id="includeDetailsToggle" checked>
+                                <span class="slider round"></span>
+                            </label>
+                            <span class="toggle-hint">Extract responsibilities, skills & benefits</span>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" id="submitBtn" class="btn-primary">
+                            <span class="btn-text"><i class="fa-solid fa-play"></i> Extract Jobs</span>
+                            <span class="btn-loader spinner" style="display: none;"></span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Loading State -->
+            <div id="loadingOverlay" class="loading-overlay card-glass" style="display: none;">
+                <div class="spinner-large"></div>
+                <h3 id="loadingText">Extracted job sources & running pipeline...</h3>
+                <p id="loadingSubtext">Classifying ATS vendor, executing extraction strategy & enriching job descriptions</p>
+            </div>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section" style="display: none;">
+                <!-- Summary Metrics Ribbon -->
+                <div class="metrics-grid">
+                    <div class="metric-card card-glass">
+                        <div class="metric-icon cyan"><i class="fa-solid fa-list-check"></i></div>
+                        <div class="metric-info">
+                            <span class="metric-label">Jobs Returned</span>
+                            <span class="metric-value" id="metricReturned">0</span>
+                            <span class="metric-sub" id="metricTotalFound">out of 0 found</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card card-glass">
+                        <div class="metric-icon emerald"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <div class="metric-info">
+                            <span class="metric-label">Jobs Enriched</span>
+                            <span class="metric-value" id="metricEnriched">0</span>
+                            <span class="metric-sub" id="metricEnrichFailed">0 failed</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card card-glass">
+                        <div class="metric-icon indigo"><i class="fa-solid fa-network-wired"></i></div>
+                        <div class="metric-info">
+                            <span class="metric-label">Source Type / ATS</span>
+                            <span class="metric-value" id="metricATS">N/A</span>
+                            <span class="metric-sub" id="metricStrategy">Strategy: N/A</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card card-glass">
+                        <div class="metric-icon amber"><i class="fa-solid fa-stopwatch"></i></div>
+                        <div class="metric-info">
+                            <span class="metric-label">Execution Time</span>
+                            <span class="metric-value" id="metricTime">0.0s</span>
+                            <span class="metric-sub">Parallel async processing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs & Toolbar -->
+                <div class="results-toolbar card-glass">
+                    <div class="nav-tabs">
+                        <button type="button" class="tab-btn active" onclick="switchTab('tableTab')">
+                            <i class="fa-solid fa-table"></i> Structured Table View
+                        </button>
+                        <button type="button" class="tab-btn" onclick="switchTab('jsonTab')">
+                            <i class="fa-solid fa-code"></i> Raw JSON Response
+                        </button>
+                        <button type="button" class="tab-btn" onclick="switchTab('metaTab')">
+                            <i class="fa-solid fa-circle-info"></i> Extraction Logs & Metadata
+                        </button>
+                    </div>
+
+                    <div class="toolbar-actions">
+                        <button type="button" class="btn-success" onclick="downloadCSV()">
+                            <i class="fa-solid fa-file-csv"></i> Download CSV
+                        </button>
+                        <button type="button" class="btn-secondary" onclick="copyJSON()">
+                            <i class="fa-solid fa-copy"></i> Copy JSON
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TAB 1: Structured Table View -->
+                <div id="tableTab" class="tab-content active">
+                    <div class="table-container card-glass">
+                        <table class="jobs-table" id="jobsTable">
+                            <thead>
+                                <tr>
+                                    <th>Job ID</th>
+                                    <th>Role / Title</th>
+                                    <th>Location</th>
+                                    <th>ATS / Source</th>
+                                    <th>Key Responsibilities</th>
+                                    <th>Skills Extracted</th>
+                                    <th>Posted Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="jobsTableBody">
+                                <!-- Populated dynamically by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 2: Raw JSON Viewer -->
+                <div id="jsonTab" class="tab-content" style="display: none;">
+                    <div class="json-container card-glass">
+                        <pre><code id="jsonCodeBlock"></code></pre>
+                    </div>
+                </div>
+
+                <!-- TAB 3: Metadata & Logs -->
+                <div id="metaTab" class="tab-content" style="display: none;">
+                    <div class="meta-container card-glass">
+                        <h3>Extraction Pipeline Execution Metadata</h3>
+                        <div id="metaContent" class="meta-details"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Detail Modal -->
+        <div id="jobDetailModal" class="modal" onclick="closeModalOnBackdrop(event)">
+            <div class="modal-content card-glass">
+                <div class="modal-header">
+                    <div>
+                        <h2 id="modalTitle">Job Title</h2>
+                        <span id="modalMeta" class="modal-meta">Location | Department</span>
+                    </div>
+                    <button type="button" class="btn-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Dynamic details content -->
+                </div>
+                <div class="modal-footer">
+                    <a href="#" id="modalApplyBtn" target="_blank" class="btn-primary">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Original Posting
+                    </a>
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast"></div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
