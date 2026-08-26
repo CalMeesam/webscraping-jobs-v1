@@ -71,7 +71,10 @@ class PlaywrightExtractor(BaseExtractor):
             
             # If no jobs found yet, continue scrolling
             if current_job_count == 0:
-                await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                try:
+                    await page.evaluate("window.scrollTo(0, document.body ? document.body.scrollHeight : 0)")
+                except Exception:
+                    pass
                 await page.wait_for_timeout(1500)
                 scroll_count += 1
                 continue
@@ -91,7 +94,11 @@ class PlaywrightExtractor(BaseExtractor):
             previous_job_count = current_job_count
             
             # Scroll to bottom
-            await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+            try:
+                await page.evaluate("window.scrollTo(0, document.body ? document.body.scrollHeight : 0)")
+            except Exception:
+                pass
+
             
             # Wait for new content to load
             await page.wait_for_timeout(1500)

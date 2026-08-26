@@ -1,7 +1,23 @@
 """Response schemas for job extraction endpoint."""
 
+from typing import Any
 from pydantic import BaseModel, Field
 from app.models.normalized_job import NormalizedJob
+
+
+class DiffSummary(BaseModel):
+    has_previous_run: bool = False
+    latest_run_id: int | None = None
+    previous_run_id: int | None = None
+    latest_run_at: str | None = None
+    previous_run_at: str | None = None
+    new_jobs_count: int = 0
+    removed_jobs_count: int = 0
+    unchanged_jobs_count: int = 0
+    new_job_keys: list[str] = Field(default_factory=list)
+    removed_job_keys: list[str] = Field(default_factory=list)
+    unchanged_job_keys: list[str] = Field(default_factory=list)
+    message: str | None = None
 
 
 class ExtractionMetadata(BaseModel):
@@ -13,6 +29,7 @@ class ExtractionMetadata(BaseModel):
 
     source_type: str | None = None
     ats: str | None = None
+    customer_id: str | None = None
 
     extraction_strategy: str | None = None
 
@@ -26,6 +43,8 @@ class ExtractionMetadata(BaseModel):
     jobs_enrichment_attempted: int = 0
     jobs_enriched: int = 0
     jobs_enrichment_failed: int = 0
+
+    diff_summary: dict[str, Any] | None = None
 
     warnings: list[str] = Field(default_factory=list)
     errors: list[str] = Field(default_factory=list)

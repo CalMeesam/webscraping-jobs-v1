@@ -141,8 +141,21 @@
 
             <!-- Results Section -->
             <section id="resultsSection" class="results-section" style="display: none;">
+                <!-- Diff Banner Ribbon -->
+                <div id="diffBanner" class="diff-banner card-glass" style="display: none;">
+                    <div class="diff-banner-content">
+                        <i class="fa-solid fa-clock-rotate-left diff-banner-icon"></i>
+                        <span id="diffBannerText">0 new jobs, 0 removed since last check</span>
+                    </div>
+                    <div class="diff-badges">
+                        <span id="diffBadgeNew" class="diff-badge new"><i class="fa-solid fa-plus-circle"></i> 0 New</span>
+                        <span id="diffBadgeRemoved" class="diff-badge removed"><i class="fa-solid fa-minus-circle"></i> 0 Removed</span>
+                    </div>
+                </div>
+
                 <!-- Summary Metrics Ribbon -->
                 <div class="metrics-grid">
+
                     <div class="metric-card card-glass">
                         <div class="metric-icon cyan"><i class="fa-solid fa-list-check"></i></div>
                         <div class="metric-info">
@@ -360,8 +373,29 @@
             </div>
         </div>
 
+        <!-- Run History Modal -->
+        <div id="historyModal" class="modal" onclick="closeHistoryModalOnBackdrop(event)">
+            <div class="modal-content card-glass history-modal">
+                <div class="modal-header">
+                    <div>
+                        <h2><i class="fa-solid fa-timeline"></i> Extraction Run History</h2>
+                        <span id="historyModalMeta" class="modal-meta">Customer Run Timeline</span>
+                    </div>
+                    <button type="button" class="btn-close" onclick="closeHistoryModal()"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div id="historySummary" class="history-summary-box"></div>
+                    <div id="historyList" class="history-list"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeHistoryModal()">Close</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Toast Notification -->
         <div id="toast" class="toast"></div>
+
     </div>
 
     <script src="/static/app.js"></script>

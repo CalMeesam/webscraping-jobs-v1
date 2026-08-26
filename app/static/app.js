@@ -4,7 +4,8 @@
 
 let currentData = null;
 let customersData = [];
-let editingCustomerId = null;  // Track which customer is being edited
+let editingCustomerId = null; // Track which customer is being edited
+let newJobKeysSet = new Set(); // Track new job identity keys for highlighting
 
 const PRESETS = {
     dell: "https://enterpriseplatform.dell.com/hcmUI/CandidateExperience/en/sites/careers/jobs?mode=location",
@@ -67,9 +68,14 @@ function renderCustomerGrid(customers) {
                             <i class="fa-solid fa-user"></i> ${customer.director}
                         </span>
                     </div>
-                    <button type="button" class="btn-edit-customer" onclick="openEditCustomerModal('${customer.customer_id}')" title="Edit customer">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
+                    <div class="customer-actions">
+                        <button type="button" class="btn-history-customer" onclick="openCustomerHistoryModal('${customer.customer_id}')" title="View extraction run history">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </button>
+                        <button type="button" class="btn-edit-customer" onclick="openEditCustomerModal('${customer.customer_id}')" title="Edit customer">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                    </div>
                 </div>
                 ${hasMultipleLinks 
                     ? `<div class="customer-links-multi">
@@ -104,14 +110,11 @@ function selectCustomerLink(customerId, linkIndex) {
 }
 
 // ============================================
-// ADD CUSTOMER MODAL
+// ADD & EDIT CUSTOMER MODAL
 // ============================================
 
 function openAddCustomerModal() {
-    // Reset edit mode
     editingCustomerId = null;
-    
-    // Reset modal title for add mode
     document.querySelector('#addCustomerModal .modal-header h2').innerHTML = 
         '<i class="fa-solid fa-building-circle-arrow-right"></i> Add New Customer';
     document.querySelector('#addCustomerModal .modal-meta').textContent = 
@@ -126,9 +129,8 @@ function openAddCustomerModal() {
 function closeAddCustomerModal() {
     document.getElementById('addCustomerModal').style.display = 'none';
     document.getElementById('addCustomerForm').reset();
-    editingCustomerId = null;  // Clear edit mode
+    editingCustomerId = null;
     
-    // Reset modal title
     document.querySelector('#addCustomerModal .modal-header h2').innerHTML = 
         '<i class="fa-solid fa-building-circle-arrow-right"></i> Add New Customer';
     document.querySelector('#addCustomerModal .modal-meta').textContent = 
@@ -136,7 +138,6 @@ function closeAddCustomerModal() {
     document.querySelector('#addCustomerModal button[type="submit"]').innerHTML = 
         '<i class="fa-solid fa-check"></i> Add Customer';
     
-    // Reset to single BizDev and Career Link inputs
     document.getElementById('bizdevContainer').innerHTML = `
         <div class="bizdev-input-row">
             <input type="text" class="bizdev-input" placeholder="Enter name" required>
@@ -207,7 +208,7 @@ function removeCareerLinkInput(button) {
 function updateRemoveButtons(containerId, rowSelector) {
     const container = document.getElementById(containerId);
     const rows = container.querySelectorAll(rowSelector);
-    rows.forEach((row, index) => {
+    rows.forEach((row) => {
         const removeBtn = row.querySelector('.btn-icon-remove');
         removeBtn.disabled = rows.length === 1;
     });
@@ -219,11 +220,9 @@ async function handleAddCustomer(event) {
     const customerName = document.getElementById('customerName').value.trim();
     const director = document.getElementById('customerDirector').value.trim();
     
-    // Collect BizDev contacts
     const bizdevInputs = document.querySelectorAll('.bizdev-input');
     const bizdev = Array.from(bizdevInputs).map(input => input.value.trim()).filter(v => v);
     
-    // Collect Career Links
     const linkRows = document.querySelectorAll('.career-link-row');
     const careerLinks = Array.from(linkRows).map(row => ({
         label: row.querySelector('.link-label-input').value.trim(),
@@ -241,9 +240,7 @@ async function handleAddCustomer(event) {
     try {
         const response = await fetch('/customers', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 customer_name: customerName,
                 director: director,
@@ -260,37 +257,13 @@ async function handleAddCustomer(event) {
         const result = await response.json();
         showToast(`Successfully added ${result.customer.customer_name}!`, 'success');
         
-        // Refresh customer grid
         await loadCustomers();
-        
-        // Close modal
         closeAddCustomerModal();
         
     } catch (err) {
         showError('addCustomerError', err.message);
     }
 }
-
-// Unified form handler that routes to add or edit
-async function handleCustomerForm(event) {
-    event.preventDefault();
-    
-    if (editingCustomerId) {
-        await handleEditCustomer(event);
-    } else {
-        await handleAddCustomer(event);
-    }
-}
-
-function showError(elementId, message) {
-    const errorDiv = document.getElementById(elementId);
-    errorDiv.textContent = message;
-    errorDiv.style.display = 'block';
-}
-
-// ============================================
-// EDIT CUSTOMER MODAL
-// ============================================
 
 function openEditCustomerModal(customerId) {
     const customer = customersData.find(c => c.customer_id === customerId);
@@ -299,22 +272,18 @@ function openEditCustomerModal(customerId) {
         return;
     }
     
-    // Set edit mode
     editingCustomerId = customerId;
     
-    // Update modal title
     document.querySelector('#addCustomerModal .modal-header h2').innerHTML = 
         '<i class="fa-solid fa-pen-to-square"></i> Edit Customer';
     document.querySelector('#addCustomerModal .modal-meta').textContent = 
         'Update customer information';
     
-    // Pre-fill form
     document.getElementById('customerName').value = customer.customer_name;
     document.getElementById('customerDirector').value = customer.director;
     
-    // Pre-fill BizDev contacts
     const bizdevContainer = document.getElementById('bizdevContainer');
-    bizdevContainer.innerHTML = customer.bizdev.map((contact, index) => `
+    bizdevContainer.innerHTML = customer.bizdev.map((contact) => `
         <div class="bizdev-input-row">
             <input type="text" class="bizdev-input" placeholder="Enter name" value="${contact}" required>
             <button type="button" class="btn-icon-remove" onclick="removeBizDevInput(this)" ${customer.bizdev.length === 1 ? 'disabled' : ''}>
@@ -323,9 +292,8 @@ function openEditCustomerModal(customerId) {
         </div>
     `).join('');
     
-    // Pre-fill Career Links
     const careerLinksContainer = document.getElementById('careerLinksContainer');
-    careerLinksContainer.innerHTML = customer.career_links.map((link, index) => `
+    careerLinksContainer.innerHTML = customer.career_links.map((link) => `
         <div class="career-link-row">
             <input type="text" class="link-label-input" placeholder="Label (e.g. Main Portal)" value="${link.label}" required>
             <input type="url" class="link-url-input" placeholder="https://example.com/careers" value="${link.url}" required>
@@ -335,11 +303,9 @@ function openEditCustomerModal(customerId) {
         </div>
     `).join('');
     
-    // Change submit button text
     document.querySelector('#addCustomerModal button[type="submit"]').innerHTML = 
         '<i class="fa-solid fa-check"></i> Update Customer';
     
-    // Show modal
     document.getElementById('addCustomerModal').style.display = 'flex';
     document.getElementById('addCustomerError').style.display = 'none';
 }
@@ -355,11 +321,9 @@ async function handleEditCustomer(event) {
     const customerName = document.getElementById('customerName').value.trim();
     const director = document.getElementById('customerDirector').value.trim();
     
-    // Collect BizDev contacts
     const bizdevInputs = document.querySelectorAll('.bizdev-input');
     const bizdev = Array.from(bizdevInputs).map(input => input.value.trim()).filter(v => v);
     
-    // Collect Career Links
     const linkRows = document.querySelectorAll('.career-link-row');
     const careerLinks = Array.from(linkRows).map(row => ({
         label: row.querySelector('.link-label-input').value.trim(),
@@ -377,9 +341,7 @@ async function handleEditCustomer(event) {
     try {
         const response = await fetch(`/customers/${editingCustomerId}`, {
             method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 customer_name: customerName,
                 director: director,
@@ -396,10 +358,7 @@ async function handleEditCustomer(event) {
         const result = await response.json();
         showToast(`Successfully updated ${result.customer.customer_name}!`, 'success');
         
-        // Refresh customer grid
         await loadCustomers();
-        
-        // Close modal
         closeAddCustomerModal();
         
     } catch (err) {
@@ -407,8 +366,105 @@ async function handleEditCustomer(event) {
     }
 }
 
+async function handleCustomerForm(event) {
+    event.preventDefault();
+    if (editingCustomerId) {
+        await handleEditCustomer(event);
+    } else {
+        await handleAddCustomer(event);
+    }
+}
+
+function showError(elementId, message) {
+    const errorDiv = document.getElementById(elementId);
+    errorDiv.textContent = message;
+    errorDiv.style.display = 'block';
+}
+
 // ============================================
-// PRESET AND URL HANDLING
+// RUN HISTORY MODAL
+// ============================================
+
+async function openCustomerHistoryModal(customerId) {
+    try {
+        const response = await fetch(`/customers/${customerId}/history`);
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        const data = await response.json();
+        
+        document.getElementById('historyModalMeta').innerText = `Customer: ${customerId.toUpperCase()} (${data.total_runs} runs recorded)`;
+        
+        const summaryBox = document.getElementById('historySummary');
+        const diff = data.diff_summary;
+        if (diff && diff.has_previous_run) {
+            summaryBox.innerHTML = `
+                <div class="history-diff-highlight card-glass">
+                    <i class="fa-solid fa-clock-rotate-left accent-cyan"></i>
+                    <div>
+                        <strong>Latest Change Summary:</strong> ${diff.message || ''}
+                        <div style="margin-top: 6px; font-size: 12px; opacity: 0.8;">
+                            <span class="badge-diff-new">+${diff.new_jobs_count} New</span> | 
+                            <span class="badge-diff-removed">-${diff.removed_jobs_count} Removed</span> | 
+                            <span>${diff.unchanged_jobs_count} Unchanged</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            summaryBox.innerHTML = `
+                <div class="history-diff-highlight card-glass">
+                    <i class="fa-solid fa-flag accent-amber"></i>
+                    <span><strong>Baseline Run:</strong> First extraction recorded for this customer. No prior run comparison available yet.</span>
+                </div>
+            `;
+        }
+        
+        const listEl = document.getElementById('historyList');
+        if (!data.runs || data.runs.length === 0) {
+            listEl.innerHTML = `
+                <div class="empty-state" style="padding: 20px;">
+                    <i class="fa-solid fa-inbox"></i>
+                    <p>No extraction runs recorded yet for this customer.</p>
+                </div>
+            `;
+        } else {
+            listEl.innerHTML = data.runs.map(run => {
+                const runDate = run.run_at ? new Date(run.run_at).toLocaleString() : 'Unknown Date';
+                const statusClass = run.status || 'success';
+                return `
+                    <div class="history-item card-glass">
+                        <div class="history-item-header">
+                            <span class="history-time"><i class="fa-regular fa-calendar-days"></i> ${runDate}</span>
+                            <span class="status-pill ${statusClass}">${run.status.toUpperCase()}</span>
+                        </div>
+                        <div class="history-item-body">
+                            <span><i class="fa-solid fa-briefcase"></i> <strong>Returned:</strong> ${run.jobs_returned_count} jobs (Found ${run.jobs_found_count})</span>
+                            <span><i class="fa-solid fa-diagram-project"></i> <strong>Strategy:</strong> ${run.strategy_used || 'Default'}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        document.getElementById('historyModal').style.display = 'flex';
+    } catch (err) {
+        showToast(`Error fetching history: ${err.message}`);
+    }
+}
+
+function closeHistoryModal() {
+    document.getElementById('historyModal').style.display = 'none';
+}
+
+function closeHistoryModalOnBackdrop(event) {
+    if (event.target.id === 'historyModal') {
+        closeHistoryModal();
+    }
+}
+
+// ============================================
+// PRESETS & EXTRACTION
 // ============================================
 
 function loadPreset(key) {
@@ -421,10 +477,6 @@ function loadPreset(key) {
 function clearUrlInput() {
     document.getElementById('urlInput').value = '';
 }
-
-// ============================================
-// JOB EXTRACTION
-// ============================================
 
 async function handleExtraction(event) {
     event.preventDefault();
@@ -439,16 +491,13 @@ async function handleExtraction(event) {
         return;
     }
     
-    // UI State: Loading
     setLoadingState(true);
     const startTime = performance.now();
     
     try {
         const response = await fetch('/extract-jobs', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 url: url,
                 max_jobs: maxJobs,
@@ -500,10 +549,47 @@ function renderResults(data, elapsedTime) {
     const meta = data.metadata || {};
     const jobs = data.jobs || [];
     
+    // Process Diff Summary Ribbon
+    const diff = meta.diff_summary;
+    const diffBanner = document.getElementById('diffBanner');
+    newJobKeysSet = new Set();
+    
+    if (diff && diff.has_previous_run) {
+        diffBanner.style.display = 'flex';
+        const formattedDate = diff.previous_run_at ? new Date(diff.previous_run_at).toLocaleString() : '';
+        const bannerMessage = formattedDate 
+            ? `${diff.new_jobs_count} new jobs, ${diff.removed_jobs_count} removed since last check on ${formattedDate}`
+            : (diff.message || '');
+        document.getElementById('diffBannerText').innerText = bannerMessage;
+        
+        const badgeNew = document.getElementById('diffBadgeNew');
+        badgeNew.style.display = 'inline-flex';
+        badgeNew.innerHTML = `<i class="fa-solid fa-plus-circle"></i> ${diff.new_jobs_count} New`;
+        
+        const badgeRemoved = document.getElementById('diffBadgeRemoved');
+        badgeRemoved.style.display = 'inline-flex';
+        badgeRemoved.innerHTML = `<i class="fa-solid fa-minus-circle"></i> ${diff.removed_jobs_count} Removed`;
+        
+        if (diff.new_job_keys && diff.new_job_keys.length) {
+            newJobKeysSet = new Set(diff.new_job_keys);
+        }
+    } else if (diff && !diff.has_previous_run) {
+        diffBanner.style.display = 'flex';
+        document.getElementById('diffBannerText').innerText = "First extraction recorded for this customer (Baseline run, no prior comparison available).";
+        
+        const badgeNew = document.getElementById('diffBadgeNew');
+        badgeNew.style.display = 'inline-flex';
+        badgeNew.innerHTML = `<i class="fa-solid fa-flag"></i> Baseline Run`;
+        
+        const badgeRemoved = document.getElementById('diffBadgeRemoved');
+        badgeRemoved.style.display = 'none';
+    } else {
+        diffBanner.style.display = 'none';
+    }
+    
     // Update Metrics Ribbon
     document.getElementById('metricReturned').innerText = jobs.length;
     
-    // Show if results are limited by max_jobs
     const totalFound = meta.total_jobs_found || jobs.length;
     const isLimited = jobs.length < totalFound;
     const metricTotalFoundEl = document.getElementById('metricTotalFound');
@@ -522,25 +608,21 @@ function renderResults(data, elapsedTime) {
     document.getElementById('metricStrategy').innerText = `Strategy: ${meta.extraction_strategy || 'Default'}`;
     document.getElementById('metricTime').innerText = `${elapsedTime}s`;
     
-    // Populate filter dropdowns
     populateFilterDropdowns(jobs);
     
-    // Reset filters and sort state
     filteredJobs = [];
     currentSortColumn = null;
     currentSortDirection = 'asc';
     
-    // Render Jobs Table
     renderTableRows(jobs);
     
-    // Render JSON Code Block
     document.getElementById('jsonCodeBlock').innerText = JSON.stringify(data, null, 2);
     
-    // Render Metadata Log
     const metaContainer = document.getElementById('metaContent');
     metaContainer.innerHTML = `
         <div style="font-family: var(--font-code); font-size: 13px; color: var(--text-muted);">
             <p><strong>Input URL:</strong> ${escapeHtml(meta.input_url || '')}</p>
+            <p><strong>Customer ID:</strong> ${escapeHtml(meta.customer_id || 'N/A')}</p>
             <p><strong>Resolved URL:</strong> ${escapeHtml(meta.resolved_url || '')}</p>
             <p><strong>Source Type:</strong> ${escapeHtml(meta.source_type || '')}</p>
             <p><strong>ATS Vendor:</strong> ${escapeHtml(meta.ats || 'None')}</p>
@@ -570,7 +652,6 @@ function downloadCSV() {
         return;
     }
     
-    // Match server-side CSV exporter column structure
     const headers = [
         'id', 'external_job_id', 'requisition_id', 'title',
         'location_raw', 'location_city', 'location_state', 'location_country',
@@ -581,7 +662,6 @@ function downloadCSV() {
     ];
     
     const rows = currentData.jobs.map(job => {
-        // Extract location fields
         let locationRaw = '', locationCity = '', locationState = '', locationCountry = '';
         if (job.location) {
             if (typeof job.location === 'object') {
@@ -594,7 +674,6 @@ function downloadCSV() {
             }
         }
         
-        // Join list fields with semicolons
         const responsibilities = (job.responsibilities || []).join('; ');
         const requirements = (job.requirements || []).join('; ');
         const preferredQuals = (job.preferred_qualifications || []).join('; ');
@@ -633,7 +712,6 @@ function downloadCSV() {
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
     
-    // Generate filename from source
     const source = (currentData.metadata && currentData.metadata.source) || 'jobs';
     link.setAttribute('download', `${source}_jobs_export_${Date.now()}.csv`);
     
@@ -727,13 +805,11 @@ function escapeHtml(str) {
         .replace(/'/g, '&#039;');
 }
 
-// Table filtering and sorting
 let currentSortColumn = null;
 let currentSortDirection = 'asc';
 let filteredJobs = [];
 
 function populateFilterDropdowns(jobs) {
-    // Populate ATS filter
     const atsSet = new Set();
     const locationSet = new Set();
     
@@ -747,12 +823,10 @@ function populateFilterDropdowns(jobs) {
         if (location) locationSet.add(location);
     });
     
-    // Update ATS dropdown
     const atsFilter = document.getElementById('filterATS');
     atsFilter.innerHTML = '<option value="">All ATS</option>' + 
         Array.from(atsSet).sort().map(ats => `<option value="${ats}">${ats.toUpperCase()}</option>`).join('');
     
-    // Update Location dropdown (limit to top 20 most common)
     const locationFilter = document.getElementById('filterLocation');
     const topLocations = Array.from(locationSet).sort().slice(0, 20);
     locationFilter.innerHTML = '<option value="">All Locations</option>' + 
@@ -767,7 +841,6 @@ function filterTable() {
     const locationFilter = document.getElementById('filterLocation').value;
     
     filteredJobs = currentData.jobs.filter(job => {
-        // Search filter (title, location, skills, description)
         if (searchTerm) {
             const title = (job.title || '').toLowerCase();
             const location = (typeof job.location === 'object' ? (job.location.raw || '') : String(job.location || '')).toLowerCase();
@@ -784,12 +857,10 @@ function filterTable() {
             }
         }
         
-        // ATS filter
         if (atsFilter && job.ats !== atsFilter) {
             return false;
         }
         
-        // Location filter
         if (locationFilter) {
             const jobLocation = typeof job.location === 'object' ? (job.location.raw || '') : String(job.location || '');
             if (jobLocation !== locationFilter) {
@@ -800,10 +871,8 @@ function filterTable() {
         return true;
     });
     
-    // Re-render table with filtered jobs
     renderTableRows(filteredJobs);
     
-    // Show filter count
     if (filteredJobs.length !== currentData.jobs.length) {
         showToast(`Showing ${filteredJobs.length} of ${currentData.jobs.length} jobs`);
     }
@@ -820,7 +889,6 @@ function clearFilters() {
 function sortTable(column) {
     if (!currentData || !currentData.jobs) return;
     
-    // Toggle sort direction if same column
     if (currentSortColumn === column) {
         currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
     } else {
@@ -828,7 +896,6 @@ function sortTable(column) {
         currentSortDirection = 'asc';
     }
     
-    // Get jobs to sort (filtered or all)
     const jobsToSort = filteredJobs.length > 0 ? [...filteredJobs] : [...currentData.jobs];
     
     jobsToSort.sort((a, b) => {
@@ -882,14 +949,24 @@ function renderTableRows(jobs) {
     
     const meta = currentData.metadata || {};
     
-    jobs.forEach((job, index) => {
+    jobs.forEach((job) => {
         const tr = document.createElement('tr');
         
         const jobId = job.id || job.requisition_id || job.external_job_id || `JOB-${currentData.jobs.indexOf(job) + 1}`;
         const title = job.title || 'Untitled Role';
         const jobUrl = job.job_url || '#';
         
-        // Format Location
+        // Helper to check if job is NEW based on identity key
+        let isNewJob = false;
+        if (newJobKeysSet.size > 0) {
+            const possibleKeys = [
+                `id:${job.id}`,
+                `job_url:${(job.job_url || '').replace(/^https?:\/\//, '').toLowerCase()}`,
+                `app_url:${(job.application_url || '').replace(/^https?:\/\//, '').toLowerCase()}`
+            ];
+            isNewJob = possibleKeys.some(k => newJobKeysSet.has(k));
+        }
+        
         let locStr = 'N/A';
         if (job.location) {
             if (typeof job.location === 'object') {
@@ -899,10 +976,8 @@ function renderTableRows(jobs) {
             }
         }
         
-        // Format ATS Badge
         const atsClass = (job.ats || meta.ats || 'generic').toLowerCase();
         
-        // Format Responsibilities (Top 2 bullets)
         let respHtml = '<span class="text-dim">N/A</span>';
         if (job.responsibilities && job.responsibilities.length > 0) {
             const items = job.responsibilities.slice(0, 2).map(r => `<li>${escapeHtml(r.substring(0, 90))}${r.length > 90 ? '...' : ''}</li>`).join('');
@@ -911,7 +986,6 @@ function renderTableRows(jobs) {
             respHtml = `<span class="text-muted">${escapeHtml(job.description.substring(0, 100))}...</span>`;
         }
         
-        // Format Skills
         let skillsHtml = '<span class="text-dim">None</span>';
         if (job.skills && job.skills.length > 0) {
             skillsHtml = `<div class="skill-pills">${job.skills.map(s => `<span class="skill-pill">${escapeHtml(s)}</span>`).join('')}</div>`;
@@ -920,10 +994,12 @@ function renderTableRows(jobs) {
         const postedAt = job.posted_at || job.employment_type || 'N/A';
         const originalIndex = currentData.jobs.indexOf(job);
         
+        const newBadgeHtml = isNewJob ? '<span class="badge-new-pill"><i class="fa-solid fa-sparkles"></i> NEW</span> ' : '';
+        
         tr.innerHTML = `
             <td><span class="badge-id">${escapeHtml(jobId)}</span></td>
             <td>
-                <a href="${escapeHtml(jobUrl)}" target="_blank" class="job-title-link">${escapeHtml(title)}</a>
+                ${newBadgeHtml}<a href="${escapeHtml(jobUrl)}" target="_blank" class="job-title-link">${escapeHtml(title)}</a>
                 <span class="text-dim" style="font-size: 11px;">${escapeHtml(job.department || '')}</span>
             </td>
             <td><span class="badge-loc"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(locStr)}</span></td>
@@ -938,14 +1014,13 @@ function renderTableRows(jobs) {
             </td>
         `;
         
+        if (isNewJob) {
+            tr.classList.add('row-new-job');
+        }
+        
         tbody.appendChild(tr);
     });
 }
-
-
-// ============================================
-// INITIALIZATION
-// ============================================
 
 // Load customers on page load
 document.addEventListener('DOMContentLoaded', () => {
