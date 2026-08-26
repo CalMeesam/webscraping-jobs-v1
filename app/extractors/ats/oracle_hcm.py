@@ -64,22 +64,9 @@ class OracleHCMExtractor(BaseExtractor):
         location_param = qs.get("location", [None])[0]
         keyword_param = qs.get("keyword", [None])[0]
 
-        limit = context.max_jobs if (context.max_jobs and context.max_jobs > 0) else 25
-
-        api_url = (
-            f"https://{host}/hcmRestApi/resources/latest/recruitingCEJobRequisitions"
-            f"?onlyData=true&expand=requisitionList.workLocation,requisitionList.otherWorkLocations,"
-            f"requisitionList.secondaryLocations,flexFieldsFacet.values,requisitionList.requisitionFlexFields"
-            f"&finder=findReqs;siteNumber={site_number},"
-            f"facetsList=LOCATIONS%3BWORK_LOCATIONS%3BWORKPLACE_TYPES%3BTITLES%3BCATEGORIES%3BORGANIZATIONS%3BPOSTING_DATES%3BFLEX_FIELDS,"
-            f"limit={limit},sortBy=POSTING_DATES_DESC"
-        )
-        if location_param:
-            api_url += f",location={location_param}"
-        if keyword_param:
-            api_url += f",keyword={keyword_param}"
-
-        logger.info(f"Fetching Oracle HCM jobs from API: {api_url}")
+        # Oracle HCM pagination: use offset and limit
+        page_size = 25
+        max_jobs_limit = context.max_jobs if (context.max_jobs and context.max_jobs > 0) else None
 
         client = self._client or httpx.AsyncClient(
             timeout=settings.HTTP_TIMEOUT_SECONDS,
@@ -88,67 +75,111 @@ class OracleHCMExtractor(BaseExtractor):
         )
         should_close = self._client is None
 
+        raw_jobs: list[RawJob] = []
+        offset = 0
+        total_found = 0
+
         try:
-            r = await client.get(api_url)
-            if r.status_code != 200:
-                logger.warning(f"Oracle HCM API returned HTTP {r.status_code} for {url}")
-                context.warnings.append(f"Oracle HCM API returned status {r.status_code}")
-                return []
+            while True:
+                # Stop if max_jobs limit reached
+                if max_jobs_limit is not None and len(raw_jobs) >= max_jobs_limit:
+                    logger.info(f"Oracle HCM extraction reached max_jobs limit ({max_jobs_limit})")
+                    break
 
-            data = r.json()
-            items = data.get("items", [])
-            if not items or not isinstance(items[0], dict):
-                return []
-
-            search_container = items[0]
-            total_found = search_container.get("TotalJobsCount")
-            if total_found is not None:
-                context.total_jobs_found_override = int(total_found)
-
-            req_list = search_container.get("requisitionList", [])
-            raw_jobs: list[RawJob] = []
-
-            for req in req_list:
-                req_id = req.get("Id") or req.get("RequisitionId")
-                title = req.get("Title")
-                if not title:
-                    continue
-
-                location = req.get("PrimaryLocation")
-                if not location:
-                    wl = req.get("workLocation", [])
-                    if wl and isinstance(wl[0], dict):
-                        loc_obj = wl[0]
-                        city = loc_obj.get("TownOrCity", "")
-                        region = loc_obj.get("Region2", "")
-                        country = loc_obj.get("Country", "")
-                        location = ", ".join(filter(None, [city, region, country]))
-
-                job_url = f"https://{host}/hcmUI/CandidateExperience/{lang}/sites/{site_number}/job/{req_id}"
-                if location_param:
-                    job_url += f"?location={location_param}"
-
-                desc = req.get("ShortDescriptionStr") or req.get("ExternalResponsibilitiesStr")
-
-                raw_jobs.append(
-                    RawJob(
-                        source_id=str(req_id) if req_id else None,
-                        title=title.strip(),
-                        location=location,
-                        department=req.get("Department") or req.get("JobFunction"),
-                        employment_type=req.get("WorkplaceType") or req.get("JobType"),
-                        description_html=desc,
-                        description_text=strip_html_tags(desc) if desc else None,
-                        posted_at=req.get("PostedDate"),
-                        job_url=job_url,
-                        source_url=url,
-                        source_type="ats",
-                        ats="oracle_hcm",
-                        raw_data=req,
-                    )
+                # Build API URL with offset and limit for this page
+                api_url = (
+                    f"https://{host}/hcmRestApi/resources/latest/recruitingCEJobRequisitions"
+                    f"?onlyData=true&expand=requisitionList.workLocation,requisitionList.otherWorkLocations,"
+                    f"requisitionList.secondaryLocations,flexFieldsFacet.values,requisitionList.requisitionFlexFields"
+                    f"&finder=findReqs;siteNumber={site_number},"
+                    f"facetsList=LOCATIONS%3BWORK_LOCATIONS%3BWORKPLACE_TYPES%3BTITLES%3BCATEGORIES%3BORGANIZATIONS%3BPOSTING_DATES%3BFLEX_FIELDS,"
+                    f"offset={offset},limit={page_size},sortBy=POSTING_DATES_DESC"
                 )
+                if location_param:
+                    api_url += f",location={location_param}"
+                if keyword_param:
+                    api_url += f",keyword={keyword_param}"
 
-            logger.info(f"OracleHCMExtractor extracted {len(raw_jobs)} jobs directly from Oracle HCM REST API")
+                logger.info(f"Fetching Oracle HCM jobs from API (offset={offset}): {api_url}")
+
+                r = await client.get(api_url)
+                if r.status_code != 200:
+                    logger.warning(f"Oracle HCM API returned HTTP {r.status_code} at offset {offset}")
+                    context.warnings.append(f"Oracle HCM API returned status {r.status_code} at offset {offset}")
+                    break
+
+                data = r.json()
+                items = data.get("items", [])
+                if not items or not isinstance(items[0], dict):
+                    break
+
+                search_container = items[0]
+                
+                # Capture total count from first response
+                if offset == 0:
+                    total_found = search_container.get("TotalJobsCount", 0)
+                    if total_found > 0:
+                        context.total_jobs_found_override = int(total_found)
+                        logger.info(f"Oracle HCM reports {total_found} total jobs available")
+
+                req_list = search_container.get("requisitionList", [])
+                if not req_list:
+                    # No more jobs in this page
+                    break
+
+                for req in req_list:
+                    # Stop if max_jobs limit reached
+                    if max_jobs_limit is not None and len(raw_jobs) >= max_jobs_limit:
+                        break
+                    
+                    req_id = req.get("Id") or req.get("RequisitionId")
+                    title = req.get("Title")
+                    if not title:
+                        continue
+
+                    location = req.get("PrimaryLocation")
+                    if not location:
+                        wl = req.get("workLocation", [])
+                        if wl and isinstance(wl[0], dict):
+                            loc_obj = wl[0]
+                            city = loc_obj.get("TownOrCity", "")
+                            region = loc_obj.get("Region2", "")
+                            country = loc_obj.get("Country", "")
+                            location = ", ".join(filter(None, [city, region, country]))
+
+                    job_url = f"https://{host}/hcmUI/CandidateExperience/{lang}/sites/{site_number}/job/{req_id}"
+                    if location_param:
+                        job_url += f"?location={location_param}"
+
+                    desc = req.get("ShortDescriptionStr") or req.get("ExternalResponsibilitiesStr")
+
+                    raw_jobs.append(
+                        RawJob(
+                            source_id=str(req_id) if req_id else None,
+                            title=title.strip(),
+                            location=location,
+                            department=req.get("Department") or req.get("JobFunction"),
+                            employment_type=req.get("WorkplaceType") or req.get("JobType"),
+                            description_html=desc,
+                            description_text=strip_html_tags(desc) if desc else None,
+                            posted_at=req.get("PostedDate"),
+                            job_url=job_url,
+                            source_url=url,
+                            source_type="ats",
+                            ats="oracle_hcm",
+                            raw_data=req,
+                        )
+                    )
+
+                # Move to next page
+                offset += page_size
+
+                # Stop if we've processed all available jobs
+                if total_found > 0 and offset >= total_found:
+                    logger.info(f"Oracle HCM extraction complete: processed all {total_found} available jobs")
+                    break
+
+            logger.info(f"OracleHCMExtractor extracted {len(raw_jobs)} jobs from Oracle HCM REST API (total available: {total_found})")
             return raw_jobs
 
         except Exception as e:

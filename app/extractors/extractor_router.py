@@ -4,6 +4,7 @@ import httpx
 from app.core.constants import ERROR_ATS_DETECTED_BUT_UNSUPPORTED, SUPPORTED_ATS_VENDORS
 from app.core.logging import get_logger
 from app.extractors.ats.greenhouse import GreenhouseExtractor
+from app.extractors.ats.lever import LeverExtractor
 from app.extractors.ats.oracle_hcm import OracleHCMExtractor
 from app.extractors.ats.unsupported_ats import UnsupportedATSExtractor
 from app.extractors.ats.workday import WorkdayExtractor
@@ -25,6 +26,7 @@ class ExtractorRouter:
         self.greenhouse_extractor = GreenhouseExtractor(client=client)
         self.workday_extractor = WorkdayExtractor(client=client)
         self.oracle_hcm_extractor = OracleHCMExtractor(client=client)
+        self.lever_extractor = LeverExtractor()
         self.unsupported_ats_extractor = UnsupportedATSExtractor()
         self.html_extractor = HTMLExtractor(client=client)
         self.api_extractor = APIExtractor()
@@ -59,6 +61,11 @@ class ExtractorRouter:
                 logger.info("Routing to OracleHCMExtractor")
                 context.strategy_used.append("oracle_hcm_api")
                 return await self.oracle_hcm_extractor.extract(url, context)
+
+            elif ats_vendor == "lever":
+                logger.info("Routing to LeverExtractor")
+                context.strategy_used.append("lever_api")
+                return await self.lever_extractor.extract(url, context)
 
             else:
                 logger.info(f"Routing to UnsupportedATSExtractor for ATS '{ats_vendor}'")

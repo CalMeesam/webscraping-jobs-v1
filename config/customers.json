@@ -1,0 +1,88 @@
+{
+  "customers": [
+    {
+      "customer_id": "cisco",
+      "customer_name": "Cisco Systems",
+      "director": "Deepak",
+      "bizdev": [
+        "Alice"
+      ],
+      "career_links": [
+        {
+          "label": "Global Search",
+          "url": "https://careers.cisco.com/global/en/search-results"
+        }
+      ]
+    },
+    {
+      "customer_id": "dell",
+      "customer_name": "Dell Technologies",
+      "director": "Deepak",
+      "bizdev": [
+        "Alice"
+      ],
+      "career_links": [
+        {
+          "label": "Oracle HCM Portal",
+          "url": "https://enterpriseplatform.dell.com/hcmUI/CandidateExperience/en/sites/careers/jobs?mode=location"
+        }
+      ]
+    },
+    {
+      "customer_id": "broadcom",
+      "customer_name": "Broadcom Inc.",
+      "director": "Deepak",
+      "bizdev": [
+        "Alice"
+      ],
+      "career_links": [
+        {
+          "label": "External Career Portal",
+          "url": "https://broadcom.wd1.myworkdayjobs.com/External_Career"
+        }
+      ]
+    },
+    {
+      "customer_id": "hewlett-packard-enterprise",
+      "customer_name": "Hewlett Packard Enterprise",
+      "director": "Deepak",
+      "bizdev": [
+        "Alice"
+      ],
+      "career_links": [
+        {
+          "label": "US Career Portal",
+          "url": "https://careers.hpe.com/us/en/search-results"
+        }
+      ]
+    },
+    {
+      "customer_id": "spotify",
+      "customer_name": "Spotify",
+      "director": "Deepak",
+      "bizdev": [
+        "Alice"
+      ],
+      "career_links": [
+        {
+          "label": "Jobs Board",
+          "url": "https://jobs.lever.co/spotify"
+        }
+      ]
+    },
+    {
+      "customer_id": "sumologic",
+      "customer_name": "Sumologic",
+      "director": "Deepak",
+      "bizdev": [
+        "NA"
+      ],
+      "career_links": [
+        {
+          "label": "Sumologic",
+          "url": "https://job-boards.greenhouse.io/sumologic"
+        }
+      ]
+    }
+  ]
+}

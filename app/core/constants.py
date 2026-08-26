@@ -33,7 +33,7 @@ ATS_PATTERNS = {
     "ashby": ["ashbyhq.com"],
 }
 
-SUPPORTED_ATS_VENDORS = {"greenhouse", "workday", "oracle_hcm"}
+SUPPORTED_ATS_VENDORS = {"greenhouse", "workday", "oracle_hcm", "lever"}
 
 # Career URL Discovery Keywords
 CAREER_URL_KEYWORDS = [

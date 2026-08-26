@@ -37,7 +37,28 @@
             <section class="control-panel card-glass">
                 <div class="panel-header">
                     <h2><i class="fa-solid fa-bolt"></i> Extraction Controls</h2>
-                    <span class="hint-text">Enter any career site or ATS listing URL</span>
+                    <span class="hint-text">Select a customer or enter any career site URL</span>
+                </div>
+
+                <!-- Customer Selection Section -->
+                <div class="customer-selector-section">
+                    <div class="section-header">
+                        <h3><i class="fa-solid fa-building"></i> Quick Customer Access</h3>
+                        <button type="button" class="btn-add-customer" onclick="openAddCustomerModal()">
+                            <i class="fa-solid fa-plus"></i> Add New Customer
+                        </button>
+                    </div>
+                    <div id="customerGrid" class="customer-grid">
+                        <!-- Customer buttons will be dynamically loaded here -->
+                        <div class="loading-customers">
+                            <div class="spinner"></div>
+                            <span>Loading customers...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider-line">
+                    <span>OR</span>
                 </div>
 
                 <form id="extractionForm" onsubmit="handleExtraction(event)">
@@ -185,17 +206,46 @@
 
                 <!-- TAB 1: Structured Table View -->
                 <div id="tableTab" class="tab-content active">
+                    <!-- Table Controls: Search & Filters -->
+                    <div class="table-controls card-glass" style="margin-bottom: 16px; padding: 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 250px;">
+                            <div class="input-with-icon">
+                                <i class="fa-solid fa-magnifying-glass input-icon"></i>
+                                <input type="text" id="tableSearchInput" placeholder="Search jobs by title, location, skills..." oninput="filterTable()" style="width: 100%; padding: 10px 10px 10px 38px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); border-radius: 8px; color: white;">
+                            </div>
+                        </div>
+                        <select id="filterATS" onchange="filterTable()" style="padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;">
+                            <option value="">All ATS</option>
+                        </select>
+                        <select id="filterLocation" onchange="filterTable()" style="padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;">
+                            <option value="">All Locations</option>
+                        </select>
+                        <button type="button" onclick="clearFilters()" class="btn-secondary" style="padding: 10px 16px;">
+                            <i class="fa-solid fa-filter-circle-xmark"></i> Clear Filters
+                        </button>
+                    </div>
+                    
                     <div class="table-container card-glass">
                         <table class="jobs-table" id="jobsTable">
                             <thead>
                                 <tr>
-                                    <th>Job ID</th>
-                                    <th>Role / Title</th>
-                                    <th>Location</th>
-                                    <th>ATS / Source</th>
+                                    <th onclick="sortTable('id')" style="cursor: pointer;">
+                                        Job ID <i class="fa-solid fa-sort" style="opacity: 0.5; font-size: 0.8em;"></i>
+                                    </th>
+                                    <th onclick="sortTable('title')" style="cursor: pointer;">
+                                        Role / Title <i class="fa-solid fa-sort" style="opacity: 0.5; font-size: 0.8em;"></i>
+                                    </th>
+                                    <th onclick="sortTable('location')" style="cursor: pointer;">
+                                        Location <i class="fa-solid fa-sort" style="opacity: 0.5; font-size: 0.8em;"></i>
+                                    </th>
+                                    <th onclick="sortTable('ats')" style="cursor: pointer;">
+                                        ATS / Source <i class="fa-solid fa-sort" style="opacity: 0.5; font-size: 0.8em;"></i>
+                                    </th>
                                     <th>Key Responsibilities</th>
                                     <th>Skills Extracted</th>
-                                    <th>Posted Date</th>
+                                    <th onclick="sortTable('posted_at')" style="cursor: pointer;">
+                                        Posted Date <i class="fa-solid fa-sort" style="opacity: 0.5; font-size: 0.8em;"></i>
+                                    </th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -242,6 +292,71 @@
                     </a>
                     <button type="button" class="btn-secondary" onclick="closeModal()">Close</button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Add Customer Modal -->
+        <div id="addCustomerModal" class="modal" onclick="closeAddCustomerModalOnBackdrop(event)">
+            <div class="modal-content card-glass add-customer-modal">
+                <div class="modal-header">
+                    <div>
+                        <h2><i class="fa-solid fa-building-circle-arrow-right"></i> Add New Customer</h2>
+                        <span class="modal-meta">Register a new customer career portal</span>
+                    </div>
+                    <button type="button" class="btn-close" onclick="closeAddCustomerModal()"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <form id="addCustomerForm" onsubmit="handleCustomerForm(event)">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="customerName">Customer Name *</label>
+                            <input type="text" id="customerName" placeholder="e.g. Spotify, Microsoft" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerDirector">Director *</label>
+                            <input type="text" id="customerDirector" placeholder="e.g. Deepak" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerBizDev">Business Development Contacts</label>
+                            <div id="bizdevContainer">
+                                <div class="bizdev-input-row">
+                                    <input type="text" class="bizdev-input" placeholder="Enter name" required>
+                                    <button type="button" class="btn-icon-remove" onclick="removeBizDevInput(this)" disabled>
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-add-more" onclick="addBizDevInput()">
+                                <i class="fa-solid fa-plus"></i> Add Another Contact
+                            </button>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Career Links *</label>
+                            <div id="careerLinksContainer">
+                                <div class="career-link-row">
+                                    <input type="text" class="link-label-input" placeholder="Label (e.g. Main Portal)" required>
+                                    <input type="url" class="link-url-input" placeholder="https://example.com/careers" required>
+                                    <button type="button" class="btn-icon-remove" onclick="removeCareerLinkInput(this)" disabled>
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-add-more" onclick="addCareerLinkInput()">
+                                <i class="fa-solid fa-plus"></i> Add Another Link
+                            </button>
+                        </div>
+
+                        <div id="addCustomerError" class="error-message" style="display: none;"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn-primary">
+                            <i class="fa-solid fa-check"></i> Add Customer
+                        </button>
+                        <button type="button" class="btn-secondary" onclick="closeAddCustomerModal()">Cancel</button>
+                    </div>
+                </form>
             </div>
         </div>
 

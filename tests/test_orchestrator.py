@@ -46,11 +46,13 @@ async def test_orchestrator_greenhouse_flow(greenhouse_jobs_json):
 
 @pytest.mark.asyncio
 async def test_orchestrator_unsupported_ats():
+    """Test that unsupported ATS vendors return appropriate error."""
     manager = ExtractionManager()
-    request = ExtractionRequest(url="https://jobs.lever.co/spotify")
+    # Use SmartRecruiters as an example of detected but unsupported ATS
+    request = ExtractionRequest(url="https://careers.smartrecruiters.com/example")
 
     response = await manager.extract_jobs(request)
 
     assert len(response.jobs) == 0
     assert "ATS_DETECTED_BUT_UNSUPPORTED" in response.metadata.errors
-    assert response.metadata.ats == "lever"
+    assert response.metadata.ats == "smartrecruiters"

@@ -1,0 +1,106 @@
+{
+  "metadata": {
+    "input_url": "https://enterpriseplatform.dell.com/hcmUI/CandidateExperience/en/sites/careers/jobs?mode=location",
+    "resolved_url": "https://enterpriseplatform.dell.com/hcmUI/CandidateExperience/en/sites/careers/jobs?mode=location",
+    "career_url": "https://enterpriseplatform.dell.com/hcmUI/CandidateExperience/en/sites/careers/jobs?mode=location",
+    "job_source_url": "https://enterpriseplatform.dell.com/hcmUI/CandidateExperience/en/sites/careers/jobs?mode=location",
+    "source_type": "oracle_hcm_api",
+    "ats": "oracle_hcm",
+    "extraction_strategy": "oracle_hcm_api -> oracle_hcm_api",
+    "visited_urls": [
+      "https://enterpriseplatform.dell.com/hcmUI/CandidateExperience/en/sites/careers/jobs?mode=location"
+    ],
+    "total_jobs_found": 428,
+    "total_jobs_returned": 50,
+    "jobs_discovered": 50,
+    "jobs_returned": 50,
+    "jobs_enrichment_attempted": 50,
+    "jobs_enriched": 50,
+    "jobs_enrichment_failed": 0,
+    "warnings": [],
+    "errors": []
+  },
+  "sample_jobs": [
+    {
+      "id": "R286840",
+      "external_job_id": null,
+      "requisition_id": null,
+      "title": "Software Senior Engineer",
+      "location": {
+        "raw": "Singapore",
+        "city": null,
+        "state": null,
+        "country": "Singapore"
+      },
+      "department": null,
+      "employment_type": "On-site",
+      "workplace_type": null,
+      "experience_level": null,
+      "description": "Software Senior Engineer, Software Engineering The Software Engineering team delivers next-generation software application enhancements and new products for a changing world. Working at the cutting edge, we design and develop software for platforms, peripherals, applications and diagnostics — all with the most advanced technologies, tools, software engineering methodologies and the collaboration of internal and external partners. What you’ll achieve: As a Software Senior Engineer, you will build and maintain features, write tests, and perform code reviews to uphold quality. You will help modernize services and improve developer workflows. Join us to do the best work of your career and make a profound social impact as a Senior Engineer on our Software Engineering team.",
+      "responsibilities": [],
+      "requirements": [],
+      "preferred_qualifications": [],
+      "benefits": [],
+      "skills": [],
+      "job_url": "https://enterpriseplatform.dell.com/hcmUI/CandidateExperience/en/sites/careers/job/R286840",
+      "application_url": null,
+      "posted_at": "2026-08-24",
+      "source": "enterpriseplatform",
+      "ats": "oracle_hcm"
+    },
+    {
+      "id": "R285424",
+      "external_job_id": null,
+      "requisition_id": null,
+      "title": "Research Scientist (I5) – Emerging Technologies",
+      "location": {
+        "raw": "Cork, Co. Cork, Ireland",
+        "city": "Cork",
+        "state": "Co. Cork",
+        "country": "Ireland"
+      },
+      "department": null,
+      "employment_type": "On-site",
+      "workplace_type": null,
+      "experience_level": null,
+      "description": "R285424 Research Scientist (I5)- 1 opening Hiring Manager: Ger Hallissey Recruiter: Chloe Joyce Join us as a Research Scientist on our Office of the CTO (Applied Research) team in Cork, Ireland to do the best work of your career and make a profound social impact. What you'll achieve As a Research Scientist, you will contribute to cutting-edge research across AI-enabled systems, distributed infrastructure, networking, systems security, and next-generation computing. For this role, you will be dedicated to AEGIS (Adaptive Grid-Interactive Edge Datacenter Fleets), a Marie Skłodowska-Curie Actions (MSCA) Doctoral Network focused on developing secure, energy-efficient, and carbon-aware edge datacenter infrastructures. You will work alongside Dell researchers, engineers, and leading academic partners to translate research ideas into prototypes, publications, technical insights, and strategic recommendations. Alongside your industrial research role, you will be enrolled in a structur...",
+      "responsibilities": [],
+      "requirements": [],
+      "preferred_qualifications": [],
+      "benefits": [],
+      "skills": [],
+      "job_url": "https://enterpriseplatform.dell.com/hcmUI/CandidateExperience/en/sites/careers/job/R285424",
+      "application_url": null,
+      "posted_at": "2026-08-24",
+      "source": "enterpriseplatform",
+      "ats": "oracle_hcm"
+    },
+    {
+      "id": "R283765",
+      "external_job_id": null,
+      "requisition_id": null,
+      "title": "Senior Principal Systems Development Engineer",
+      "location": {
+        "raw": "Taipei City, Taiwan",
+        "city": "Taipei City",
+        "state": null,
+        "country": "Taiwan"
+      },
+      "department": null,
+      "employment_type": "On-site",
+      "workplace_type": null,
+      "experience_level": null,
+      "description": "Senior Principal Systems Development Engineer Product Development Management is a fast-paced environment where innovative thinking is prized. Our team focuses on the delivery of products or computer-based systems for external customers. We lead and deliver the entire lifecycle from product definition and planning through to production and release. We also oversee modifications, upgrades and maintenance of the product or product line. And to make the whole process run smoothly and seamlessly, we’re experts in project management, from initiation through to delivery, and liaise with other departments on technical matters. Join us to do the best work of your career and make a profound social impact as a Senior Principal Systems Development Engineer on our System Development Engineering in Taipei, Taiwan.",
+      "responsibilities": [],
+      "requirements": [],
+      "preferred_qualifications": [],
+      "benefits": [],
+      "skills": [],
+      "job_url": "https://enterpriseplatform.dell.com/hcmUI/CandidateExperience/en/sites/careers/job/R283765",
+      "application_url": null,
+      "posted_at": "2026-08-24",
+      "source": "enterpriseplatform",
+      "ats": "oracle_hcm"
+    }
+  ]
+}

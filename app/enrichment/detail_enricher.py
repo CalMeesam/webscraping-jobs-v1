@@ -114,6 +114,29 @@ class DetailEnricher:
 
                             job.is_enriched = True
 
+                # ATS Branch 3: Oracle HCM
+                elif job.ats == "oracle_hcm" and job.job_url:
+                    # Oracle HCM uses JavaScript-rendered pages (Oracle JET)
+                    # Job description is available in OpenGraph meta tags
+                    r = await client.get(job.job_url)
+                    if r.status_code == 200:
+                        from bs4 import BeautifulSoup
+                        soup = BeautifulSoup(r.text, "lxml")
+                        
+                        # Extract from OpenGraph meta tags (most reliable for Oracle HCM)
+                        og_desc = soup.find("meta", property="og:description")
+                        if og_desc and og_desc.get("content"):
+                            desc_text = og_desc["content"]
+                            job.description_html = f"<p>{desc_text}</p>"
+                            job.description_text = desc_text
+                            job.is_enriched = True
+                        
+                        # Also try to get title from OG if missing
+                        if not job.title:
+                            og_title = soup.find("meta", property="og:title")
+                            if og_title and og_title.get("content"):
+                                job.title = og_title["content"]
+
                 # Fallback for generic HTML job URLs if description is missing
                 elif job.job_url and not (job.description_html or job.description_text):
                     r = await client.get(job.job_url)

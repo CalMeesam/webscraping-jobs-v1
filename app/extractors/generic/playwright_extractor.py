@@ -30,6 +30,98 @@ class PlaywrightExtractor(BaseExtractor):
     async def can_handle(self, url: str, classification: SourceClassification) -> bool:
         return True
 
+    async def _scroll_to_load_all_jobs(self, page: Page, max_scrolls: int = 15) -> None:
+        """
+        Scroll page to trigger lazy-loaded job listings.
+        
+        Args:
+            page: Playwright Page object
+            max_scrolls: Maximum number of scroll attempts (default: 15)
+        """
+        previous_job_count = 0
+        scroll_count = 0
+        no_change_count = 0
+        
+        # Common selectors for job listings across different ATS platforms
+        job_selectors = [
+            '[data-job-id]',
+            '[data-qa="job-posting"]',
+            '[class*="job-card"]',
+            '[class*="job-item"]',
+            '[class*="job-listing"]',
+            '[class*="position"]',
+            'article',
+            '[role="article"]',
+            'li[data-id]',
+            '.job',
+        ]
+        
+        while scroll_count < max_scrolls:
+            # Get current job count using multiple selectors
+            current_job_count = 0
+            for selector in job_selectors:
+                try:
+                    count = await page.locator(selector).count()
+                    if count > current_job_count:
+                        current_job_count = count
+                except Exception:
+                    continue
+            
+            logger.debug(f"Scroll {scroll_count + 1}: Found {current_job_count} job elements")
+            
+            # If no jobs found yet, continue scrolling
+            if current_job_count == 0:
+                await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                await page.wait_for_timeout(1500)
+                scroll_count += 1
+                continue
+            
+            # If job count hasn't changed, increment no-change counter
+            if current_job_count == previous_job_count:
+                no_change_count += 1
+                # Stop if count hasn't changed for 3 consecutive scrolls
+                if no_change_count >= 3:
+                    logger.info(f"No new jobs loaded after {no_change_count} scrolls. Total jobs: {current_job_count}")
+                    break
+            else:
+                # Reset no-change counter if count increased
+                no_change_count = 0
+                logger.info(f"Loaded {current_job_count} jobs (was {previous_job_count})")
+            
+            previous_job_count = current_job_count
+            
+            # Scroll to bottom
+            await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+            
+            # Wait for new content to load
+            await page.wait_for_timeout(1500)
+            
+            # Try to click "Load More" or "Show More" buttons if present
+            load_more_selectors = [
+                'button:has-text("Load More")',
+                'button:has-text("Show More")',
+                'a:has-text("Load More")',
+                'a:has-text("Show More")',
+                '[data-qa="load-more"]',
+                '.load-more',
+                '.show-more',
+            ]
+            
+            for selector in load_more_selectors:
+                try:
+                    load_more_btn = page.locator(selector).first
+                    if await load_more_btn.is_visible(timeout=500):
+                        await load_more_btn.click()
+                        logger.info(f"Clicked '{selector}' button")
+                        await page.wait_for_timeout(2000)
+                        break
+                except Exception:
+                    continue
+            
+            scroll_count += 1
+        
+        logger.info(f"Scrolling complete. Total scrolls: {scroll_count}, Final job count: {previous_job_count}")
+
     def _extract_sync(self, url: str, context: ExtractionContext) -> list[RawJob]:
         """Runs Playwright in an isolated thread with WindowsProactorEventLoopPolicy."""
         if sys.platform == "win32":
@@ -73,6 +165,10 @@ class PlaywrightExtractor(BaseExtractor):
                     if raw_jobs:
                         await browser.close()
                         return raw_jobs
+
+                # Step 5.5: Scroll to trigger lazy-loaded content (for Phenom, Oracle JET, etc.)
+                logger.info("Scrolling page to trigger lazy-loaded job listings...")
+                await self._scroll_to_load_all_jobs(page)
 
                 # Step 6: Post-render DOM fallback extraction
                 logger.info("No valid XHR/Fetch job API payload intercepted during page load. Falling back to post-rendered HTML DOM extraction")
