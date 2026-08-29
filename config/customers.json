@@ -83,6 +83,21 @@
           "url": "https://job-boards.greenhouse.io/sumologic"
         }
       ]
+    },
+    {
+      "customer_id": "acme-innovations",
+      "customer_name": "Acme Innovations",
+      "director": "Sarah Connor",
+      "bizdev": [
+        "John Doe",
+        "Jane Smith"
+      ],
+      "career_links": [
+        {
+          "label": "Engineering Careers",
+          "url": "https://jobs.lever.co/acme-innovations"
+        }
+      ]
     }
   ]
 }

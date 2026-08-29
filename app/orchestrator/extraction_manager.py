@@ -15,9 +15,10 @@ from app.models.extraction_models import ExtractionContext
 from app.models.raw_job import RawJob
 from app.models.request_models import ExtractionRequest
 from app.models.response_models import ExtractionMetadata, ExtractionResponse
+from app.core.features import is_feature_enabled
 from app.normalization.job_normalizer import JobNormalizer
 from app.processing.deduplicator import Deduplicator
-from app.refinement.llm_refiner import LLMOutputRefiner
+from app.refinement.llm_refiner import LLMOutputRefinerStub
 from app.utils.url_utils import clean_url
 
 logger = get_logger(__name__)
@@ -26,7 +27,7 @@ logger = get_logger(__name__)
 class ExtractionManager:
     """Central Orchestrator for discovery, extraction, enrichment, normalization, deduplication, and refinement."""
 
-    def __init__(self, client: httpx.AsyncClient | None = None):
+    def __init__(self, client: httpx.AsyncClient | None = None, refiner: LLMOutputRefinerStub | None = None):
         self._client = client
         self.url_resolver = URLResolver(client=client)
         self.classifier = SourceClassifier()
@@ -37,7 +38,7 @@ class ExtractionManager:
         self.detail_enricher = DetailEnricher(client=client)
         self.normalizer = JobNormalizer()
         self.deduplicator = Deduplicator()
-        self.llm_refiner = LLMOutputRefiner()
+        self.llm_refiner = refiner or LLMOutputRefinerStub()
 
     async def process_discovered_url(
         self,
@@ -181,14 +182,22 @@ class ExtractionManager:
         # Step 7: Deduplication
         deduped_jobs = self.deduplicator.remove_duplicates(normalized_jobs)
 
-        # Step 7.5: Optional LLM Output Refinement Pass (if requested)
+        # Step 7.5: LLM Refinement Toggle & Stub Scaffolding
         jobs_llm_refined = 0
         jobs_llm_refinement_failed = 0
-        if request.refine_with_llm and deduped_jobs:
-            logger.info("Executing optional LLM refinement pass over extracted jobs")
-            deduped_jobs, jobs_llm_refined, jobs_llm_refinement_failed = (
-                await self.llm_refiner.refine_jobs(deduped_jobs)
-            )
+        
+        # Read-at-request-time feature toggle from config/features.yaml (or explicit request override)
+        refinement_enabled = is_feature_enabled("llm_refinement") or bool(getattr(request, "refine_with_llm", False))
+        
+        if refinement_enabled and deduped_jobs:
+            logger.info("Executing LLM refinement stub scaffolding over extracted jobs")
+            try:
+                deduped_jobs, jobs_llm_refined, jobs_llm_refinement_failed = (
+                    await self.llm_refiner.refine_jobs(deduped_jobs)
+                )
+            except Exception as ref_err:
+                logger.warning(f"Unexpected error in LLM refinement step: {ref_err}. Preserving original output.")
+                jobs_llm_refinement_failed = len(deduped_jobs)
 
         # Step 8: Build Metadata with Enrichment Metrics
         metadata = ExtractionMetadata(

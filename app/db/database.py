@@ -107,3 +107,4 @@ def get_db_session(db_path: Path | str | None = None) -> Generator[Session, None
         raise
     finally:
         session.close()
+

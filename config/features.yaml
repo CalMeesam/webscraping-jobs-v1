@@ -1,0 +1,4 @@
+# Feature flags configuration for job extraction pipeline
+
+llm_refinement:
+  enabled: false

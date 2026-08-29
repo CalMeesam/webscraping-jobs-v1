@@ -50,7 +50,17 @@ def resolve_customer_id(url: str, explicit_customer_id: str | None = None) -> st
                 if link_url:
                     parsed_link = urlparse(link_url)
                     if parsed_link.netloc.lower() == url_netloc:
-                        return customer["customer_id"]
+                        is_shared_ats = any(
+                            ats in url_netloc
+                            for ats in ("lever.co", "greenhouse.io", "smartrecruiters.com", "myworkdayjobs.com")
+                        )
+                        if is_shared_ats:
+                            link_slug = parsed_link.path.strip("/").split("/")[0] if parsed_link.path.strip("/") else ""
+                            url_slug = parsed_url.path.strip("/").split("/")[0] if parsed_url.path.strip("/") else ""
+                            if link_slug and url_slug and link_slug.lower() == url_slug.lower():
+                                return customer["customer_id"]
+                        else:
+                            return customer["customer_id"]
     except Exception as e:
         logger.warning(f"Error resolving customer_id from config: {e}")
 
