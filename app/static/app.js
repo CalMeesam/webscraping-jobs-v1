@@ -1299,63 +1299,66 @@ function renderComparisonTables(comp, filter) {
 
     let totalRenderedSections = 0;
 
-    // 1. CHANGED JOBS SECTION (with Field-Level Old vs New Table)
+    // 1. CHANGED JOBS SECTION (with Field-Level Old vs New Card Layout)
     if (showChanged && changedJobs.length > 0) {
         totalRenderedSections++;
         const section = document.createElement('div');
         section.innerHTML = `
-            <div style="margin-bottom: 20px;">
-                <h4 style="color: #fbbf24; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+            <div style="margin-bottom: 24px;">
+                <h4 style="color: #fbbf24; display: flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 1rem;">
                     <i class="fa-solid fa-pen-to-square"></i> Changed Jobs (${changedJobs.length})
                 </h4>
-                <table class="comp-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 25%;">Role / Title</th>
-                            <th style="width: 20%;">Location</th>
-                            <th style="width: 55%;">Field Modifications (Old Value ➔ New Value)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${changedJobs.map(c => {
-                            const diffRows = c.field_changes.map(ch => `
-                                <tr>
-                                    <td class="diff-field-name">${escapeHtml(ch.label || ch.field)}</td>
-                                    <td><span class="diff-old-val">${escapeHtml(ch.old_value || 'None')}</span></td>
-                                    <td style="color: var(--text-muted); width: 20px; text-align: center;">➔</td>
-                                    <td><span class="diff-new-val">${escapeHtml(ch.new_value || 'None')}</span></td>
-                                </tr>
-                            `).join('');
+                <div class="diff-cards-list">
+                    ${changedJobs.map(c => {
+                        const diffRows = c.field_changes.map(ch => `
+                            <tr>
+                                <td class="diff-field-name">
+                                    <i class="fa-solid fa-angle-right" style="font-size: 10px; opacity: 0.6; margin-right: 4px;"></i>
+                                    ${escapeHtml(ch.label || ch.field)}
+                                </td>
+                                <td class="diff-val-cell">
+                                    <span class="diff-old-val">${escapeHtml(ch.old_value || 'None')}</span>
+                                </td>
+                                <td style="color: var(--text-muted); width: 24px; text-align: center; font-weight: bold;">➔</td>
+                                <td class="diff-val-cell">
+                                    <span class="diff-new-val">${escapeHtml(ch.new_value || 'None')}</span>
+                                </td>
+                            </tr>
+                        `).join('');
 
-                            return `
-                                <tr>
-                                    <td>
-                                        <a href="${escapeHtml(c.job_url || '#')}" target="_blank" class="job-title-link">
+                        return `
+                            <div class="diff-job-card">
+                                <div class="diff-job-card-header">
+                                    <div class="diff-job-title-group">
+                                        <a href="${escapeHtml(c.job_url || '#')}" target="_blank" class="diff-job-title job-title-link">
                                             ${escapeHtml(c.title || 'Untitled')}
                                         </a>
-                                        <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">Key: ${escapeHtml(c.job_identity_key)}</div>
-                                    </td>
-                                    <td><span class="badge-loc"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(c.location || 'N/A')}</span></td>
-                                    <td>
-                                        <table class="diff-field-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Field</th>
-                                                    <th>Previous Value</th>
-                                                    <th></th>
-                                                    <th>New Value</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                ${diffRows}
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                            `;
-                        }).join('')}
-                    </tbody>
-                </table>
+                                        <span class="diff-job-key">Key: ${escapeHtml(c.job_identity_key)}</span>
+                                    </div>
+                                    <div class="diff-job-meta">
+                                        <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(c.location || 'N/A')}</span>
+                                        <span class="badge-changes-count"><i class="fa-solid fa-pen"></i> ${c.field_changes.length} field${c.field_changes.length === 1 ? '' : 's'} changed</span>
+                                    </div>
+                                </div>
+                                <div class="diff-job-card-body">
+                                    <table class="diff-field-table">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 140px;">Modified Field</th>
+                                                <th>Previous Value (Old Run)</th>
+                                                <th style="width: 24px;"></th>
+                                                <th>New Value (Target Run)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${diffRows}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
             </div>
         `;
         container.appendChild(section);
@@ -1366,40 +1369,42 @@ function renderComparisonTables(comp, filter) {
         totalRenderedSections++;
         const section = document.createElement('div');
         section.innerHTML = `
-            <div style="margin-bottom: 20px;">
-                <h4 style="color: #34d399; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+            <div style="margin-bottom: 24px;">
+                <h4 style="color: #34d399; display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 1rem;">
                     <i class="fa-solid fa-circle-plus"></i> Added Jobs in Newer Run (${addedJobs.length})
                 </h4>
-                <table class="comp-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 35%;">Role / Title</th>
-                            <th style="width: 25%;">Location</th>
-                            <th style="width: 20%;">Department / ATS</th>
-                            <th style="width: 20%;">Links</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${addedJobs.map(job => `
+                <div class="comp-table-wrapper">
+                    <table class="comp-table">
+                        <thead>
                             <tr>
-                                <td>
-                                    <span class="badge-new-pill"><i class="fa-solid fa-plus"></i> NEW</span>
-                                    <a href="${escapeHtml(job.job_url || '#')}" target="_blank" class="job-title-link">${escapeHtml(job.title || 'Untitled')}</a>
-                                </td>
-                                <td><span class="badge-loc"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.location || 'N/A')}</span></td>
-                                <td>
-                                    <span style="font-size: 0.85em; color: var(--text-muted);">${escapeHtml(job.department || 'N/A')}</span>
-                                    <span class="badge-ats" style="margin-left: 6px; font-size: 10px;">${escapeHtml(job.ats || 'ATS')}</span>
-                                </td>
-                                <td>
-                                    <a href="${escapeHtml(job.job_url || '#')}" target="_blank" class="btn-icon" style="display: inline-flex; text-decoration: none; padding: 4px 8px; font-size: 11px;">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Open
-                                    </a>
-                                </td>
+                                <th style="width: 38%;">Role / Title</th>
+                                <th style="width: 32%;">Location</th>
+                                <th style="width: 18%;">Department / ATS</th>
+                                <th style="width: 12%; text-align: center;">Action</th>
                             </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            ${addedJobs.map(job => `
+                                <tr>
+                                    <td>
+                                        <span class="badge-new-pill"><i class="fa-solid fa-plus"></i> NEW</span>
+                                        <a href="${escapeHtml(job.job_url || '#')}" target="_blank" class="job-title-link">${escapeHtml(job.title || 'Untitled')}</a>
+                                    </td>
+                                    <td><span class="badge-loc"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.location || 'N/A')}</span></td>
+                                    <td>
+                                        <span style="font-size: 0.85em; color: var(--text-muted);">${escapeHtml(job.department || 'N/A')}</span>
+                                        <span class="badge-ats" style="margin-left: 6px; font-size: 10px;">${escapeHtml(job.ats || 'ATS')}</span>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <a href="${escapeHtml(job.job_url || '#')}" target="_blank" class="btn-icon" style="display: inline-flex; text-decoration: none; padding: 4px 8px; font-size: 11px;" title="Open Job Posting">
+                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         `;
         container.appendChild(section);
@@ -1410,34 +1415,36 @@ function renderComparisonTables(comp, filter) {
         totalRenderedSections++;
         const section = document.createElement('div');
         section.innerHTML = `
-            <div style="margin-bottom: 20px;">
-                <h4 style="color: #fb7185; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+            <div style="margin-bottom: 24px;">
+                <h4 style="color: #fb7185; display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 1rem;">
                     <i class="fa-solid fa-circle-minus"></i> Removed Jobs (No longer in Newer Run) (${removedJobs.length})
                 </h4>
-                <table class="comp-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 40%;">Role / Title</th>
-                            <th style="width: 30%;">Last Known Location</th>
-                            <th style="width: 30%;">Department / Key</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${removedJobs.map(job => `
-                            <tr style="opacity: 0.85;">
-                                <td>
-                                    <span style="padding: 2px 6px; background: rgba(244,63,94,0.15); color: #fda4af; border-radius: 4px; font-size: 10px; font-weight: 600; margin-right: 6px;">REMOVED</span>
-                                    <span style="text-decoration: line-through; color: var(--text-muted); font-weight: 500;">${escapeHtml(job.title || 'Untitled')}</span>
-                                </td>
-                                <td><span class="badge-loc"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.location || 'N/A')}</span></td>
-                                <td>
-                                    <span style="font-size: 0.85em; color: var(--text-dim);">${escapeHtml(job.department || 'N/A')}</span>
-                                    <div style="font-size: 10px; color: var(--text-dim);">Key: ${escapeHtml(job.job_identity_key)}</div>
-                                </td>
+                <div class="comp-table-wrapper">
+                    <table class="comp-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;">Role / Title</th>
+                                <th style="width: 35%;">Last Known Location</th>
+                                <th style="width: 25%;">Department / Key</th>
                             </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            ${removedJobs.map(job => `
+                                <tr style="opacity: 0.85;">
+                                    <td>
+                                        <span style="padding: 2px 6px; background: rgba(244,63,94,0.15); color: #fda4af; border-radius: 4px; font-size: 10px; font-weight: 600; margin-right: 6px;">REMOVED</span>
+                                        <span style="text-decoration: line-through; color: var(--text-muted); font-weight: 500;">${escapeHtml(job.title || 'Untitled')}</span>
+                                    </td>
+                                    <td><span class="badge-loc"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.location || 'N/A')}</span></td>
+                                    <td>
+                                        <span style="font-size: 0.85em; color: var(--text-dim);">${escapeHtml(job.department || 'N/A')}</span>
+                                        <div style="font-size: 10px; color: var(--text-dim); font-family: var(--font-code);">Key: ${escapeHtml(job.job_identity_key)}</div>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         `;
         container.appendChild(section);
@@ -1448,28 +1455,30 @@ function renderComparisonTables(comp, filter) {
         totalRenderedSections++;
         const section = document.createElement('div');
         section.innerHTML = `
-            <div style="margin-bottom: 20px;">
-                <h4 style="color: #38bdf8; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+            <div style="margin-bottom: 24px;">
+                <h4 style="color: #38bdf8; display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 1rem;">
                     <i class="fa-solid fa-check"></i> Unchanged Jobs (${unchangedJobs.length})
                 </h4>
-                <table class="comp-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 50%;">Role / Title</th>
-                            <th style="width: 35%;">Location</th>
-                            <th style="width: 15%;">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${unchangedJobs.map(job => `
+                <div class="comp-table-wrapper">
+                    <table class="comp-table">
+                        <thead>
                             <tr>
-                                <td><a href="${escapeHtml(job.job_url || '#')}" target="_blank" class="job-title-link">${escapeHtml(job.title || 'Untitled')}</a></td>
-                                <td><span class="badge-loc"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.location || 'N/A')}</span></td>
-                                <td><span style="color: #38bdf8; font-size: 12px;"><i class="fa-solid fa-check-double"></i> Identical</span></td>
+                                <th style="width: 50%;">Role / Title</th>
+                                <th style="width: 35%;">Location</th>
+                                <th style="width: 15%;">Status</th>
                             </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            ${unchangedJobs.map(job => `
+                                <tr>
+                                    <td><a href="${escapeHtml(job.job_url || '#')}" target="_blank" class="job-title-link">${escapeHtml(job.title || 'Untitled')}</a></td>
+                                    <td><span class="badge-loc"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.location || 'N/A')}</span></td>
+                                    <td><span style="color: #38bdf8; font-size: 12px; font-weight: 500;"><i class="fa-solid fa-check-double"></i> Identical</span></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         `;
         container.appendChild(section);
