@@ -382,88 +382,6 @@ function showError(elementId, message) {
 }
 
 // ============================================
-// RUN HISTORY MODAL
-// ============================================
-
-async function openCustomerHistoryModal(customerId) {
-    try {
-        const response = await fetch(`/customers/${customerId}/history`);
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
-        const data = await response.json();
-        
-        document.getElementById('historyModalMeta').innerText = `Customer: ${customerId.toUpperCase()} (${data.total_runs} runs recorded)`;
-        
-        const summaryBox = document.getElementById('historySummary');
-        const diff = data.diff_summary;
-        if (diff && diff.has_previous_run) {
-            summaryBox.innerHTML = `
-                <div class="history-diff-highlight card-glass">
-                    <i class="fa-solid fa-clock-rotate-left accent-cyan"></i>
-                    <div>
-                        <strong>Latest Change Summary:</strong> ${diff.message || ''}
-                        <div style="margin-top: 6px; font-size: 12px; opacity: 0.8;">
-                            <span class="badge-diff-new">+${diff.new_jobs_count} New</span> | 
-                            <span class="badge-diff-removed">-${diff.removed_jobs_count} Removed</span> | 
-                            <span>${diff.unchanged_jobs_count} Unchanged</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-        } else {
-            summaryBox.innerHTML = `
-                <div class="history-diff-highlight card-glass">
-                    <i class="fa-solid fa-flag accent-amber"></i>
-                    <span><strong>Baseline Run:</strong> First extraction recorded for this customer. No prior run comparison available yet.</span>
-                </div>
-            `;
-        }
-        
-        const listEl = document.getElementById('historyList');
-        if (!data.runs || data.runs.length === 0) {
-            listEl.innerHTML = `
-                <div class="empty-state" style="padding: 20px;">
-                    <i class="fa-solid fa-inbox"></i>
-                    <p>No extraction runs recorded yet for this customer.</p>
-                </div>
-            `;
-        } else {
-            listEl.innerHTML = data.runs.map(run => {
-                const runDate = run.run_at ? new Date(run.run_at).toLocaleString() : 'Unknown Date';
-                const statusClass = run.status || 'success';
-                return `
-                    <div class="history-item card-glass">
-                        <div class="history-item-header">
-                            <span class="history-time"><i class="fa-regular fa-calendar-days"></i> ${runDate}</span>
-                            <span class="status-pill ${statusClass}">${run.status.toUpperCase()}</span>
-                        </div>
-                        <div class="history-item-body">
-                            <span><i class="fa-solid fa-briefcase"></i> <strong>Returned:</strong> ${run.jobs_returned_count} jobs (Found ${run.jobs_found_count})</span>
-                            <span><i class="fa-solid fa-diagram-project"></i> <strong>Strategy:</strong> ${run.strategy_used || 'Default'}</span>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-        
-        document.getElementById('historyModal').style.display = 'flex';
-    } catch (err) {
-        showToast(`Error fetching history: ${err.message}`);
-    }
-}
-
-function closeHistoryModal() {
-    document.getElementById('historyModal').style.display = 'none';
-}
-
-function closeHistoryModalOnBackdrop(event) {
-    if (event.target.id === 'historyModal') {
-        closeHistoryModal();
-    }
-}
-
-// ============================================
 // PRESETS & EXTRACTION
 // ============================================
 
@@ -1026,3 +944,570 @@ function renderTableRows(jobs) {
 document.addEventListener('DOMContentLoaded', () => {
     loadCustomers();
 });
+
+// ==========================================
+// 1. CSV EXPORT FOR MAIN EXTRACTION VIEW
+// ==========================================
+function downloadCSV() {
+    if (!currentData || !currentData.jobs || currentData.jobs.length === 0) {
+        showToast('No job data available to export');
+        return;
+    }
+
+    // Ensure all extracted jobs (not just filtered subset) are exported
+    const allJobs = currentData.jobs;
+    const columns = [
+        "id", "external_job_id", "requisition_id", "title", "location_raw",
+        "location_city", "location_state", "location_country", "department",
+        "employment_type", "workplace_type", "experience_level", "description",
+        "responsibilities", "requirements", "preferred_qualifications", "benefits",
+        "skills", "job_url", "application_url", "posted_at", "source", "ats"
+    ];
+
+    const csvRows = [];
+    csvRows.push(columns.join(','));
+
+    allJobs.forEach(job => {
+        let locRaw = '', locCity = '', locState = '', locCountry = '';
+        if (job.location) {
+            if (typeof job.location === 'object') {
+                locRaw = job.location.raw || '';
+                locCity = job.location.city || '';
+                locState = job.location.state || '';
+                locCountry = job.location.country || '';
+            } else {
+                locRaw = String(job.location);
+            }
+        }
+
+        const row = [
+            escapeCsvCell(job.id || ''),
+            escapeCsvCell(job.external_job_id || ''),
+            escapeCsvCell(job.requisition_id || ''),
+            escapeCsvCell(job.title || ''),
+            escapeCsvCell(locRaw),
+            escapeCsvCell(locCity),
+            escapeCsvCell(locState),
+            escapeCsvCell(locCountry),
+            escapeCsvCell(job.department || ''),
+            escapeCsvCell(job.employment_type || ''),
+            escapeCsvCell(job.workplace_type || ''),
+            escapeCsvCell(job.experience_level || ''),
+            escapeCsvCell(job.description || ''),
+            escapeCsvCell((job.responsibilities || []).join('; ')),
+            escapeCsvCell((job.requirements || []).join('; ')),
+            escapeCsvCell((job.preferred_qualifications || []).join('; ')),
+            escapeCsvCell((job.benefits || []).join('; ')),
+            escapeCsvCell((job.skills || []).join('; ')),
+            escapeCsvCell(job.job_url || ''),
+            escapeCsvCell(job.application_url || ''),
+            escapeCsvCell(job.posted_at || ''),
+            escapeCsvCell(job.source || ''),
+            escapeCsvCell(job.ats || '')
+        ];
+        csvRows.push(row.join(','));
+    });
+
+    const csvBlob = new Blob([csvRows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+    const blobUrl = URL.createObjectURL(csvBlob);
+    const link = document.createElement('a');
+    link.href = blobUrl;
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    link.setAttribute('download', `extracted_jobs_${timestamp}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(blobUrl);
+
+    showToast(`Exported all ${allJobs.length} extracted jobs to CSV`);
+}
+
+function escapeCsvCell(cell) {
+    if (cell === null || cell === undefined) return '""';
+    const str = String(cell).replace(/"/g, '""');
+    return `"${str}"`;
+}
+
+// ==========================================
+// 2. CLIENT RUN HISTORY & RUN COMPARISON
+// ==========================================
+let currentHistoryData = null;
+let currentCustomerId = null;
+let selectedRunIds = new Set();
+let currentComparisonData = null;
+let currentActiveComparisonFilter = 'all';
+
+async function openCustomerHistoryModal(customerId) {
+    currentCustomerId = customerId;
+    selectedRunIds.clear();
+    updateCompareSelectedBtn();
+
+    const modal = document.getElementById('historyModal');
+    const titleEl = document.getElementById('historyModalTitle');
+    const metaEl = document.getElementById('historyModalMeta');
+    const summaryEl = document.getElementById('historySummary');
+    const listEl = document.getElementById('historyList');
+
+    // Switch to timeline view
+    document.getElementById('historyTimelineView').style.display = 'block';
+    document.getElementById('historyComparisonView').style.display = 'none';
+
+    const customer = (customersData || []).find(c => c.customer_id === customerId);
+    const customerName = customer ? customer.customer_name : customerId;
+
+    titleEl.innerHTML = `<i class="fa-solid fa-timeline"></i> Extraction Run History`;
+    metaEl.innerText = `${customerName} (ID: ${customerId})`;
+
+    summaryEl.innerHTML = `<div style="text-align: center; padding: 12px; color: var(--text-muted);"><i class="fa-solid fa-spinner fa-spin"></i> Loading historical runs...</div>`;
+    listEl.innerHTML = '';
+
+    modal.classList.add('active');
+
+    try {
+        const response = await fetch(`/customers/${encodeURIComponent(customerId)}/history?limit=30`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch history (HTTP ${response.status})`);
+        }
+
+        const data = await response.json();
+        currentHistoryData = data;
+        renderHistoryList(data, customerName);
+    } catch (err) {
+        summaryEl.innerHTML = `<div class="error-box" style="padding: 12px; background: rgba(244,63,94,0.15); border: 1px solid var(--accent-rose); border-radius: 8px; color: #fda4af;">
+            <i class="fa-solid fa-triangle-exclamation"></i> Error loading history: ${escapeHtml(err.message)}
+        </div>`;
+    }
+}
+
+function renderHistoryList(data, customerName) {
+    const summaryEl = document.getElementById('historySummary');
+    const listEl = document.getElementById('historyList');
+    const runs = data.runs || [];
+
+    if (runs.length === 0) {
+        summaryEl.innerHTML = `<div style="padding: 20px; text-align: center; color: var(--text-muted);">
+            <i class="fa-solid fa-inbox" style="font-size: 32px; margin-bottom: 8px; display: block; opacity: 0.5;"></i>
+            No previous extraction runs recorded for <strong>${escapeHtml(customerName)}</strong> yet.
+        </div>`;
+        listEl.innerHTML = '';
+        return;
+    }
+
+    const diff = data.diff_summary || {};
+    let diffSummaryHtml = '';
+    if (diff.has_previous_run) {
+        const dateStr = diff.previous_run_at ? new Date(diff.previous_run_at).toLocaleString() : '';
+        diffSummaryHtml = `<div style="padding: 10px 14px; background: rgba(99, 102, 241, 0.12); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 8px; margin-bottom: 12px; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <span><i class="fa-solid fa-chart-line"></i> Latest Diff: <strong>${diff.new_jobs_count} new</strong>, <strong>${diff.removed_jobs_count} removed</strong> against run on ${dateStr}</span>
+            <button type="button" class="btn-primary" onclick="compareRuns(${diff.previous_run_id}, ${diff.latest_run_id}, '${escapeHtml(customerName)}')" style="padding: 4px 10px; font-size: 0.8rem;">
+                <i class="fa-solid fa-code-compare"></i> View Latest Comparison
+            </button>
+        </div>`;
+    }
+
+    summaryEl.innerHTML = `
+        ${diffSummaryHtml}
+        <div style="font-size: 0.85rem; color: var(--text-muted);">
+            Showing <strong>${runs.length}</strong> recorded extraction run${runs.length > 1 ? 's' : ''} for <strong>${escapeHtml(customerName)}</strong>:
+        </div>
+    `;
+
+    listEl.innerHTML = '';
+    runs.forEach((run, index) => {
+        const runCard = document.createElement('div');
+        runCard.className = 'history-run-card';
+        runCard.id = `run-card-${run.id}`;
+
+        const dateFormatted = run.run_at ? new Date(run.run_at).toLocaleString() : 'Unknown Date';
+        const statusClass = (run.status || 'success').toLowerCase();
+        const found = run.jobs_found_count !== null && run.jobs_found_count !== undefined ? run.jobs_found_count : (run.jobs_count || 0);
+        const returned = run.jobs_returned_count !== null && run.jobs_returned_count !== undefined ? run.jobs_returned_count : (run.jobs_count || 0);
+        const isLatest = index === 0;
+
+        let compareButtonsHtml = '';
+        if (index + 1 < runs.length) {
+            const prevRun = runs[index + 1];
+            compareButtonsHtml += `
+                <button type="button" class="btn-secondary" onclick="compareRuns(${prevRun.id}, ${run.id}, '${escapeHtml(customerName)}')" title="Compare Run #${run.id} against Run #${prevRun.id}" style="padding: 6px 12px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-code-compare"></i> Compare with Run #${prevRun.id}
+                </button>
+            `;
+        } else if (!isLatest && runs.length > 0) {
+            const latestRun = runs[0];
+            compareButtonsHtml += `
+                <button type="button" class="btn-secondary" onclick="compareRuns(${run.id}, ${latestRun.id}, '${escapeHtml(customerName)}')" title="Compare with Latest (Run #${latestRun.id})" style="padding: 6px 12px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-code-compare"></i> Compare with Latest (#${latestRun.id})
+                </button>
+            `;
+        }
+
+        runCard.innerHTML = `
+            <div class="run-card-left">
+                <input type="checkbox" id="chk-run-${run.id}" onchange="toggleRunSelection(${run.id})" style="cursor: pointer; width: 16px; height: 16px; accent-color: var(--accent-cyan);">
+                <div class="run-card-meta">
+                    <div class="run-title">
+                        <span>Run #${run.id}</span>
+                        ${isLatest ? '<span class="badge-id" style="font-size: 10px; background: rgba(16, 185, 129, 0.2); color: #34d399;">LATEST</span>' : ''}
+                        <span class="run-status-pill ${statusClass}">${escapeHtml(run.status || 'SUCCESS')}</span>
+                    </div>
+                    <div class="run-sub">
+                        <span><i class="fa-regular fa-clock"></i> ${escapeHtml(dateFormatted)}</span>
+                        <span><i class="fa-solid fa-briefcase"></i> <strong>${returned}</strong> returned (${found} found)</span>
+                        <span style="color: var(--text-dim);"><i class="fa-solid fa-bolt"></i> ${escapeHtml(run.strategy_used || 'ATS')}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="run-card-actions">
+                ${compareButtonsHtml}
+            </div>
+        `;
+
+        listEl.appendChild(runCard);
+    });
+}
+
+function toggleRunSelection(runId) {
+    if (selectedRunIds.has(runId)) {
+        selectedRunIds.delete(runId);
+        document.getElementById(`run-card-${runId}`)?.classList.remove('selected');
+    } else {
+        if (selectedRunIds.size >= 2) {
+            const firstSelected = Array.from(selectedRunIds)[0];
+            selectedRunIds.delete(firstSelected);
+            const chk = document.getElementById(`chk-run-${firstSelected}`);
+            if (chk) chk.checked = false;
+            document.getElementById(`run-card-${firstSelected}`)?.classList.remove('selected');
+        }
+        selectedRunIds.add(runId);
+        document.getElementById(`run-card-${runId}`)?.classList.add('selected');
+    }
+    updateCompareSelectedBtn();
+}
+
+function updateCompareSelectedBtn() {
+    const btn = document.getElementById('btnCompareSelected');
+    if (!btn) return;
+    const count = selectedRunIds.size;
+    btn.innerHTML = `<i class="fa-solid fa-code-compare"></i> Compare Selected (${count}/2)`;
+    btn.disabled = count !== 2;
+}
+
+function compareSelectedRuns() {
+    if (selectedRunIds.size !== 2) return;
+    const ids = Array.from(selectedRunIds).sort((a, b) => a - b);
+    const baseId = ids[0];
+    const targetId = ids[1];
+    const customer = (customersData || []).find(c => c.customer_id === currentCustomerId);
+    const customerName = customer ? customer.customer_name : currentCustomerId;
+    compareRuns(baseId, targetId, customerName);
+}
+
+async function compareRuns(baseRunId, targetRunId, customerName) {
+    document.getElementById('historyTimelineView').style.display = 'none';
+    document.getElementById('historyComparisonView').style.display = 'block';
+
+    const container = document.getElementById('comparisonTablesContainer');
+    const titleEl = document.getElementById('comparisonTitle');
+    const metaEl = document.getElementById('comparisonMeta');
+
+    titleEl.innerHTML = `<i class="fa-solid fa-code-compare" style="color: var(--accent-cyan);"></i> Comparison: Run #${baseRunId} vs Run #${targetRunId}`;
+    metaEl.innerText = `Analyzing differences between baseline run #${baseRunId} and subsequent run #${targetRunId} (${customerName || ''})`;
+
+    container.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-muted);"><i class="fa-solid fa-spinner fa-spin fa-2x"></i><br><br>Computing field-level diffs and snapshot comparisons...</div>`;
+
+    try {
+        const response = await fetch(`/runs/${targetRunId}/compare/${baseRunId}`);
+        if (!response.ok) {
+            const errData = await response.json();
+            throw new Error(errData.detail || `Server returned HTTP ${response.status}`);
+        }
+
+        const comparison = await response.json();
+        currentComparisonData = comparison;
+        renderComparisonView(comparison);
+    } catch (err) {
+        container.innerHTML = `<div class="error-box" style="padding: 16px; background: rgba(244,63,94,0.15); border: 1px solid var(--accent-rose); border-radius: 8px; color: #fda4af;">
+            <i class="fa-solid fa-triangle-exclamation"></i> Comparison Failed: ${escapeHtml(err.message)}
+        </div>`;
+    }
+}
+
+function renderComparisonView(comp) {
+    const summary = comp.summary || {};
+    const addedCount = summary.added_count || 0;
+    const removedCount = summary.removed_count || 0;
+    const changedCount = summary.changed_count || 0;
+    const unchangedCount = summary.unchanged_count || 0;
+
+    document.getElementById('compCountAdded').innerText = addedCount;
+    document.getElementById('compCountRemoved').innerText = removedCount;
+    document.getElementById('compCountChanged').innerText = changedCount;
+    document.getElementById('compCountUnchanged').innerText = unchangedCount;
+
+    document.getElementById('tabCountAdded').innerText = addedCount;
+    document.getElementById('tabCountRemoved').innerText = removedCount;
+    document.getElementById('tabCountChanged').innerText = changedCount;
+    document.getElementById('tabCountUnchanged').innerText = unchangedCount;
+
+    const baseDate = comp.base_run?.run_at ? new Date(comp.base_run.run_at).toLocaleString() : `Run #${comp.base_run?.id}`;
+    const targetDate = comp.target_run?.run_at ? new Date(comp.target_run.run_at).toLocaleString() : `Run #${comp.target_run?.id}`;
+    document.getElementById('comparisonMeta').innerHTML = `
+        <strong>Base:</strong> Run #${comp.base_run?.id} (${baseDate}) &nbsp;➔&nbsp; 
+        <strong>Target:</strong> Run #${comp.target_run?.id} (${targetDate})
+    `;
+
+    filterComparisonTab('all');
+}
+
+function filterComparisonTab(tabKey) {
+    currentActiveComparisonFilter = tabKey;
+
+    ['tabCompAll', 'tabCompAdded', 'tabCompRemoved', 'tabCompChanged', 'tabCompUnchanged'].forEach(tabId => {
+        document.getElementById(tabId)?.classList.remove('active');
+    });
+
+    const activeBtnMap = {
+        'all': 'tabCompAll',
+        'added': 'tabCompAdded',
+        'removed': 'tabCompRemoved',
+        'changed': 'tabCompChanged',
+        'unchanged': 'tabCompUnchanged'
+    };
+    if (activeBtnMap[tabKey]) {
+        document.getElementById(activeBtnMap[tabKey])?.classList.add('active');
+    }
+
+    renderComparisonTables(currentComparisonData, tabKey);
+}
+
+function renderComparisonTables(comp, filter) {
+    if (!comp) return;
+    const container = document.getElementById('comparisonTablesContainer');
+    container.innerHTML = '';
+
+    const addedJobs = comp.added_jobs || [];
+    const removedJobs = comp.removed_jobs || [];
+    const changedJobs = comp.changed_jobs || [];
+    const unchangedJobs = comp.unchanged_jobs || [];
+
+    const showAll = filter === 'all';
+    const showAdded = showAll || filter === 'added';
+    const showRemoved = showAll || filter === 'removed';
+    const showChanged = showAll || filter === 'changed';
+    const showUnchanged = showAll || filter === 'unchanged';
+
+    let totalRenderedSections = 0;
+
+    // 1. CHANGED JOBS SECTION (with Field-Level Old vs New Table)
+    if (showChanged && changedJobs.length > 0) {
+        totalRenderedSections++;
+        const section = document.createElement('div');
+        section.innerHTML = `
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: #fbbf24; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                    <i class="fa-solid fa-pen-to-square"></i> Changed Jobs (${changedJobs.length})
+                </h4>
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Role / Title</th>
+                            <th style="width: 20%;">Location</th>
+                            <th style="width: 55%;">Field Modifications (Old Value ➔ New Value)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${changedJobs.map(c => {
+                            const diffRows = c.field_changes.map(ch => `
+                                <tr>
+                                    <td class="diff-field-name">${escapeHtml(ch.label || ch.field)}</td>
+                                    <td><span class="diff-old-val">${escapeHtml(ch.old_value || 'None')}</span></td>
+                                    <td style="color: var(--text-muted); width: 20px; text-align: center;">➔</td>
+                                    <td><span class="diff-new-val">${escapeHtml(ch.new_value || 'None')}</span></td>
+                                </tr>
+                            `).join('');
+
+                            return `
+                                <tr>
+                                    <td>
+                                        <a href="${escapeHtml(c.job_url || '#')}" target="_blank" class="job-title-link">
+                                            ${escapeHtml(c.title || 'Untitled')}
+                                        </a>
+                                        <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">Key: ${escapeHtml(c.job_identity_key)}</div>
+                                    </td>
+                                    <td><span class="badge-loc"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(c.location || 'N/A')}</span></td>
+                                    <td>
+                                        <table class="diff-field-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Field</th>
+                                                    <th>Previous Value</th>
+                                                    <th></th>
+                                                    <th>New Value</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                ${diffRows}
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
+        container.appendChild(section);
+    }
+
+    // 2. ADDED JOBS SECTION
+    if (showAdded && addedJobs.length > 0) {
+        totalRenderedSections++;
+        const section = document.createElement('div');
+        section.innerHTML = `
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: #34d399; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                    <i class="fa-solid fa-circle-plus"></i> Added Jobs in Newer Run (${addedJobs.length})
+                </h4>
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 35%;">Role / Title</th>
+                            <th style="width: 25%;">Location</th>
+                            <th style="width: 20%;">Department / ATS</th>
+                            <th style="width: 20%;">Links</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${addedJobs.map(job => `
+                            <tr>
+                                <td>
+                                    <span class="badge-new-pill"><i class="fa-solid fa-plus"></i> NEW</span>
+                                    <a href="${escapeHtml(job.job_url || '#')}" target="_blank" class="job-title-link">${escapeHtml(job.title || 'Untitled')}</a>
+                                </td>
+                                <td><span class="badge-loc"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.location || 'N/A')}</span></td>
+                                <td>
+                                    <span style="font-size: 0.85em; color: var(--text-muted);">${escapeHtml(job.department || 'N/A')}</span>
+                                    <span class="badge-ats" style="margin-left: 6px; font-size: 10px;">${escapeHtml(job.ats || 'ATS')}</span>
+                                </td>
+                                <td>
+                                    <a href="${escapeHtml(job.job_url || '#')}" target="_blank" class="btn-icon" style="display: inline-flex; text-decoration: none; padding: 4px 8px; font-size: 11px;">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Open
+                                    </a>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
+        container.appendChild(section);
+    }
+
+    // 3. REMOVED JOBS SECTION
+    if (showRemoved && removedJobs.length > 0) {
+        totalRenderedSections++;
+        const section = document.createElement('div');
+        section.innerHTML = `
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: #fb7185; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                    <i class="fa-solid fa-circle-minus"></i> Removed Jobs (No longer in Newer Run) (${removedJobs.length})
+                </h4>
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 40%;">Role / Title</th>
+                            <th style="width: 30%;">Last Known Location</th>
+                            <th style="width: 30%;">Department / Key</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${removedJobs.map(job => `
+                            <tr style="opacity: 0.85;">
+                                <td>
+                                    <span style="padding: 2px 6px; background: rgba(244,63,94,0.15); color: #fda4af; border-radius: 4px; font-size: 10px; font-weight: 600; margin-right: 6px;">REMOVED</span>
+                                    <span style="text-decoration: line-through; color: var(--text-muted); font-weight: 500;">${escapeHtml(job.title || 'Untitled')}</span>
+                                </td>
+                                <td><span class="badge-loc"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.location || 'N/A')}</span></td>
+                                <td>
+                                    <span style="font-size: 0.85em; color: var(--text-dim);">${escapeHtml(job.department || 'N/A')}</span>
+                                    <div style="font-size: 10px; color: var(--text-dim);">Key: ${escapeHtml(job.job_identity_key)}</div>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
+        container.appendChild(section);
+    }
+
+    // 4. UNCHANGED JOBS SECTION
+    if (showUnchanged && unchangedJobs.length > 0) {
+        totalRenderedSections++;
+        const section = document.createElement('div');
+        section.innerHTML = `
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: #38bdf8; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                    <i class="fa-solid fa-check"></i> Unchanged Jobs (${unchangedJobs.length})
+                </h4>
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 50%;">Role / Title</th>
+                            <th style="width: 35%;">Location</th>
+                            <th style="width: 15%;">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${unchangedJobs.map(job => `
+                            <tr>
+                                <td><a href="${escapeHtml(job.job_url || '#')}" target="_blank" class="job-title-link">${escapeHtml(job.title || 'Untitled')}</a></td>
+                                <td><span class="badge-loc"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.location || 'N/A')}</span></td>
+                                <td><span style="color: #38bdf8; font-size: 12px;"><i class="fa-solid fa-check-double"></i> Identical</span></td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
+        container.appendChild(section);
+    }
+
+    if (totalRenderedSections === 0) {
+        container.innerHTML = `
+            <div style="padding: 40px; text-align: center; color: var(--text-muted);">
+                <i class="fa-solid fa-circle-check" style="font-size: 32px; margin-bottom: 12px; display: block; color: var(--accent-emerald);"></i>
+                No differences found matching the selected filter (<strong>${escapeHtml(filter)}</strong>).
+            </div>
+        `;
+    }
+}
+
+function triggerComparisonCSVDownload() {
+    if (!currentComparisonData || !currentComparisonData.base_run || !currentComparisonData.target_run) {
+        showToast('No comparison data ready to export');
+        return;
+    }
+    const baseId = currentComparisonData.base_run.id;
+    const targetId = currentComparisonData.target_run.id;
+
+    window.location.href = `/runs/${targetId}/compare/${baseId}/csv`;
+    showToast(`Downloading comparison CSV for Run #${baseId} vs Run #${targetId}...`);
+}
+
+function backToHistoryList() {
+    document.getElementById('historyTimelineView').style.display = 'block';
+    document.getElementById('historyComparisonView').style.display = 'none';
+}
+
+function closeHistoryModal() {
+    document.getElementById('historyModal')?.classList.remove('active');
+}
+
+function closeHistoryModalOnBackdrop(event) {
+    if (event.target.id === 'historyModal') {
+        closeHistoryModal();
+    }
+}
+

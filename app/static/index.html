@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/styles.css?v=2">
 </head>
 <body>
     <div class="app-container">
@@ -373,20 +373,99 @@
             </div>
         </div>
 
-        <!-- Run History Modal -->
+        <!-- Run History & Comparison Modal -->
         <div id="historyModal" class="modal" onclick="closeHistoryModalOnBackdrop(event)">
-            <div class="modal-content card-glass history-modal">
+            <div class="modal-content card-glass history-modal" style="max-width: 950px; max-height: 88vh; display: flex; flex-direction: column;">
                 <div class="modal-header">
                     <div>
-                        <h2><i class="fa-solid fa-timeline"></i> Extraction Run History</h2>
+                        <h2 id="historyModalTitle"><i class="fa-solid fa-timeline"></i> Extraction Run History</h2>
                         <span id="historyModalMeta" class="modal-meta">Customer Run Timeline</span>
                     </div>
                     <button type="button" class="btn-close" onclick="closeHistoryModal()"><i class="fa-solid fa-xmark"></i></button>
                 </div>
-                <div class="modal-body">
-                    <div id="historySummary" class="history-summary-box"></div>
-                    <div id="historyList" class="history-list"></div>
+                
+                <div class="modal-body" style="overflow-y: auto; flex: 1; padding: 20px;">
+                    <!-- VIEW 1: History Timeline List -->
+                    <div id="historyTimelineView">
+                        <div id="historySummary" class="history-summary-box"></div>
+                        
+                        <div class="history-actions-bar" style="display: flex; justify-content: space-between; align-items: center; margin: 16px 0; gap: 12px; flex-wrap: wrap;">
+                            <div style="font-size: 0.9em; color: var(--text-muted);">
+                                <i class="fa-solid fa-circle-info"></i> Select any two runs to compare or click "Compare" on any past run.
+                            </div>
+                            <div style="display: flex; gap: 8px;">
+                                <button type="button" id="btnCompareSelected" class="btn-primary" onclick="compareSelectedRuns()" style="padding: 8px 16px; font-size: 0.85rem;" disabled>
+                                    <i class="fa-solid fa-code-compare"></i> Compare Selected (0)
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="historyList" class="history-list"></div>
+                    </div>
+
+                    <!-- VIEW 2: Run Comparison View -->
+                    <div id="historyComparisonView" style="display: none;">
+                        <div class="comparison-header-box card-glass" style="padding: 16px; margin-bottom: 16px; border-radius: 10px; background: rgba(0,0,0,0.25);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                                <div>
+                                    <h3 id="comparisonTitle" style="margin: 0 0 6px 0; font-size: 1.15rem; color: var(--text-primary);">
+                                        <i class="fa-solid fa-code-compare" style="color: var(--accent-cyan);"></i> Run Comparison
+                                    </h3>
+                                    <div id="comparisonMeta" style="font-size: 0.85rem; color: var(--text-muted);"></div>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" id="btnDownloadComparisonCSV" class="btn-success" onclick="triggerComparisonCSVDownload()" style="padding: 8px 14px; font-size: 0.85rem;">
+                                        <i class="fa-solid fa-file-csv"></i> Download CSV
+                                    </button>
+                                    <button type="button" class="btn-secondary" onclick="backToHistoryList()" style="padding: 8px 14px; font-size: 0.85rem;">
+                                        <i class="fa-solid fa-arrow-left"></i> Back to History
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Comparison Metric Badges -->
+                            <div class="comparison-badges" style="display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap;">
+                                <span class="diff-badge badge-added" id="compBadgeAdded" onclick="filterComparisonTab('added')">
+                                    <i class="fa-solid fa-circle-plus"></i> <strong id="compCountAdded">0</strong> Added
+                                </span>
+                                <span class="diff-badge badge-removed" id="compBadgeRemoved" onclick="filterComparisonTab('removed')">
+                                    <i class="fa-solid fa-circle-minus"></i> <strong id="compCountRemoved">0</strong> Removed
+                                </span>
+                                <span class="diff-badge badge-changed" id="compBadgeChanged" onclick="filterComparisonTab('changed')">
+                                    <i class="fa-solid fa-pen-to-square"></i> <strong id="compCountChanged">0</strong> Changed
+                                </span>
+                                <span class="diff-badge badge-unchanged" id="compBadgeUnchanged" onclick="filterComparisonTab('unchanged')">
+                                    <i class="fa-solid fa-check"></i> <strong id="compCountUnchanged">0</strong> Unchanged
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Comparison Filter Tabs -->
+                        <div class="comparison-tabs" style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px;">
+                            <button type="button" class="tab-btn-mini active" id="tabCompAll" onclick="filterComparisonTab('all')">
+                                All Differences
+                            </button>
+                            <button type="button" class="tab-btn-mini" id="tabCompAdded" onclick="filterComparisonTab('added')">
+                                Added Jobs (<span id="tabCountAdded">0</span>)
+                            </button>
+                            <button type="button" class="tab-btn-mini" id="tabCompRemoved" onclick="filterComparisonTab('removed')">
+                                Removed Jobs (<span id="tabCountRemoved">0</span>)
+                            </button>
+                            <button type="button" class="tab-btn-mini" id="tabCompChanged" onclick="filterComparisonTab('changed')">
+                                Changed Jobs (<span id="tabCountChanged">0</span>)
+                            </button>
+                            <button type="button" class="tab-btn-mini" id="tabCompUnchanged" onclick="filterComparisonTab('unchanged')">
+                                Unchanged (<span id="tabCountUnchanged">0</span>)
+                            </button>
+                        </div>
+
+                        <!-- Comparison Tables Container -->
+                        <div id="comparisonTablesContainer">
+                            <!-- Dynamic comparison tables injected here -->
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="modal-footer">
                     <button type="button" class="btn-secondary" onclick="closeHistoryModal()">Close</button>
                 </div>
@@ -398,6 +477,6 @@
 
     </div>
 
-    <script src="/static/app.js"></script>
+    <script src="/static/app.js?v=2"></script>
 </body>
 </html>

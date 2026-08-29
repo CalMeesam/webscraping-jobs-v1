@@ -11,7 +11,9 @@ from app.core.logging import get_logger
 from app.db.database import get_db_session
 from app.db.models import ExtractionRun, JobSnapshot
 from app.db.repository import (
+    compare_runs,
     compute_customer_diff,
+    export_comparison_to_csv,
     format_iso_utc,
     get_customer_history,
     save_extraction_run,
@@ -286,6 +288,52 @@ async def get_customer_history_endpoint(customer_id: str, limit: int = 20):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to fetch customer history: {str(e)}",
         )
+
+
+@router.get("/runs/{target_run_id}/compare/{base_run_id}", status_code=status.HTTP_200_OK)
+async def get_run_comparison_endpoint(target_run_id: int, base_run_id: int):
+    """Compare two specific extraction runs (base_run vs target_run)."""
+    try:
+        comparison = compare_runs(base_run_id=base_run_id, target_run_id=target_run_id)
+        return comparison
+    except ValueError as val_err:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(val_err),
+        )
+    except Exception as exc:
+        logger.error(f"Error comparing runs {base_run_id} vs {target_run_id}: {exc}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Run comparison failed: {str(exc)}",
+        )
+
+
+@router.get("/runs/{target_run_id}/compare/{base_run_id}/csv")
+async def get_run_comparison_csv_endpoint(target_run_id: int, base_run_id: int):
+    """Download comparison diff between two runs as CSV."""
+    try:
+        comparison = compare_runs(base_run_id=base_run_id, target_run_id=target_run_id)
+        csv_content = export_comparison_to_csv(comparison)
+        
+        filename = f"comparison_run_{base_run_id}_vs_{target_run_id}.csv"
+        return StreamingResponse(
+            iter([csv_content]),
+            media_type="text/csv",
+            headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+        )
+    except ValueError as val_err:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(val_err),
+        )
+    except Exception as exc:
+        logger.error(f"Error generating comparison CSV for runs {base_run_id} vs {target_run_id}: {exc}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Comparison CSV export failed: {str(exc)}",
+        )
+
 
 
 class CareerLink(BaseModel):

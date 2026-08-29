@@ -98,6 +98,21 @@
           "url": "https://jobs.lever.co/acme-innovations"
         }
       ]
+    },
+    {
+      "customer_id": "stripe",
+      "customer_name": "Stripe",
+      "director": "Patrick Collison",
+      "bizdev": [
+        "Alice",
+        "Bob"
+      ],
+      "career_links": [
+        {
+          "label": "Global Careers",
+          "url": "https://jobs.lever.co/stripe"
+        }
+      ]
     }
   ]
 }
