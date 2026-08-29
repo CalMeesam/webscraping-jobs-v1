@@ -25,6 +25,7 @@ class NormalizedJob(BaseModel):
     experience_level: str | None = None
 
     description: str | None = None
+    description_refined: str | None = None
 
     responsibilities: list[str] = Field(default_factory=list)
     requirements: list[str] = Field(default_factory=list)

@@ -17,13 +17,14 @@ from app.models.request_models import ExtractionRequest
 from app.models.response_models import ExtractionMetadata, ExtractionResponse
 from app.normalization.job_normalizer import JobNormalizer
 from app.processing.deduplicator import Deduplicator
+from app.refinement.llm_refiner import LLMOutputRefiner
 from app.utils.url_utils import clean_url
 
 logger = get_logger(__name__)
 
 
 class ExtractionManager:
-    """Central Orchestrator for discovery, extraction, enrichment, normalization, and deduplication."""
+    """Central Orchestrator for discovery, extraction, enrichment, normalization, deduplication, and refinement."""
 
     def __init__(self, client: httpx.AsyncClient | None = None):
         self._client = client
@@ -36,6 +37,7 @@ class ExtractionManager:
         self.detail_enricher = DetailEnricher(client=client)
         self.normalizer = JobNormalizer()
         self.deduplicator = Deduplicator()
+        self.llm_refiner = LLMOutputRefiner()
 
     async def process_discovered_url(
         self,
@@ -179,6 +181,15 @@ class ExtractionManager:
         # Step 7: Deduplication
         deduped_jobs = self.deduplicator.remove_duplicates(normalized_jobs)
 
+        # Step 7.5: Optional LLM Output Refinement Pass (if requested)
+        jobs_llm_refined = 0
+        jobs_llm_refinement_failed = 0
+        if request.refine_with_llm and deduped_jobs:
+            logger.info("Executing optional LLM refinement pass over extracted jobs")
+            deduped_jobs, jobs_llm_refined, jobs_llm_refinement_failed = (
+                await self.llm_refiner.refine_jobs(deduped_jobs)
+            )
+
         # Step 8: Build Metadata with Enrichment Metrics
         metadata = ExtractionMetadata(
             input_url=request.url,
@@ -196,6 +207,8 @@ class ExtractionManager:
             jobs_enrichment_attempted=context.jobs_enrichment_attempted,
             jobs_enriched=context.jobs_enriched,
             jobs_enrichment_failed=context.jobs_enrichment_failed,
+            jobs_llm_refined=jobs_llm_refined,
+            jobs_llm_refinement_failed=jobs_llm_refinement_failed,
             warnings=context.warnings,
             errors=context.errors,
         )

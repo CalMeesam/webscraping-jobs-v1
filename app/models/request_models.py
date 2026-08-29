@@ -9,3 +9,4 @@ class ExtractionRequest(BaseModel):
     include_details: bool = True
     preferred_location: str | None = None
     customer_id: str | None = None
+    refine_with_llm: bool = False

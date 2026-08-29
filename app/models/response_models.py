@@ -43,6 +43,8 @@ class ExtractionMetadata(BaseModel):
     jobs_enrichment_attempted: int = 0
     jobs_enriched: int = 0
     jobs_enrichment_failed: int = 0
+    jobs_llm_refined: int = 0
+    jobs_llm_refinement_failed: int = 0
 
     diff_summary: dict[str, Any] | None = None
 

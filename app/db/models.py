@@ -1,7 +1,8 @@
 """SQLAlchemy ORM models for extraction persistence."""
 
 from datetime import datetime, timezone
-from sqlalchemy import DateTime, ForeignKey, Integer, String, Text
+from typing import Any
+from sqlalchemy import DateTime, ForeignKey, Index, Integer, JSON, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.database import Base
 
@@ -15,6 +16,9 @@ class ExtractionRun(Base):
     """Represents a single job extraction execution for a customer."""
 
     __tablename__ = "extraction_runs"
+    __table_args__ = (
+        Index("idx_extraction_runs_customer_date", "customer_id", "run_at"),
+    )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     customer_id: Mapped[str] = mapped_column(String(128), index=True, nullable=False)
@@ -70,7 +74,7 @@ class JobSnapshot(Base):
     title: Mapped[str | None] = mapped_column(String(512), nullable=True)
     location_raw: Mapped[str | None] = mapped_column(String(512), nullable=True)
     job_url: Mapped[str | None] = mapped_column(Text, nullable=True)
-    raw_json: Mapped[str | None] = mapped_column(Text, nullable=True)
+    raw_json: Mapped[Any | None] = mapped_column(JSON, nullable=True)
 
     # Parent extraction run
     run: Mapped["ExtractionRun"] = relationship("ExtractionRun", back_populates="snapshots")

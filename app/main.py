@@ -9,8 +9,13 @@ if sys.platform == "win32":
     asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
 
 from contextlib import asynccontextmanager
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+
+# Load environment variables from .env file if present
+load_dotenv()
+
 from app.api.routes import router
 from app.core.config import settings
 from app.core.logging import get_logger, setup_logging

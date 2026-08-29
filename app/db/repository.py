@@ -62,12 +62,14 @@ def save_extraction_run(
                 else:
                     loc_raw = str(job.location)
 
-            raw_json_str = None
+            raw_json_data = None
             try:
-                if hasattr(job, "model_dump_json"):
-                    raw_json_str = job.model_dump_json()
+                if hasattr(job, "model_dump"):
+                    raw_json_data = job.model_dump()
+                elif hasattr(job, "dict"):
+                    raw_json_data = job.dict()
                 else:
-                    raw_json_str = json.dumps(job)
+                    raw_json_data = json.loads(json.dumps(job))
             except Exception as e:
                 logger.warning(f"Failed to serialize job for raw_json: {e}")
 
@@ -77,7 +79,7 @@ def save_extraction_run(
                 title=job.title,
                 location_raw=loc_raw,
                 job_url=job.job_url,
-                raw_json=raw_json_str,
+                raw_json=raw_json_data,
             )
             snapshots.append(snapshot)
 
