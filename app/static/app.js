@@ -1061,6 +1061,7 @@ async function openCustomerHistoryModal(customerId) {
     summaryEl.innerHTML = `<div style="text-align: center; padding: 12px; color: var(--text-muted);"><i class="fa-solid fa-spinner fa-spin"></i> Loading historical runs...</div>`;
     listEl.innerHTML = '';
 
+    modal.style.display = 'flex';
     modal.classList.add('active');
 
     try {
@@ -1502,7 +1503,11 @@ function backToHistoryList() {
 }
 
 function closeHistoryModal() {
-    document.getElementById('historyModal')?.classList.remove('active');
+    const modal = document.getElementById('historyModal');
+    if (modal) {
+        modal.style.display = 'none';
+        modal.classList.remove('active');
+    }
 }
 
 function closeHistoryModalOnBackdrop(event) {

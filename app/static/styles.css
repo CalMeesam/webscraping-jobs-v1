@@ -723,6 +723,10 @@ input:checked + .slider:before {
     padding: 20px;
 }
 
+.modal.active {
+    display: flex !important;
+}
+
 .modal-content {
     width: 100%;
     max-width: 800px;
