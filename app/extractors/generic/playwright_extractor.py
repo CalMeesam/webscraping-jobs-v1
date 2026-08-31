@@ -42,8 +42,13 @@ class PlaywrightExtractor(BaseExtractor):
         scroll_count = 0
         no_change_count = 0
         
-        # Common selectors for job listings across different ATS platforms
+        # Common selectors for job listings across different ATS platforms & SPAs (Phenom, Workday, etc.)
         job_selectors = [
+            'a[href*="/job/"]',
+            '[data-ph-at-id="job-title-text"]',
+            '.jobs-list-item',
+            '.job-tile',
+            '.job-title',
             '[data-job-id]',
             '[data-qa="job-posting"]',
             '[class*="job-card"]',
@@ -158,8 +163,11 @@ class PlaywrightExtractor(BaseExtractor):
                 page.on("response", handle_response)
 
                 try:
-                    await page.goto(url, wait_until="networkidle", timeout=settings.PLAYWRIGHT_TIMEOUT_MS)
-                except Exception:
+                    await page.goto(url, wait_until="domcontentloaded", timeout=settings.PLAYWRIGHT_TIMEOUT_MS)
+                    # Allow dynamic SPA widgets (Phenom, Vue3, React) to render jobs into DOM
+                    await page.wait_for_timeout(4000)
+                except Exception as e:
+                    logger.warning(f"Playwright navigation notice for {url}: {e}")
                     await page.wait_for_timeout(3500)
 
                 # Step 5: If XHR API captured, prefer it over DOM scraping

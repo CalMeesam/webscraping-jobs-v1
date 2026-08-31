@@ -41,6 +41,7 @@ class HTMLExtractor(BaseExtractor):
             if loc_el:
                 loc_str = loc_el.get_text(strip=True)
                 if loc_str and len(loc_str) >= 2:
+                    loc_str = re.sub(r"^Locations?:\s*", "", loc_str, flags=re.I).strip()
                     return loc_str
 
             # Check Oracle HCM DOM pattern "Locations<LocationText>"
@@ -166,7 +167,11 @@ class HTMLExtractor(BaseExtractor):
                 continue
 
             title = a.get_text(strip=True)
-            parent = a.find_parent(["div", "li", "tr", "article"])
+            # Find closest job card container
+            parent = (
+                a.find_parent(class_=re.compile(r"job|card|item|listing|result", re.I))
+                or a.find_parent(["li", "article", "tr", "div"])
+            )
 
             if not title or len(title) < 3:
                 if parent:
