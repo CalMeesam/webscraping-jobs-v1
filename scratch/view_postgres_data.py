@@ -3,6 +3,10 @@ Run with: python -m scratch.view_postgres_data
 """
 
 import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from sqlalchemy import select, func, desc
 from app.db.database import get_db_session
 from app.db.models import ExtractionRun, JobSnapshot
