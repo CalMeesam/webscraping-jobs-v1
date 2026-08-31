@@ -75,42 +75,41 @@
       "customer_name": "Sumologic",
       "director": "Deepak",
       "bizdev": [
-        "NA"
+        "Alice"
       ],
       "career_links": [
         {
-          "label": "Sumologic",
+          "label": "Sumologic Portal",
           "url": "https://job-boards.greenhouse.io/sumologic"
         }
       ]
     },
     {
-      "customer_id": "acme-innovations",
-      "customer_name": "Acme Innovations",
-      "director": "Sarah Connor",
-      "bizdev": [
-        "John Doe",
-        "Jane Smith"
-      ],
-      "career_links": [
-        {
-          "label": "Engineering Careers",
-          "url": "https://jobs.lever.co/acme-innovations"
-        }
-      ]
-    },
-    {
-      "customer_id": "stripe",
-      "customer_name": "Stripe",
-      "director": "Patrick Collison",
+      "customer_id": "figma",
+      "customer_name": "Figma",
+      "director": "Deepak",
       "bizdev": [
         "Alice",
         "Bob"
       ],
       "career_links": [
         {
-          "label": "Global Careers",
-          "url": "https://jobs.lever.co/stripe"
+          "label": "Greenhouse Board",
+          "url": "https://boards.greenhouse.io/figma"
+        }
+      ]
+    },
+    {
+      "customer_id": "exl",
+      "customer_name": "EXL Service",
+      "director": "Deepak",
+      "bizdev": [
+        "Alice"
+      ],
+      "career_links": [
+        {
+          "label": "Oracle Cloud Portal",
+          "url": "https://fa-ewjt-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/jobs?location=India"
         }
       ]
     }

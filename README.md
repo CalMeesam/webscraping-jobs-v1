@@ -1,90 +1,206 @@
-# Adaptive Career Job Extraction Engine
+# Adaptive Career Job Extraction Engine 🚀
 
-A greenfield Python backend application that accepts company websites, career pages, job boards, or ATS URLs, and automatically discovers, extracts, enriches, normalizes, and returns structured job listings in JSON.
+An enterprise-grade, multi-platform career portal scraping and organizational intelligence system built with **FastAPI**, **SQLAlchemy**, and **PostgreSQL / SQLite**.
 
-## Features
-- **Adaptive Extraction Hierarchy**: Prefers cheap HTTP APIs over browser automation.
-- **Native ATS API Support**:
-  - **Greenhouse**: Full support via `boards-api.greenhouse.io`
-  - **Workday**: Full support via Workday CXS JSON API endpoints with fixed `limit: 20` offset pagination.
-- **Unsupported ATS Guardrails**: Explicitly returns `ATS_DETECTED_BUT_UNSUPPORTED` for Lever, SmartRecruiters, and Ashby instead of low-quality HTML scraping.
-- **Static HTML Extractor**: JSON-LD `JobPosting` schema parsing + repeated DOM element heuristics.
-- **Playwright Browser Fallback**: Asynchronous Chromium with XHR/Fetch network traffic inspection first, post-render DOM fallback second.
-- **Detail Enrichment**: Async semaphore concurrency (default 5) bounded by `max_jobs`.
-- **Normalization & Deduplication**: Cleans HTML tags, normalizes whitespace, formats locations, and deduplicates by `source_id` -> `job_url` -> `application_url` -> `composite fingerprint`.
-- **Structured JSON Logging**: All pipeline decisions logged as structured JSON.
+Designed to automatically discover, extract, normalize, and monitor job openings across diverse Applicant Tracking Systems (ATS) and custom corporate career pages, with automatic run-to-run differential change tracking and persistence.
 
-## Installation & Setup
+---
 
-1. **Install Python Dependencies**:
+## 🌟 Key Features
+
+- **Multi-ATS Native & Fallback Extractors**:
+  - **Workday**: Direct CXS REST API pagination & detail enrichment.
+  - **Greenhouse**: High-throughput public REST API parser.
+  - **Lever**: Structured posting extraction with department & location normalization.
+  - **Oracle HCM Cloud**: Candidate Experience REST API integration.
+  - **Phenom People / Dynamic SPAs**: Intelligent Playwright browser fallback with DOM heuristic parsing.
+- **Run-to-Run Diff Engine**:
+  - Automatically identifies **New**, **Removed**, **Changed**, and **Unchanged** jobs between sequential extraction runs.
+  - Calculates detailed field-level diffs (title changes, location updates, description modifications).
+  - Generates downloadable CSV comparison reports (`/runs/{target_id}/compare/{base_id}/csv`).
+- **Dual PostgreSQL & SQLite Persistence**:
+  - Stores every extraction run in `extraction_runs` and individual job snapshots in `job_snapshots`.
+  - JSON snapshot storage with deterministic `job_identity_key` deduplication and indexing.
+- **LLM Extraction Refinement Pipeline**:
+  - Optional AI-powered schema refinement behind a feature flag (`ENABLE_LLM_REFINEMENT=true`).
+- **Interactive Cockpit UI**:
+  - Glassmorphic dark UI with client roster grid, quick ATS presets, live diff delta badges, and history modal with comparison tabs.
+- **Client Portfolio Management**:
+  - Config-driven client registry (`config/customers.json`) with FastAPI CRUD endpoints and UI modal support.
+
+---
+
+## 🏗️ System Architecture
+
+```
+                                  [ User / Web UI / REST Client ]
+                                                 │
+                                                 ▼
+                                        [ FastAPI Router ]
+                                                 │
+                        ┌────────────────────────┼────────────────────────┐
+                        ▼                        ▼                        ▼
+               [ ATS Detector ]        [ Customer Registry ]     [ Run Diff Engine ]
+                        │                        │                        │
+        ┌───────────────┴───────────────┐        │                        ▼
+        ▼                               ▼        │              [ SQLAlchemy Models ]
+ [ Native Extractors ]          [ Fallback Engine ]                      │
+  • Workday (CXS API)            • Generic HTML / JSON-LD                ├── extraction_runs
+  • Greenhouse (REST API)        • Playwright Headless Browser           └── job_snapshots
+  • Lever (REST API)                                                     │
+  • Oracle HCM (REST API)                                         [ PostgreSQL / SQLite ]
+        │
+        ▼
+ [ Normalizer & Deduplicator ] ──▶ [ Detail Enricher ] ──▶ [ Database Persistence ]
+```
+
+---
+
+## 📋 Supported ATS Platforms & Strategies
+
+| Platform / Vendor | Detection Rule | Extraction Strategy | Primary Targets |
+| :--- | :--- | :--- | :--- |
+| **Workday** | `myworkdayjobs.com` | `workday_cxs_api` | Broadcom, Target, Walmart |
+| **Greenhouse** | `boards.greenhouse.io`, `job-boards.greenhouse.io` | `greenhouse_api` | Figma, Sumologic, Stripe |
+| **Lever** | `jobs.lever.co` | `lever_api` | Spotify, Netflix |
+| **Oracle HCM Cloud** | `hcmUI/CandidateExperience`, `oraclecloud.com` | `oracle_hcm_api` | Dell Technologies, EXL Service |
+| **Phenom People / SPAs** | `careers.*.com` | `playwright_fallback` | Cisco Systems, HPE |
+| **Generic Portals** | Static corporate sites | `static_html` (JSON-LD / Microdata) | Custom career pages |
+
+---
+
+## 🚀 Quick Start
+
+### 1. Prerequisites
+- Python 3.11+
+- (Optional) PostgreSQL 14+ or Docker
+
+### 2. Installation
 ```bash
+# Clone the repository
+git clone https://github.com/your-org/web-scrapping-jobs.git
+cd web-scrapping-jobs
+
+# Create and activate virtual environment
+python -m venv venv
+venv\Scripts\activate  # Windows
+# source venv/bin/activate  # Linux/macOS
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Install Playwright browser binaries
+playwright install chromium
 ```
 
-2. **Install Playwright Chromium**:
+### 3. Configuration
+Copy `.env.example` to `.env` and adjust settings as needed:
 ```bash
-python -m playwright install chromium
+cp .env.example .env
 ```
 
-3. **Run the FastAPI Server**:
+Key environment variables:
+```ini
+APP_ENV=development
+DATABASE_URL=sqlite:///./data/jobs.db  # Or postgresql://user:pass@localhost:5432/jobs_db
+PORT=8000
+PLAYWRIGHT_HEADLESS=true
+ENABLE_LLM_REFINEMENT=false
+```
+
+### 4. Running with Docker Compose (PostgreSQL + App)
 ```bash
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+docker-compose up --build -d
 ```
 
-## API Endpoints
-
-### `GET /health`
-Returns system health status:
-```json
-{
-  "status": "ok"
-}
-```
-
-### `POST /extract-jobs`
-Request body:
-```json
-{
-  "url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite",
-  "max_jobs": 5,
-  "include_details": true
-}
-```
-
-Response:
-```json
-{
-  "metadata": {
-    "input_url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite",
-    "resolved_url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite",
-    "source_type": "ats",
-    "ats": "workday",
-    "extraction_strategy": "workday_cxs_api",
-    "total_jobs_found": 2000,
-    "total_jobs_returned": 5,
-    "warnings": [],
-    "errors": []
-  },
-  "jobs": [
-    {
-      "id": "JR2016463",
-      "title": "Manager, Distinguished Engineer - DGX Systems Software",
-      "location": "Santa Clara, CA",
-      "department": null,
-      "description": "NVIDIA DGX systems are the foundation...",
-      "employment_type": null,
-      "job_url": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Manager--Distinguished-Engineer---DGX-Systems-Software_JR2016463",
-      "application_url": null,
-      "source": "nvidia",
-      "ats": "workday"
-    }
-  ]
-}
-```
-
-## Testing
-
-Run unit tests:
+### 5. Running Locally (FastAPI)
 ```bash
-pytest
+uvicorn app.main:app --port 8000 --reload
 ```
+Open **[http://localhost:8000](http://localhost:8000)** in your browser.
+
+---
+
+## 📡 REST API Reference
+
+### Job Extraction
+- **`POST /extract-jobs`**: Trigger extraction for a career URL.
+  ```json
+  {
+    "url": "https://boards.greenhouse.io/figma",
+    "customer_id": "figma",
+    "max_jobs": 25,
+    "preferred_location": "San Francisco",
+    "include_details": true
+  }
+  ```
+
+### Customer Management
+- **`GET /customers`**: List all configured enterprise clients.
+- **`POST /customers`**: Register a new customer profile.
+- **`PUT /customers/{customer_id}`**: Update customer details and career links.
+- **`GET /customers/{customer_id}/history`**: Retrieve extraction run history for a customer.
+
+### Run Comparison & Diffing
+- **`GET /runs/{target_id}/compare/{base_id}`**: Compute Added, Removed, Changed, and Unchanged jobs between two runs.
+- **`GET /runs/{target_id}/compare/{base_id}/csv`**: Download comparison report as a formatted CSV file.
+
+### Health Check
+- **`GET /health`**: Returns engine status (`{"status": "ok"}`).
+
+---
+
+## 🔍 Database Inspection CLI Tool
+
+To inspect historical runs, snapshots, and customer portfolios directly from your terminal:
+
+```bash
+python scratch/view_postgres_data.py
+```
+
+Sample output:
+```text
+===========================================================================
+           POSTGRESQL DATABASE INSPECTOR & VIEWER
+===========================================================================
+
+[*] DATABASE SUMMARY:
+    - Total Extraction Runs : 65
+    - Total Job Snapshots   : 480
+
+[*] RUNS PARTITIONED BY CUSTOMER:
+    - Customer 'broadcom': 20 runs
+    - Customer 'figma': 16 runs
+    - Customer 'cisco': 12 runs
+    - Customer 'dell': 8 runs
+    - Customer 'spotify': 5 runs
+    - Customer 'hewlett-packard-enterprise': 4 runs
+
+[*] RECENT EXTRACTION RUNS:
+  ID    Customer                    Run At (UTC)             Status     Jobs Ret/Found
+  ------------------------------------------------------------------------------------
+  #65   hewlett-packard-enterprise  2026-08-31 19:18:00.63   SUCCESS    10/13
+  #63   dell                        2026-08-31 18:57:12.34   SUCCESS    45/386
+  #62   broadcom                    2026-08-31 18:57:07.70   SUCCESS    45/385
+```
+
+---
+
+## 🧪 Running Automated Tests
+
+Run the full pytest test suite (85 unit and integration tests):
+
+```bash
+pytest tests/ -v
+```
+
+Run test suite with short summary:
+```bash
+pytest tests/ -q
+```
+
+---
+
+## 🛡️ License
+
+Proprietary enterprise software. All rights reserved.
